@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.javaee.ebay.bll.ManagerFactory;
+import fr.eni.javaee.ebay.bll.UtilisateurManager;
 import fr.eni.javaee.ebay.bo.Utilisateur;
  
 
@@ -45,7 +47,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 		//Creer un utilisateur à partir de la JSP
 		Utilisateur utilisateurJSP= new Utilisateur (identifiant,motDePasse);
 		
-		UtilisateurManager utilisateurManager = ManagerFactory.getUtilisateurManager();
+		UtilisateurManager utilisateurManager = ManagerFactory.getUtilisateurManageur();
 		
 		
 		Utilisateur utilisateur = utilisateurManager.seConnecter(utilisateurJSP);	
