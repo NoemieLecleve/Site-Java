@@ -1,0 +1,19 @@
+h1{
+	font-size: 20px;
+}
+
+.succes {
+	color: green;
+}
+
+.erreur {
+	color: red;
+}
+
+form {
+	text-align: center;
+}
+
+form input {
+	width: 30px;
+}
