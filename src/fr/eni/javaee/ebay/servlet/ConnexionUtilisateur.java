@@ -2,6 +2,7 @@ package fr.eni.javaee.ebay.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +28,8 @@ public class ConnexionUtilisateur extends HttpServlet {
 
 		// Affichage de la page d'inscription:
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/connexion.jsp").forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -57,16 +59,16 @@ public class ConnexionUtilisateur extends HttpServlet {
 		if (utilisateur != null) {
 			session.setAttribute("sessionUtilisateur", utilisateur);
 			request.setAttribute("message", succes);
-			this.getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
 		} else {
-
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/connexion.jsp").forward(request, response);
 			request.setAttribute("message", erreur);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
+			rd.forward(request, response);
+			
 		}
 
-		request.setAttribute("utilisateur", utilisateur);
-
-		doGet(request, response);
+		
 	}
 
 }

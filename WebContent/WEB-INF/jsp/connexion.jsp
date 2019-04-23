@@ -39,6 +39,7 @@
 	  		  <div>	 
 	  		  	<button type="submit" value="" id="compte">Créer un compte</button>
 	  		  </div>
+	  		  
 	  		  <!--   Vérification de la présence d'un objet utilisateur en session -->
                 <c:if test="${!empty sessionScope.sessionUtilisateur}">
                     <!-- Si l'utilisateur existe en session, alors on affiche son adresse email. -->
