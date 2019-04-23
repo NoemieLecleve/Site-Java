@@ -1,6 +1,7 @@
 package fr.eni.javaee.ebay.bo;
 
 public class Utilisateur {
+
 	
 	private int noUtilisateur;
 	private String pseudo;
@@ -154,6 +155,7 @@ public class Utilisateur {
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-	
+
+
 
 }
