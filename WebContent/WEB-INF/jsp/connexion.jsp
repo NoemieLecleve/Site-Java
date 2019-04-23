@@ -44,8 +44,7 @@
                     <!-- Si l'utilisateur existe en session, alors on affiche son adresse email. -->
                     <p>${sessionScope.sessionUtilisateur.pseudo}</p>             
                     <p class="succes">${form.message}</p>
-                </c:if>
-                
+                </c:if>   
   		  </fieldset>
 		</form>		
 	</main>
