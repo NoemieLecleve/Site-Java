@@ -1,3 +1,7 @@
+.connexion{
+	margin: 0;
+}
+
 h1{
 	font-size: 20px;
 }
@@ -10,10 +14,39 @@ h1{
 	color: red;
 }
 
-form {
+fieldset{
 	text-align: center;
+	width: 50%;
 }
 
-form input {
-	width: 30px;
+form{
+	display: block;
+	text-align: center;
+	width: 50%;
+}
+
+.text-center{
+	margin: auto 0;
+} 
+
+#identifiant {
+	width: 200px;
+	height: 30px;
+	border-radius: 5px;
+	border-color: #D5D5D5;
+	border-style: solid;
+	border-width: 0.5px;
+}
+
+#motdepasse {
+	width: 200px;
+	height: 30px;
+	border-radius: 5px;
+	border-color: #D5D5D5;
+	border-style: solid;
+	border-width: 0.5px;
+}
+
+form label {
+	margin: 7px;
 }

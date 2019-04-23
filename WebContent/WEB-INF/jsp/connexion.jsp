@@ -14,18 +14,18 @@
 	
 	<main class="connexion">
 		<h1></h1>
-		<form method="post" action="ConnexionUtilisateur" class="col-lg-12">
+		<form method="post" action="ConnexionUtilisateur" >
 		  <fieldset>
 		  <legend>Connexion</legend>
-			  <div class="form-group">
-				  <label for="identifiant">Identifiant :</label>
-				  <input type="text" name="identifiant" id="identifiant" class="form-control" 
-				  		 value="<c:out value="${utilisateur.identifiant}"/>" required />
+		  
+			  <div class="form-group text-center">
+				  <label for="identifiant">Identifiant </label>
+				  <input type="text" name="identifiant" id="identifiant" placeholder="Votre pseudo" value="" required />
 			  </div>
 			   	<p class="erreur"> ${form.erreur['identifiant']}</p>
-			   <div class="form-group">
-			      <label for="motdepasse">Mot de passe :</label>
-			      <input type="password" name="motdepasse" id="motdepasse" class="form-control" required />
+			   <div class="form-group text-center">
+			      <label for="motdepasse">Mot de passe </label>
+			      <input type="password" name="motdepasse" id="motdepasse" placeholder="Votre mot de passe" value="" required />
 		  	  </div> 
 		  	    <p class="erreur"> ${form.erreur['motdepasse']}</p>	    
 		  	  <div>
@@ -45,7 +45,8 @@
                     <!-- Si l'utilisateur existe en session, alors on affiche son adresse email. -->
                     <p>${sessionScope.sessionUtilisateur.pseudo}</p>             
                     <p class="succes">${form.message}</p>
-                </c:if>   
+                </c:if> 
+             
   		  </fieldset>
 		</form>		
 	</main>
