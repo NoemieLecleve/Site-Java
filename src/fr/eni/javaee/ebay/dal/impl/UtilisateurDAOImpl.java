@@ -12,7 +12,7 @@ import fr.eni.javaee.ebay.dal.UtilisateurDAO;
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	private Connection connexion = ConnectionProvider.getInstance();
-	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = HashBytes('SHA1',?);";
+	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?;";
 	
 
 	@Override
