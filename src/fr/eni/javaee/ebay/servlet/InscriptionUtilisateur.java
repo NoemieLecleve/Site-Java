@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
 import fr.eni.javaee.ebay.bll.UtilisateurManager;
 import fr.eni.javaee.ebay.bo.Utilisateur;
@@ -85,7 +86,13 @@ public class InscriptionUtilisateur extends HttpServlet {
 			return;
 		}
 
-		Utilisateur utilisateur = utilisateurManager.creerUtilisateur(utilisateurJSP, MDPconfirm);
+		Utilisateur utilisateur = null;
+		try {
+			utilisateur = utilisateurManager.creeUtilisateur(utilisateurJSP, MDPconfirm);
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		request.setAttribute("utilisateur", utilisateur);
 
