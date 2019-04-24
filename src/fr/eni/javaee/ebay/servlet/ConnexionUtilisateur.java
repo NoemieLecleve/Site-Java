@@ -65,7 +65,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 			rd.forward(request, response);
-			return;	
+			return;
 		}
 
 		// Récupération de la session depuis la requête
@@ -84,10 +84,9 @@ public class ConnexionUtilisateur extends HttpServlet {
 			request.setAttribute("message", erreur);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 			rd.forward(request, response);
-			
+
 		}
 
-		
 	}
 
 }

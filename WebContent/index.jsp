@@ -39,8 +39,18 @@
 		 <option value="dog">Toutes</option>
     	<option value="cat">Petit poney</option>
 	</select>
-		
-	
+	<section>
+		<article>
+			<h2>Meubles et Objets d'art</h2>
+			
+		</article>
+		<article>
+			<h2>Véhicules</h2>
+		</article>
+		<article>
+			<h2>Autres</h2>
+		</article>
+	</section>
 </main>
 </body>
 </html>

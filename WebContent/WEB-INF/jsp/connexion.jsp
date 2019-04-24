@@ -47,9 +47,8 @@
 
 	  		  <!--   Vérification de la présence d'un objet utilisateur en session -->
                 <c:if test="${!empty sessionScope.sessionUtilisateur}">
-                    <!-- Si l'utilisateur existe en session, alors on affiche son adresse email. -->
+                    <!-- Si l'utilisateur existe en session, alors on affiche son pseudo. -->
                     <p>${sessionScope.sessionUtilisateur.pseudo}</p>             
-                    <p class="succes">${message}</p>
                 </c:if> 
              </div>
   		  </fieldset>
