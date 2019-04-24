@@ -29,19 +29,42 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	@Override
 	public Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException {
 		
-		/*
-		String motDePasse = utilisateur.getMotDePasse();
-		String motDePasseCripter = cripterMDP(motDePasse);
-		utilisateur.setMotDePasse(motDePasseCripter);
-		*/
-	
-					
-		    validationPseudo( utilisateur.getPseudo() );
-	  
-		 	validationMotDePasse( utilisateur.getMotDePasse() );
-		 
 		
+		    validationPseudo( utilisateur.getPseudo() );
+	  	 	validationMotDePasse( utilisateur.getMotDePasse());
+		 
+	  	 	String motDePasse = utilisateur.getMotDePasse();
+			String motDePasseCripter = cripterMDP(motDePasse);
+			utilisateur.setMotDePasse(motDePasseCripter);
+	  	 	
+	  	 	
 		return utilisateurDAO.seConnecter(utilisateur);
+		
+	}
+	
+	//Creer un utilisateur	
+   
+	public void creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException {
+			
+		
+		    validationEmail( utilisateur.getEmail() );
+		    validationPseudo( utilisateur.getPseudo() );
+		    confirmationMotDePasse( utilisateur.getMotDePasse(), confirmation );
+		    validationNom( utilisateur.getNom());
+		    validationNom( utilisateur.getPrenom());
+		    
+		    String motDePasse = utilisateur.getMotDePasse();
+			String motDePasseCripter = cripterMDP(motDePasse);
+			utilisateur.setMotDePasse(motDePasseCripter);
+		
+		  try {
+			  
+			utilisateurDAO.creerUtilisateur(utilisateur);
+			
+		} catch (DALException e) {
+			 			
+			throw new BLLException ("Erreur création utilisateur",e);
+		}
 		
 	}
 	
@@ -76,7 +99,10 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 			 
         }
     }
-   private void validationPseudo( String pseudo ) throws BLLException {
+    
+    //Valider le pseudo.
+    
+    private void validationPseudo( String pseudo ) throws BLLException {
     	
     	//une expression régulière qui valide l'adresse e-mail
 	   if ( pseudo != null ) {
@@ -93,7 +119,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
     
      //Valide le mot de passe saisi.
     
-    private void validationMotDePasse (String motDePasse ) throws BLLException {
+    private void validationMotDePasse (String motDePasse) throws BLLException {
        
     	
     	if ( motDePasse != null ) {
@@ -108,10 +134,32 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
         }
     }
 
-  
+    //Confirmation du mot de passe.
+    
+    private void confirmationMotDePasse( String motDePasse, String confirmation ) throws BLLException {
+       
+    	validationMotDePasse(motDePasse);
+    	
+    	if (confirmation != null ) {
+            if ( !motDePasse.equals( confirmation ) ) {
+                throw new BLLException( "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
+            }
+        } else {
+            throw new BLLException( "Merci de saisir et confirmer votre mot de passe." );
+        }
+    }
+
+    //Validation du Nom.
+
+    private void validationNom( String nom ) throws BLLException {
+        
+    	if ( nom != null && nom.length() < 2 ) {
+            throw new BLLException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
+        }
+    }
+
  
 	
-	
-	
+
 	
 }

@@ -14,6 +14,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	private Connection connexion;
 	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?;";
+	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS "
+														+ "(pseudo,nom,prenom,email,telephone,"
+														+ "rue,code_postal,ville,mot_de_passe)"
+														+ " values (?,?,?,?,?,?,?,?,?)";
+	
 	
 	public UtilisateurDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
@@ -67,5 +72,38 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 	
 	
+	public Utilisateur creerUtilisateur (Utilisateur utilisateur) throws DALException {
+		
+		 
+		
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(INSERT_UTILISATEUR,PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			prepare.setString(1, utilisateur.getPseudo());
+			prepare.setString(2, utilisateur.getNom());
+			prepare.setString(3, utilisateur.getPrenom());
+			prepare.setString(4, utilisateur.getEmail());
+			prepare.setString(5, utilisateur.getTelephone());
+			prepare.setString(6, utilisateur.getRue());
+			prepare.setString(7, utilisateur.getCodePostal());
+			prepare.setString(8, utilisateur.getVille());
+			prepare.setString(9, utilisateur.getMotDePasse());
+					
+			
+		    prepare.execute();
+			ResultSet resultat = prepare.getGeneratedKeys();
+			 
+			 
+			if(resultat.next()) {
+				
+				utilisateur.setNoUtilisateur(resultat.getInt(1));
+			}			
+		}catch(SQLException e) {
+						
+			throw new DALException("Problème pour interroger la base de donnes", e);
+		}
+		return utilisateur;
+	
+	}
 
 }
