@@ -16,6 +16,7 @@ header {
 
 .erreur {
 	color: red;
+	font-weight: bold;
 }
 
 fieldset{
@@ -26,6 +27,7 @@ fieldset{
 main{
 	padding: 30px;
 	font-family: 'Oxygen', sans-serif;
+	background-color: #FEFDF5;
 }
 
 container{
@@ -87,4 +89,19 @@ div label {
 
 first-nav {
 	display: inline-block;
+}
+
+.index section {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.index article{
+	display: flex;
+}
+
+.index h2 {
+	font-size: 26px;
+	color: #464340;
 }

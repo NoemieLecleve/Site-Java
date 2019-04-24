@@ -5,7 +5,7 @@ import fr.eni.javaee.ebay.bo.Utilisateur;
 public interface UtilisateurDAO {
 	
 	Utilisateur seConnecter(Utilisateur utilisateur);
-	
+	Utilisateur creerUtilisateur (Utilisateur utilisateur) throws DALException;
 	
 
 }

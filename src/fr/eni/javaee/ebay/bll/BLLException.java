@@ -23,4 +23,17 @@ public class BLLException extends Exception {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 
+	public String getMessage() {
+		
+		StringBuffer sb = new StringBuffer ("couche BLL -");
+		
+		sb.append(super.getMessage());
+		
+		
+		return sb.toString();
+		
+		
+		
+	}
+	
 }
