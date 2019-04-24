@@ -27,7 +27,7 @@
 			<!-- ********** -->
 			<!-- FORMULAIRE -->
 			<!-- ********** -->
-			<form method="post" action="ConnexionUtilisateur" class="container">
+			<form method="POST" action="InscriptionUtilisateur" class="container">
 				<fieldset>
 					<legend>Inscription</legend>
 					
@@ -61,7 +61,7 @@
 						<div>
 							<div>
 								<label for="nom">Nom</label>
-								<input id=""nom"" type="text" name=""nom"">							
+								<input id="nom" type="text" name=""nom"">							
 							</div>
 							<div>
 								<label for="email">Email</label>
