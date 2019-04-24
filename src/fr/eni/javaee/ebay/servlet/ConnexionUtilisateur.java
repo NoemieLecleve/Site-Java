@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
 import fr.eni.javaee.ebay.bll.UtilisateurManager;
 import fr.eni.javaee.ebay.bo.Utilisateur;
@@ -35,7 +36,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String erreur = "Échec de la connexion.";
+		String erreur = "Utilisateur inconnu.";
 		String succes = "Succès de la connexion.";
 
 		// 1:Récupération des paramétres de la requete
@@ -47,7 +48,15 @@ public class ConnexionUtilisateur extends HttpServlet {
 
 		UtilisateurManager utilisateurManager = ManagerFactory.getUtilisateurManageur();
 
-		Utilisateur utilisateur = utilisateurManager.seConnecter(utilisateurJSP);
+		Utilisateur utilisateur = null;
+		try {
+			utilisateur = utilisateurManager.seConnecter(utilisateurJSP);
+		} catch (BLLException e) {
+			request.setAttribute("message", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
+			rd.forward(request, response);
+			return;	
+		}
 
 		// Récupération de la session depuis la requête
 

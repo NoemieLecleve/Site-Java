@@ -4,5 +4,5 @@ import fr.eni.javaee.ebay.bo.Utilisateur;
 
 public interface UtilisateurManager {
 
-	Utilisateur seConnecter(Utilisateur utilisateur);
+	Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException;
 }
