@@ -1,13 +1,17 @@
-.connexion{
-	margin: 0;
-}
 
-h1{
-	font-size: 20px;
+
+header {
+	text-align: center;
+	font-size: 24px;
+	color: white;
+	background-color: #483537 ;
+	height: 80px;
+	padding-top: 20px;
 }
 
 .succes {
 	color: green;
+	font-weight: bold;
 }
 
 .erreur {
@@ -16,13 +20,30 @@ h1{
 
 fieldset{
 	text-align: center;
-	width: 50%;
+	margin: 20px;
 }
+
+main{
+	padding: 30px;
+	font-family: 'Oxygen', sans-serif;
+}
+
+container{
+	margin: 0 auto;
+}
+
+.background{
+		background-color: #F1F1F1;
+		padding: 15px;
+		border-radius: 10px;
+		margin-left: 200px;	
+		margin-right: 200px;	
+}
+
 
 form{
 	display: block;
 	text-align: center;
-	width: 50%;
 }
 
 .text-center{
@@ -36,6 +57,8 @@ form{
 	border-color: #D5D5D5;
 	border-style: solid;
 	border-width: 0.5px;
+	padding: 4px;
+	margin-left: 20px;
 }
 
 #motdepasse {
@@ -45,8 +68,23 @@ form{
 	border-color: #D5D5D5;
 	border-style: solid;
 	border-width: 0.5px;
+	padding: 4px;
 }
 
-form label {
-	margin: 7px;
+
+div label {
+	margin: 8px;
+	display: inline-block;
+	
+}
+
+
+/* Page acceuil !! */
+
+.index h1 {
+	font-size: 25px;
+	}
+
+first-nav {
+	display: inline-block;
 }

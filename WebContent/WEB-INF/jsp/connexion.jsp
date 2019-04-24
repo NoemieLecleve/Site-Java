@@ -5,29 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link href="css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Enchérissez, remportez, profitez !</p>
-	
-	<main class="connexion">
-		<h1></h1>
-		<form method="post" action="ConnexionUtilisateur" >
+<header>
+	<strong>Enchérissez, remportez, profitez !</strong>
+</header>
+<main class="connexion">
+		
+		<form method="post" action="ConnexionUtilisateur" class="container">
 		  <fieldset>
 		  <legend>Connexion</legend>
-		  
+		   <div class="background">
 			  <div class="form-group text-center">
 				  <label for="identifiant">Identifiant </label>
 				  <input type="text" name="identifiant" id="identifiant" placeholder="Votre pseudo" value="" required />
 			  </div>
-			   	<p class="erreur"> ${form.erreur['identifiant']}</p>
+			  
 			   <div class="form-group text-center">
-			      <label for="motdepasse">Mot de passe </label>
-			      <input type="password" name="motdepasse" id="motdepasse" placeholder="Votre mot de passe" value="" required />
+	   			<label for="motdepasse">Mot de passe </label>
+			     <input type="password" name="motdepasse" id="motdepasse" placeholder="Votre mot de passe" value="" required />
 		  	  </div> 
-		  	    <p class="erreur"> ${form.erreur['motdepasse']}</p>	    
+		  	       
 		  	  <div>
 		      	<button type="submit" value="" id="connexion" class="btn btn-primary">Connexion</button>
 		      </div>
@@ -37,18 +40,20 @@
 		  		  <a href="#">Mot de passe oublié</a>
 	  		  </div>
 	  		  <div>	 
-	  		  	<button type="submit" value="" id="compte">Créer un compte</button>
+	  		  	<button type="submit" value="" id="compte" class="btn btn-info">Créer un compte</button>
 	  		  </div>
 	  		  
+	  		   	<p class="erreur"> ${message}</p>	
+
 	  		  <!--   Vérification de la présence d'un objet utilisateur en session -->
                 <c:if test="${!empty sessionScope.sessionUtilisateur}">
                     <!-- Si l'utilisateur existe en session, alors on affiche son adresse email. -->
                     <p>${sessionScope.sessionUtilisateur.pseudo}</p>             
-                    <p class="succes">${form.message}</p>
+                    <p class="succes">${message}</p>
                 </c:if> 
-             
+             </div>
   		  </fieldset>
 		</form>		
-	</main>
+</main>
 </body>
 </html>
