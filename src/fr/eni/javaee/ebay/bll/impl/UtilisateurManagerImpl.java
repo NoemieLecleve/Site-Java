@@ -71,7 +71,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	
 	// Cryptage du mot de passe 
 	
-	private String cripterMDP(String password) throws BLLException {
+	public String cripterMDP(String password) throws BLLException {
 
         MessageDigest md = null;;
 		try {
@@ -91,7 +91,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 	 //Valider l'adresse email saisie.
    
-    private void validationEmail( String email ) throws BLLException {
+	public void validationEmail( String email ) throws BLLException {
     	
     	//une expression régulière qui valide l'adresse e-mail
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
@@ -103,7 +103,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
     
     //Valider le pseudo.
     
-    private void validationPseudo( String pseudo ) throws BLLException {
+	public void validationPseudo( String pseudo ) throws BLLException {
     	
     	//une expression régulière qui valide l'adresse e-mail
 	   if ( pseudo != null ) {
@@ -120,7 +120,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
     
      //Valide le mot de passe saisi.
     
-    private void validationMotDePasse (String motDePasse) throws BLLException {
+	public void validationMotDePasse (String motDePasse) throws BLLException {
        
     	
     	if ( motDePasse != null ) {
@@ -137,7 +137,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
     //Confirmation du mot de passe.
     
-    private void confirmationMotDePasse( String motDePasse, String confirmation ) throws BLLException {
+	public void confirmationMotDePasse( String motDePasse, String confirmation ) throws BLLException {
        
     	validationMotDePasse(motDePasse);
     	
@@ -152,7 +152,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
     //Validation du Nom.
 
-    private void validationNom( String nom ) throws BLLException {
+	public void validationNom( String nom ) throws BLLException {
         
     	if ( nom != null && nom.length() < 2 ) {
             throw new BLLException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );

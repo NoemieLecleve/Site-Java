@@ -13,6 +13,10 @@ import fr.eni.javaee.ebay.dal.UtilisateurDAO;
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	private Connection connexion;
+	private static final String VERIFICATION_EMAIL = "SELECT count(no_utilisateur) as 'num_email' "
+														+ "FROM UTILISATEURS WHERE email =? ";
+	private static final String VERIFICATION_PSEUDO = "SELECT count(no_utilisateur) as 'num_pseudo' "
+														+ "FROM UTILISATEURS WHERE pseudo=?";
 	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?;";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS "
 														+ "(pseudo,nom,prenom,email,telephone,"
@@ -104,6 +108,56 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		}
 		return utilisateur;
 	
+	}
+
+    
+	public void verifierUtilisateur(Utilisateur utilisateur) throws DALException {
+				 
+		
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(VERIFICATION_EMAIL);
+			prepare.setInt(1, utilisateur.getNoUtilisateur());
+		 			
+			ResultSet resultat = prepare.executeQuery();
+			
+			 			
+			if (resultat.next()) {
+				
+				int no_email = resultat.getInt("num_email");
+				
+				 
+				if( no_email==0) {
+					
+					PreparedStatement prepare1 = connexion.prepareStatement(INSERT_UTILISATEUR,PreparedStatement.RETURN_GENERATED_KEYS);
+					
+					prepare1.setString(1, utilisateur.getPseudo());
+					prepare1.setString(2, utilisateur.getNom());
+					prepare1.setString(3, utilisateur.getPrenom());
+					prepare1.setString(4, utilisateur.getEmail());
+					prepare1.setString(5, utilisateur.getTelephone());
+					prepare1.setString(6, utilisateur.getRue());
+					prepare1.setString(7, utilisateur.getCodePostal());
+					prepare1.setString(8, utilisateur.getVille());
+					prepare1.setString(9, utilisateur.getMotDePasse());
+							
+					
+				    prepare1.execute();
+					ResultSet resultat1 = prepare1.getGeneratedKeys();
+					 
+					 
+					if(resultat1.next()) {
+						
+						utilisateur.setNoUtilisateur(resultat1.getInt(1));
+					}			
+				}
+				 
+				else {
+					throw new DALException ("Utilisateur existe deja!!!");
+				}
+			}			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
