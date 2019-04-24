@@ -18,7 +18,7 @@ import fr.eni.javaee.ebay.dal.DALException;
 /**
  * Servlet implementation class CompteUtilisateur
  */
-@WebServlet("/CompteUtilisateur")
+@WebServlet("/InscriptionUtilisateur")
 public class InscriptionUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String CHAMP_PSEUDO = "pseudo";
