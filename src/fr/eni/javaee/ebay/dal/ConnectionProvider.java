@@ -11,7 +11,7 @@ public class ConnectionProvider {
 	
 	private static Connection connexion = null;
 	
-	private ConnectionProvider() {
+	private ConnectionProvider() throws DALException {
 		
 		try {
 			Context context = new InitialContext();
@@ -20,13 +20,14 @@ public class ConnectionProvider {
 		}
 		catch(NamingException e) {
 			e.printStackTrace();
+			throw new DALException("Problème de chargement de contexte");
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static Connection getInstance(){
+	public static Connection getInstance() throws DALException{
 		
 		if(connexion == null) {
 			new ConnectionProvider();

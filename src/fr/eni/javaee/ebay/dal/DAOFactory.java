@@ -4,7 +4,7 @@ import fr.eni.javaee.ebay.dal.impl.UtilisateurDAOImpl;
 
 public class DAOFactory {
 	
-	public static UtilisateurDAO getUtilisateurDAO() {
+	public static UtilisateurDAO getUtilisateurDAO() throws DALException {
 		return new UtilisateurDAOImpl();
 	}
 

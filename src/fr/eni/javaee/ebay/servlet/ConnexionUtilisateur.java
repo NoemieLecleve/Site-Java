@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
 import fr.eni.javaee.ebay.bll.UtilisateurManager;
 import fr.eni.javaee.ebay.bo.Utilisateur;
+import fr.eni.javaee.ebay.dal.DALException;
 
 /**
  * Servlet implementation class ConnexionUtilisateur
@@ -45,7 +46,15 @@ public class ConnexionUtilisateur extends HttpServlet {
 		// Creer un utilisateur à partir de la JSP
 		Utilisateur utilisateurJSP = new Utilisateur(identifiant, motDePasse);
 
-		UtilisateurManager utilisateurManager = ManagerFactory.getUtilisateurManageur();
+		// Gestion d'erreur de connexion
+		UtilisateurManager utilisateurManager = null;
+		try {
+			utilisateurManager = ManagerFactory.getUtilisateurManageur();
+		} catch (DALException e) {
+			request.setAttribute("message", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
+			rd.forward(request, response);
+		}
 
 		Utilisateur utilisateur = utilisateurManager.seConnecter(utilisateurJSP);
 

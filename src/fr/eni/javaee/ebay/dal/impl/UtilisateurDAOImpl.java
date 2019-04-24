@@ -7,12 +7,17 @@ import java.sql.SQLException;
 
 import fr.eni.javaee.ebay.bo.Utilisateur;
 import fr.eni.javaee.ebay.dal.ConnectionProvider;
+import fr.eni.javaee.ebay.dal.DALException;
 import fr.eni.javaee.ebay.dal.UtilisateurDAO;
 
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
-	private Connection connexion = ConnectionProvider.getInstance();
+	private Connection connexion;
 	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?;";
+	
+	public UtilisateurDAOImpl() throws DALException {
+		connexion = ConnectionProvider.getInstance();
+	}
 	
 
 	@Override
