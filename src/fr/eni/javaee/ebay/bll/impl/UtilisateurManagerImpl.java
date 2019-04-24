@@ -16,9 +16,11 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	@Override
 	public Utilisateur seConnecter(Utilisateur utilisateur) {
 		
+		/*
 		String motDePasse = utilisateur.getMotDePasse();
 		String motDePasseCripter = cripterMDP(motDePasse);
-		utilisateur.setMotDePasse(motDePasseCripter);		
+		utilisateur.setMotDePasse(motDePasseCripter);
+		*/		
 		return utilisateurDAO.seConnecter(utilisateur);
 	}
 	
@@ -28,12 +30,11 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		try {
 			md = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
         byte[] hashInBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
 
-		// bytes to hex
         StringBuilder sb = new StringBuilder();
         for (byte b : hashInBytes) {
             sb.append(String.format("%02x", b));
