@@ -44,7 +44,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	
 	//Creer un utilisateur	
    
-	public void creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException {
+	public Utilisateur creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException {
 			
 		
 		    validationEmail( utilisateur.getEmail() );
@@ -65,6 +65,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 			 			
 			throw new BLLException ("Erreur création utilisateur",e);
 		}
+		return utilisateur;
 		
 	}
 	
