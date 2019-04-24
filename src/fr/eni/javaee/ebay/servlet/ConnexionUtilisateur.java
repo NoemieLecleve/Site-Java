@@ -22,7 +22,7 @@ import fr.eni.javaee.ebay.dal.DALException;
 @WebServlet("/ConnexionUtilisateur")
 public class ConnexionUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String CHAMP_EMAIL = "identifiant";
+	private static final String CHAMP_PSEUDO = "identifiant";
 	private static final String CHAMP_PASS = "motdepasse";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +41,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 		String succes = "Succès de la connexion.";
 
 		// 1:Récupération des paramétres de la requete
-		String identifiant = request.getParameter(CHAMP_EMAIL);
+		String identifiant = request.getParameter(CHAMP_PSEUDO);
 		String motDePasse = request.getParameter(CHAMP_PASS);
 
 		// Creer un utilisateur à partir de la JSP
@@ -55,6 +55,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 			rd.forward(request, response);
+			return;
 		}
 
 		Utilisateur utilisateur = null;
