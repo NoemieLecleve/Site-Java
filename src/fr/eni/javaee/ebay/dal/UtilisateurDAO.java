@@ -6,6 +6,7 @@ public interface UtilisateurDAO {
 	
 	Utilisateur seConnecter(Utilisateur utilisateur);
 	Utilisateur creerUtilisateur (Utilisateur utilisateur) throws DALException;
-	
+	void verifierPseudoExistant(Utilisateur utilisateur) throws DALException;
+	void verifierEmailExistant(Utilisateur utilisateur) throws DALException;
 
 }

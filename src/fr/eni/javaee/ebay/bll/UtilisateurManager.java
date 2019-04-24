@@ -6,4 +6,5 @@ public interface UtilisateurManager {
 
 	Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException;
 	Utilisateur creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException;
+
 }

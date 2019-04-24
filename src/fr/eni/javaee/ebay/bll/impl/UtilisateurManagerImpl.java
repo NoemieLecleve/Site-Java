@@ -52,6 +52,13 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		    confirmationMotDePasse( utilisateur.getMotDePasse(), confirmation );
 		    validationNom( utilisateur.getNom());
 		    validationNom( utilisateur.getPrenom());
+		    try {
+				utilisateurDAO.verifierEmailExistant(utilisateur);
+				utilisateurDAO.verifierPseudoExistant(utilisateur);
+			} 
+		    catch (DALException e1) {
+				throw new BLLException(e1.getMessage());
+			}
 		    
 		    String motDePasse = utilisateur.getMotDePasse();
 			String motDePasseCripter = cripterMDP(motDePasse);
@@ -158,6 +165,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
             throw new BLLException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
         }
     }
+
 
  
 	

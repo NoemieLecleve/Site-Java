@@ -111,52 +111,51 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 
     
-	public void verifierUtilisateur(Utilisateur utilisateur) throws DALException {
+	public void verifierPseudoExistant(Utilisateur utilisateur) throws DALException {
 				 
+		int nbrePseudo;
 		
 		try {
-			PreparedStatement prepare = connexion.prepareStatement(VERIFICATION_EMAIL);
-			prepare.setInt(1, utilisateur.getNoUtilisateur());
+
+			// Requete permettant de vérifier si un pseudo est existant
+			PreparedStatement prepare = connexion.prepareStatement(VERIFICATION_PSEUDO);
+			prepare.setString(1, utilisateur.getPseudo());
 		 			
-			ResultSet resultat = prepare.executeQuery();
-			
+			ResultSet resultat = prepare.executeQuery();		
 			 			
 			if (resultat.next()) {
 				
-				int no_email = resultat.getInt("num_email");
-				
-				 
-				if( no_email==0) {
-					
-					PreparedStatement prepare1 = connexion.prepareStatement(INSERT_UTILISATEUR,PreparedStatement.RETURN_GENERATED_KEYS);
-					
-					prepare1.setString(1, utilisateur.getPseudo());
-					prepare1.setString(2, utilisateur.getNom());
-					prepare1.setString(3, utilisateur.getPrenom());
-					prepare1.setString(4, utilisateur.getEmail());
-					prepare1.setString(5, utilisateur.getTelephone());
-					prepare1.setString(6, utilisateur.getRue());
-					prepare1.setString(7, utilisateur.getCodePostal());
-					prepare1.setString(8, utilisateur.getVille());
-					prepare1.setString(9, utilisateur.getMotDePasse());
-							
-					
-				    prepare1.execute();
-					ResultSet resultat1 = prepare1.getGeneratedKeys();
-					 
-					 
-					if(resultat1.next()) {
-						
-						utilisateur.setNoUtilisateur(resultat1.getInt(1));
-					}			
+				nbrePseudo = resultat.getInt("num_pseudo");
+				if(nbrePseudo != 0) {
+					throw new DALException("Pseudo existant !");
 				}
-				 
-				else {
-					throw new DALException ("Utilisateur existe deja!!!");
+			}			
+		}
+		catch(SQLException e) {
+			throw new DALException("Problème vérification pseudo", e);
+		}
+	}
+	public void verifierEmailExistant(Utilisateur utilisateur) throws DALException {
+		 
+		int nbreEmail;
+		
+		try {
+
+			// Requete permettant de vérifier si un email est existant
+			PreparedStatement prepare = connexion.prepareStatement(VERIFICATION_EMAIL);
+			prepare.setString(1, utilisateur.getEmail());
+		 			
+			ResultSet resultat = prepare.executeQuery();		
+			 			
+			if (resultat.next()) {
+				
+				nbreEmail = resultat.getInt("num_email");
+				if(nbreEmail != 0) {
+					throw new DALException("Email existant !");
 				}
 			}			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			throw new DALException("Problème vérification email", e);
 		}
 	}
 
