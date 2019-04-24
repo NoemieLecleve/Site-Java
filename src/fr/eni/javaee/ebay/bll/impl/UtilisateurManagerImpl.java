@@ -1,14 +1,19 @@
 package fr.eni.javaee.ebay.bll.impl;
 
 import java.nio.charset.StandardCharsets;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bll.UtilisateurManager;
 import fr.eni.javaee.ebay.bo.Utilisateur;
 import fr.eni.javaee.ebay.dal.DALException;
 import fr.eni.javaee.ebay.dal.DAOFactory;
 import fr.eni.javaee.ebay.dal.UtilisateurDAO;
+ 
+
+
 
 public class UtilisateurManagerImpl implements UtilisateurManager {
 	
@@ -18,18 +23,31 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
 
+	
+	//Connecter un utilisateur
+	 
 	@Override
-	public Utilisateur seConnecter(Utilisateur utilisateur) {
+	public Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException {
 		
 		/*
 		String motDePasse = utilisateur.getMotDePasse();
 		String motDePasseCripter = cripterMDP(motDePasse);
 		utilisateur.setMotDePasse(motDePasseCripter);
-		*/		
+		*/
+	
+					
+		    validationPseudo( utilisateur.getPseudo() );
+	  
+		 	validationMotDePasse( utilisateur.getMotDePasse() );
+		 
+		
 		return utilisateurDAO.seConnecter(utilisateur);
+		
 	}
 	
-	private String cripterMDP(String password) {
+	// Cryptage du mot de passe 
+	
+	private String cripterMDP(String password) throws BLLException {
 
         MessageDigest md = null;;
 		try {
@@ -47,4 +65,53 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
         return sb.toString();
 	}
 
+	 //Valider l'adresse email saisie.
+   
+    private void validationEmail( String email ) throws BLLException {
+    	
+    	//une expression régulière qui valide l'adresse e-mail
+        if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
+          
+				throw new BLLException( "Merci de saisir une adresse mail valide." );
+			 
+        }
+    }
+   private void validationPseudo( String pseudo ) throws BLLException {
+    	
+    	//une expression régulière qui valide l'adresse e-mail
+	   if ( pseudo != null ) {
+           if ( pseudo.length() < 3 ) {
+                
+					throw new BLLException( "Le pseudo doit contenir au moins 3 caractères !!!" ); 
+           }
+       } else {
+            
+				throw new BLLException( "Merci de saisir votre pseudo." );
+			 
+       }
+    }
+    
+     //Valide le mot de passe saisi.
+    
+    private void validationMotDePasse (String motDePasse ) throws BLLException {
+       
+    	
+    	if ( motDePasse != null ) {
+            if ( motDePasse.length() < 5 ) {
+                 
+					throw new BLLException( "Le mot de passe doit contenir au moins 5 caractères !!!" ); 
+            }
+        } else {
+             
+				throw new BLLException( "Merci de saisir votre mot de passe." );
+			 
+        }
+    }
+
+  
+ 
+	
+	
+	
+	
 }
