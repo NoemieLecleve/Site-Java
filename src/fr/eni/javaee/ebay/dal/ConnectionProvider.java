@@ -19,11 +19,12 @@ public class ConnectionProvider {
 			connexion = dataSource.getConnection();
 		}
 		catch(NamingException e) {
-			e.printStackTrace();
-			throw new DALException("Problème de chargement de contexte");
+
+			throw new DALException("Problème de chargement de contexte", e);
 		}
 		catch(SQLException e) {
-			e.printStackTrace();
+
+			throw new DALException("Impossible d'établir une connexion", e);
 		}
 	}
 	
