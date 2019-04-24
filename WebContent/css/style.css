@@ -105,3 +105,41 @@ first-nav {
 	font-size: 26px;
 	color: #464340;
 }
+
+/***** Formulaire inscription *****/
+.inscription{
+	min-height: 70vh;
+	display: flex;
+	justify-content : center;
+	align-items : center;	
+}
+#formulairePrincipal{
+	
+	display: flex;	
+	flex-direction: row;
+	justify-content : center;
+	text-align: right;
+
+}
+#formGauche, #formDroit{
+	margin : 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

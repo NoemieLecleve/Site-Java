@@ -32,9 +32,9 @@
 					<legend>Inscription</legend>
 					
 					<!-- FORMULAIRE PRINCIPALE -->
-					<div>
+					<div id="formulairePrincipal" class="background">
 						<!-- FORMULAIRE GAUCHE -->
-						<div>
+						<div id="formGauche">
 							<div>
 								<label for="pseudo">Pseudo</label>
 								<input id="pseudo" type="text" name="pseudo">							
@@ -58,7 +58,7 @@
 						
 						</div>
 						<!-- FORMULAIRE DROIT -->
-						<div>
+						<div id="formDroit">
 							<div>
 								<label for="nom">Nom</label>
 								<input id="nom" type="text" name=""nom"">							
@@ -85,10 +85,9 @@
 					
 					<!-- BOUTONS -->
 					<div>
-						<button>Créer</button>
-						<button>Annuler</button>
-					</div>
-				
+						<button class="btn btn-primary">Créer</button>
+						<button class="btn btn-info">Annuler</button>
+					</div>				
 				</fieldset>
 			</form>
 		</main>
