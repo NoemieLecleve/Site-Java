@@ -36,19 +36,22 @@
 	</nav>
 	<label>Catégorie : </label>
 	<select>
-		 <option value="dog">Toutes</option>
-    	<option value="cat">Petit poney</option>
+		<option value="tout">Toutes</option>
+    	<option value="infor">Informatique</option>
+    	<option value="meuble">Ameublement</option>
+    	<option value="vetement">Vêtement</option>
+    	<option value="sport">Sport & Loisirs</option>
 	</select>
+	<!-- Div Cadre Rechercher -->
 	<section>
 		<article>
-			<h2>Meubles et Objets d'art</h2>
-			
-		</article>
-		<article>
-			<h2>Véhicules</h2>
-		</article>
-		<article>
-			<h2>Autres</h2>
+		<div><!-- Image  --></div>
+		<div>
+			<h2>Meuble </h2>
+			<p>Prix : </p>
+			<p>Fin de l'enchère : </p>
+			<p>Vendeur : </p>
+		</div>
 		</article>
 	</section>
 </main>

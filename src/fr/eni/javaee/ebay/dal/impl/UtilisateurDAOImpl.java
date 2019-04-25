@@ -78,8 +78,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	
 	public Utilisateur creerUtilisateur (Utilisateur utilisateur) throws DALException {
 		
-		 
-		
 		try {
 			PreparedStatement prepare = connexion.prepareStatement(INSERT_UTILISATEUR,PreparedStatement.RETURN_GENERATED_KEYS);
 			
@@ -94,7 +92,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			prepare.setString(9, utilisateur.getMotDePasse());
 					
 			
-		    prepare.execute();
+		    prepare.executeUpdate();
 			ResultSet resultat = prepare.getGeneratedKeys();
 			 
 			 
