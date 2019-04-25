@@ -44,21 +44,21 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		confirmationMotDePasse(utilisateur.getMotDePasse(), confirmation);
 		validationNom(utilisateur.getNom());
 		validationNom(utilisateur.getPrenom());
-		System.out.println("OK 1 !!!");
+
 		try {
 			utilisateurDAO.verifierEmailExistant(utilisateur);
 			utilisateurDAO.verifierPseudoExistant(utilisateur);
 		} catch (DALException e1) {
-			System.out.println("Error 1 !!!");
+
 			throw new BLLException(e1.getMessage());
 		}
-		System.out.println("OK 2 !!!");
+
 		String motDePasse = utilisateur.getMotDePasse();
 		String motDePasseCripter = cripterMDP(motDePasse);
 		utilisateur.setMotDePasse(motDePasseCripter);
 		System.out.println("OK 3 !!!");
 		try {
-			System.out.println("CREATION !!!");
+
 			utilisateurDAO.creerUtilisateur(utilisateur);
 
 		} catch (DALException e) {
