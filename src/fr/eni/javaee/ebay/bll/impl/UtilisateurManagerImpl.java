@@ -92,14 +92,48 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 	// Valider l'adresse email saisie.
 
+	// Valider l'adresse email saisie.
+
 	public void validationEmail(String email) throws BLLException {
 
 		// une expression régulière qui valide l'adresse e-mail
-		if (email != null && !email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+		if (email == null || !email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
 
 			throw new BLLException("Merci de saisir une adresse mail valide.");
 
 		}
+
+	}
+
+	// Valide le mot de passe saisi.
+
+	public void validationMotDePasse(String motDePasse) throws BLLException {
+
+		if (motDePasse != null) {
+			if (motDePasse.length() < 5) {
+
+				throw new BLLException("Le mot de passe doit contenir au moins 5 caractères !!!");
+			}
+		} else if (motDePasse == null) {
+
+			throw new BLLException("Merci de saisir votre mot de passe.");
+		}
+	}
+
+	// Confirmation du mot de passe.
+
+	public void confirmationMotDePasse(String motDePasse, String confirmation) throws BLLException {
+
+		validationMotDePasse(motDePasse);
+
+		if (confirmation != null) {
+			if (!motDePasse.equals(confirmation)) {
+				throw new BLLException("Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
+			}
+		} else if (confirmation == null) {
+			throw new BLLException("Merci de saisir et confirmer votre mot de passe.");
+		}
+
 	}
 
 	// Valider le pseudo.
@@ -119,40 +153,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		}
 	}
 
-	// Valide le mot de passe saisi.
-
-	public void validationMotDePasse(String motDePasse) throws BLLException {
-
-		if (motDePasse != null) {
-			if (motDePasse.length() < 5) {
-
-				throw new BLLException("Le mot de passe doit contenir au moins 5 caractères !!!");
-			}
-		} else {
-
-			throw new BLLException("Merci de saisir votre mot de passe.");
-
-		}
-	}
-
-	// Confirmation du mot de passe.
-
-	public void confirmationMotDePasse(String motDePasse, String confirmation) throws BLLException {
-
-		validationMotDePasse(motDePasse);
-
-		if (confirmation != null) {
-			if (!motDePasse.equals(confirmation)) {
-				throw new BLLException("Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
-			}
-		} else {
-			throw new BLLException("Merci de saisir et confirmer votre mot de passe.");
-		}
-	}
-
 	public void validationNom(String nom) throws BLLException {
 
-		if (nom != null && nom.length() < 2) {
+		if (nom == null || nom.length() < 2) {
 			throw new BLLException("Le nom d'utilisateur doit contenir au moins 2 caractères.");
 		}
 	}

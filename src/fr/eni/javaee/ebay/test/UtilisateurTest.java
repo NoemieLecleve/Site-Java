@@ -33,8 +33,8 @@ class UtilisateurTest {
 	}
 
 	@Test
-	void testseConnecter() {
-		
+	void testSeConnecter() {
+		//TODO chargement du contexte de la bdd
 		Utilisateur user = new Utilisateur("Karman", "mickael");
 		
 		UtilisateurManager utilisateurManager = null;
@@ -52,5 +52,6 @@ class UtilisateurTest {
 		}		
 		*/
 	}
+
 
 }

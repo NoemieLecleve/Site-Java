@@ -73,28 +73,35 @@ public class InscriptionUtilisateur extends HttpServlet {
 		String MDPconfirm = request.getParameter(CHAMP_PASSCONFIRM);
 
 		// Creer un utilisateur à partir de la JSP
-		Utilisateur utilisateurJSP = new Utilisateur(identifiant, prenom, nom, telephone, codePostal, email, rue, ville,
+		Utilisateur utilisateurJSP = new Utilisateur(identifiant, nom, prenom, email, telephone, rue, codePostal, ville,
 				motDePasse, CREDIT, ADMIN);
 
 		UtilisateurManager utilisateurManager = null;
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-		} catch (DALException e1) {
-			request.setAttribute("message", e1.getMessage());
+
+		} catch (DALException e) {
+			request.setAttribute("message", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
+			rd.forward(request, response);
+			return;
+
 		}
 
 		Utilisateur utilisateur = null;
 		try {
 			utilisateur = utilisateurManager.creeUtilisateur(utilisateurJSP, MDPconfirm);
+
 			request.setAttribute("utilisateur", utilisateur);
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
-
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
 			rd.forward(request, response);
+			return;
 		}
 
 	}
+
 }

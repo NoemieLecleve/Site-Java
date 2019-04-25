@@ -24,6 +24,8 @@
 		<!-- ***************** -->
 		<main class="inscription">
 		
+			<h1>${message}</h1>
+		
 			<!-- ********** -->
 			<!-- FORMULAIRE -->
 			<!-- ********** -->
@@ -61,7 +63,7 @@
 						<div id="formDroit">
 							<div>
 								<label for="nom">Nom</label>
-								<input id="nom" type="text" name=""nom"">							
+								<input id="nom" type="text" name="nom">							
 							</div>
 							<div>
 								<label for="email">Email</label>
@@ -86,7 +88,7 @@
 					<!-- BOUTONS -->
 					<div>
 						<button class="btn btn-primary">Créer</button>
-						<button class="btn btn-info">Annuler</button>
+						<button class="btn btn-info" name="reset" value="reset">Annuler</button>
 					</div>				
 				</fieldset>
 			</form>
