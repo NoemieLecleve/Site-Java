@@ -79,22 +79,22 @@ public class InscriptionUtilisateur extends HttpServlet {
 		UtilisateurManager utilisateurManager = null;
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-		} catch (DALException e) {
-			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
-			rd.forward(request, response);
-			return;
+		} catch (DALException e1) {
+			request.setAttribute("message", e1.getMessage());
 		}
 
 		Utilisateur utilisateur = null;
 		try {
 			utilisateur = utilisateurManager.creeUtilisateur(utilisateurJSP, MDPconfirm);
-		} catch (BLLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			request.setAttribute("utilisateur", utilisateur);
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
 
-		request.setAttribute("utilisateur", utilisateur);
+		} catch (BLLException e) {
+			request.setAttribute("message", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
+			rd.forward(request, response);
+		}
 
 	}
 }

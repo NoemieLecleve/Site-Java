@@ -27,9 +27,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		validationPseudo(utilisateur.getPseudo());
 		validationMotDePasse(utilisateur.getMotDePasse());
 
-		// String motDePasse = utilisateur.getMotDePasse();
-		// String motDePasseCripter = cripterMDP(motDePasse);
-		// utilisateur.setMotDePasse(motDePasseCripter);
+		String motDePasse = utilisateur.getMotDePasse();
+		String motDePasseCripter = cripterMDP(motDePasse);
+		utilisateur.setMotDePasse(motDePasseCripter);
 
 		return utilisateurDAO.seConnecter(utilisateur);
 
@@ -38,27 +38,27 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	// Creer un utilisateur
 
 	public Utilisateur creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException {
-			
-		
-		    validationEmail( utilisateur.getEmail() );
-		    validationPseudo( utilisateur.getPseudo() );
-		    confirmationMotDePasse( utilisateur.getMotDePasse(), confirmation );
-		    validationNom( utilisateur.getNom());
-		    validationNom( utilisateur.getPrenom());
-		    try {
-				utilisateurDAO.verifierEmailExistant(utilisateur);
-				utilisateurDAO.verifierPseudoExistant(utilisateur);
-			} 
-		    catch (DALException e1) {
-				throw new BLLException(e1.getMessage());
-			}
-		    
-		    String motDePasse = utilisateur.getMotDePasse();
-			String motDePasseCripter = cripterMDP(motDePasse);
-			utilisateur.setMotDePasse(motDePasseCripter);
-		
-		  try {
-			  
+
+		validationEmail(utilisateur.getEmail());
+		validationPseudo(utilisateur.getPseudo());
+		confirmationMotDePasse(utilisateur.getMotDePasse(), confirmation);
+		validationNom(utilisateur.getNom());
+		validationNom(utilisateur.getPrenom());
+		System.out.println("OK 1 !!!");
+		try {
+			utilisateurDAO.verifierEmailExistant(utilisateur);
+			utilisateurDAO.verifierPseudoExistant(utilisateur);
+		} catch (DALException e1) {
+			System.out.println("Error 1 !!!");
+			throw new BLLException(e1.getMessage());
+		}
+		System.out.println("OK 2 !!!");
+		String motDePasse = utilisateur.getMotDePasse();
+		String motDePasseCripter = cripterMDP(motDePasse);
+		utilisateur.setMotDePasse(motDePasseCripter);
+		System.out.println("OK 3 !!!");
+		try {
+			System.out.println("CREATION !!!");
 			utilisateurDAO.creerUtilisateur(utilisateur);
 
 		} catch (DALException e) {
@@ -68,9 +68,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return utilisateur;
 
 	}
-	
-	// Cryptage du mot de passe 
-	
+
+	// Cryptage du mot de passe
+
 	public String cripterMDP(String password) throws BLLException {
 
 		MessageDigest md = null;
@@ -90,84 +90,21 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return sb.toString();
 	}
 
-	 //Valider l'adresse email saisie.
-   
-	public void validationEmail( String email ) throws BLLException {
-    	
-    	//une expression régulière qui valide l'adresse e-mail
-        if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-          
-				throw new BLLException( "Merci de saisir une adresse mail valide." );
-			 
-        }
-    }
-    
-    //Valider le pseudo.
-    
-	public void validationPseudo( String pseudo ) throws BLLException {
-    	
-    	//une expression régulière qui valide l'adresse e-mail
-	   if ( pseudo != null ) {
-           if ( pseudo.length() < 3 ) {
-                
-					throw new BLLException( "Le pseudo doit contenir au moins 3 caractères !!!" ); 
-           }
-       } else {
-            
-				throw new BLLException( "Merci de saisir votre pseudo." );
-			 
-       }
-    }
-    
-     //Valide le mot de passe saisi.
-    
-	public void validationMotDePasse (String motDePasse) throws BLLException {
-       
-    	
-    	if ( motDePasse != null ) {
-            if ( motDePasse.length() < 5 ) {
-                 
-					throw new BLLException( "Le mot de passe doit contenir au moins 5 caractères !!!" ); 
-            }
-        } else {
-             
-				throw new BLLException( "Merci de saisir votre mot de passe." );
-			 
-        }
-    }
+	// Valider l'adresse email saisie.
 
-    //Confirmation du mot de passe.
-    
-	public void confirmationMotDePasse( String motDePasse, String confirmation ) throws BLLException {
-       
-    	validationMotDePasse(motDePasse);
-    	
-    	if (confirmation != null ) {
-            if ( !motDePasse.equals( confirmation ) ) {
-                throw new BLLException( "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
-            }
-        } else {
-            throw new BLLException( "Merci de saisir et confirmer votre mot de passe." );
-        }
-    }
+	public void validationEmail(String email) throws BLLException {
 
 		// une expression régulière qui valide l'adresse e-mail
 		if (email != null && !email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
 
-	public void validationNom( String nom ) throws BLLException {
-        
-    	if ( nom != null && nom.length() < 2 ) {
-            throw new BLLException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
-        }
-    }
+			throw new BLLException("Merci de saisir une adresse mail valide.");
 
-
- 
-	
+		}
+	}
 
 	// Valider le pseudo.
 
-	private void validationPseudo(String pseudo) throws BLLException {
+	public void validationPseudo(String pseudo) throws BLLException {
 
 		// une expression régulière qui valide l'adresse e-mail
 		if (pseudo != null) {
@@ -184,7 +121,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 	// Valide le mot de passe saisi.
 
-	private void validationMotDePasse(String motDePasse) throws BLLException {
+	public void validationMotDePasse(String motDePasse) throws BLLException {
 
 		if (motDePasse != null) {
 			if (motDePasse.length() < 5) {
@@ -200,7 +137,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 	// Confirmation du mot de passe.
 
-	private void confirmationMotDePasse(String motDePasse, String confirmation) throws BLLException {
+	public void confirmationMotDePasse(String motDePasse, String confirmation) throws BLLException {
 
 		validationMotDePasse(motDePasse);
 
@@ -213,9 +150,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		}
 	}
 
-	// Validation du Nom.
-
-	private void validationNom(String nom) throws BLLException {
+	public void validationNom(String nom) throws BLLException {
 
 		if (nom != null && nom.length() < 2) {
 			throw new BLLException("Le nom d'utilisateur doit contenir au moins 2 caractères.");
