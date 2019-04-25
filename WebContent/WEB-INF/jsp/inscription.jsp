@@ -22,9 +22,7 @@
 		<!-- ***************** -->
 		<!-- CONTENU PRINCIPAL -->
 		<!-- ***************** -->
-		<main class="inscription">
-		
-			<h1>${message}</h1>
+		<main class="inscription">			
 		
 			<!-- ********** -->
 			<!-- FORMULAIRE -->
@@ -32,7 +30,7 @@
 			<form method="POST" action="InscriptionUtilisateur" class="container">
 				<fieldset>
 					<legend>Inscription</legend>
-					
+					<h1>${message}</h1>
 					<!-- FORMULAIRE PRINCIPALE -->
 					<div id="formulairePrincipal" class="background">
 						<!-- FORMULAIRE GAUCHE -->
@@ -78,7 +76,7 @@
 								<input id="ville" type="text" name="ville">							
 							</div>
 							<div>
-								<label for="passwordConfirme">Code postal</label>
+								<label for="passwordConfirme">Confirmer password</label>
 								<input id="passwordConfirme" type="password" name="passwordConfirme">							
 							</div>						
 						</div>			  
@@ -88,7 +86,7 @@
 					<!-- BOUTONS -->
 					<div>
 						<button class="btn btn-primary">Créer</button>
-						<button class="btn btn-info" name="reset" value="reset">Annuler</button>
+						<a class="btn btn-info" href="index.jsp">Annuler</a>
 					</div>				
 				</fieldset>
 			</form>
