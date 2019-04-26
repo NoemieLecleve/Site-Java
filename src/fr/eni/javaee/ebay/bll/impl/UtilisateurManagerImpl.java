@@ -31,7 +31,12 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		String motDePasseCripter = cripterMDP(motDePasse);
 		utilisateur.setMotDePasse(motDePasseCripter);
 
-		return utilisateurDAO.seConnecter(utilisateur);
+		try {
+			return utilisateurDAO.seConnecter(utilisateur);
+		} catch (DALException e) {
+			
+			throw new BLLException(e.getMessage());
+		}
 
 	}
 

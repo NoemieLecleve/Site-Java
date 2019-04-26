@@ -26,7 +26,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public Utilisateur seConnecter(Utilisateur utilisateur) {
+	public Utilisateur seConnecter(Utilisateur utilisateur) throws DALException {
 
 		Utilisateur utilisateurAuthentifier = null;
 
@@ -55,7 +55,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				return utilisateurAuthentifier;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DALException("Echec connection !");
 		}
 
 		return utilisateurAuthentifier;
