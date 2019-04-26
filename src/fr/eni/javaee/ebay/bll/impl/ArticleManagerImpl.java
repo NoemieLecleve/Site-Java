@@ -3,6 +3,7 @@ package fr.eni.javaee.ebay.bll.impl;
 import java.util.List;
 
 import fr.eni.javaee.ebay.bll.ArticleManager;
+import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bo.ArticleVendu;
 import fr.eni.javaee.ebay.dal.ArticleDAO;
 import fr.eni.javaee.ebay.dal.DALException;
@@ -19,12 +20,17 @@ public class ArticleManagerImpl implements ArticleManager {
 
 	/**
 	 * Liste toutes les encheres du site
+	 * @throws BLLException 
 	 * @throws DALException 
 	 */
 	@Override
-	public List<ArticleVendu> listerToutes() throws DALException {
+	public List<ArticleVendu> listerToutes() throws BLLException  {
 		
-		return articleDAO.listerToutes();
+		try {
+			return articleDAO.listerToutes();
+		} catch (DALException e) {
+			throw new BLLException(e.getMessage());
+		}
 	}
 
 }
