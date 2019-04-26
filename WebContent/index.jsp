@@ -52,6 +52,7 @@
             </div>
         </nav>
 </header>
+
 <main>
 
      <h1 class="text-center font-weight-light text-secondary ">Trouvez l'objet de vos rêves </h1>
@@ -90,6 +91,8 @@
 
             </div>
         </div>
+
+
 </main>
 </body>
 </html>

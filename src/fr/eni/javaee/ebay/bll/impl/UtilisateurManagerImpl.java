@@ -38,27 +38,27 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	// Creer un utilisateur
 
 	public Utilisateur creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException {
-			
-		
-		    validationEmail( utilisateur.getEmail() );
-		    validationPseudo( utilisateur.getPseudo() );
-		    confirmationMotDePasse( utilisateur.getMotDePasse(), confirmation );
-		    validationNom( utilisateur.getNom());
-		    validationNom( utilisateur.getPrenom());
-		    try {
-				utilisateurDAO.verifierEmailExistant(utilisateur);
-				utilisateurDAO.verifierPseudoExistant(utilisateur);
-			} 
-		    catch (DALException e1) {
-				throw new BLLException(e1.getMessage());
-			}
-		    
-		    String motDePasse = utilisateur.getMotDePasse();
-			String motDePasseCripter = cripterMDP(motDePasse);
-			utilisateur.setMotDePasse(motDePasseCripter);
-		
-		  try {
-			  
+
+		validationEmail(utilisateur.getEmail());
+		validationPseudo(utilisateur.getPseudo());
+		confirmationMotDePasse(utilisateur.getMotDePasse(), confirmation);
+		validationNom(utilisateur.getNom());
+		validationNom(utilisateur.getPrenom());
+
+		try {
+			utilisateurDAO.verifierEmailExistant(utilisateur);
+			utilisateurDAO.verifierPseudoExistant(utilisateur);
+		} catch (DALException e1) {
+
+			throw new BLLException(e1.getMessage());
+		}
+
+		String motDePasse = utilisateur.getMotDePasse();
+		String motDePasseCripter = cripterMDP(motDePasse);
+		utilisateur.setMotDePasse(motDePasseCripter);
+		System.out.println("OK 3 !!!");
+		try {
+
 			utilisateurDAO.creerUtilisateur(utilisateur);
 
 		} catch (DALException e) {
@@ -68,9 +68,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return utilisateur;
 
 	}
-	
-	// Cryptage du mot de passe 
-	
+
+	// Cryptage du mot de passe
+
 	public String cripterMDP(String password) throws BLLException {
 
 		MessageDigest md = null;
@@ -90,76 +90,74 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return sb.toString();
 	}
 
-	 //Valider l'adresse email saisie.
-   
-	public void validationEmail( String email ) throws BLLException {
-   
-    	//une expression régulière qui valide l'adresse e-mail
-        if ( email == null || !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-          
-				throw new BLLException( "Merci de saisir une adresse mail valide." );
-			 
-        }
-      
-    }
-    
-    //Valider le pseudo.
-    
-	public void validationPseudo( String pseudo ) throws BLLException {
-    	
-    	//une expression régulière qui valide l'adresse e-mail
-	   if ( pseudo != null ) {
-           if ( pseudo.length() < 3 ) {
-                
-					throw new BLLException( "Le pseudo doit contenir au moins 3 caractères !!!" ); 
-           }
-       } 
-	   else if(pseudo == null){
-            
-			throw new BLLException( "Merci de saisir votre pseudo." );
-			 
-       }
-    }
-    
-     //Valide le mot de passe saisi.
-    
-	public void validationMotDePasse (String motDePasse) throws BLLException {
-       
-    	
-    	if ( motDePasse != null ) {
-            if ( motDePasse.length() < 5 ) {
-                 
-					throw new BLLException( "Le mot de passe doit contenir au moins 5 caractères !!!" ); 
-            }
-        }
-    	else if(motDePasse == null) {
-             
-				throw new BLLException( "Merci de saisir votre mot de passe." );			 
-        }
-    }
+	// Valider l'adresse email saisie.
 
-    //Confirmation du mot de passe.
-    
-	public void confirmationMotDePasse( String motDePasse, String confirmation ) throws BLLException {
-       
-    	validationMotDePasse(motDePasse);
-    	
-    	if (confirmation != null ) {
-            if ( !motDePasse.equals( confirmation ) ) {
-                throw new BLLException( "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
-            }
-        } 
-    	else if(confirmation == null){
-            throw new BLLException( "Merci de saisir et confirmer votre mot de passe." );
-        }
-        
-    }
+	// Valider l'adresse email saisie.
 
+	public void validationEmail(String email) throws BLLException {
 
-	public void validationNom( String nom ) throws BLLException {
-        
-    	if ( nom == null || nom.length() < 2 ) {
-            throw new BLLException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
-        }
-    }
+		// une expression régulière qui valide l'adresse e-mail
+		if (email == null || !email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+
+			throw new BLLException("Merci de saisir une adresse mail valide.");
+
+		}
+
+	}
+
+	// Valide le mot de passe saisi.
+
+	public void validationMotDePasse(String motDePasse) throws BLLException {
+
+		if (motDePasse != null) {
+			if (motDePasse.length() < 5) {
+
+				throw new BLLException("Le mot de passe doit contenir au moins 5 caractères !!!");
+			}
+		} else if (motDePasse == null) {
+
+			throw new BLLException("Merci de saisir votre mot de passe.");
+		}
+	}
+
+	// Confirmation du mot de passe.
+
+	public void confirmationMotDePasse(String motDePasse, String confirmation) throws BLLException {
+
+		validationMotDePasse(motDePasse);
+
+		if (confirmation != null) {
+			if (!motDePasse.equals(confirmation)) {
+				throw new BLLException("Les mots de passe entrés sont différents, merci de les saisir à nouveau.");
+			}
+		} else if (confirmation == null) {
+			throw new BLLException("Merci de saisir et confirmer votre mot de passe.");
+		}
+
+	}
+
+	// Valider le pseudo.
+
+	public void validationPseudo(String pseudo) throws BLLException {
+
+		// une expression régulière qui valide l'adresse e-mail
+		if (pseudo != null) {
+			if (pseudo.length() < 3) {
+
+				throw new BLLException("Le pseudo doit contenir au moins 3 caractères !!!");
+			}
+		} else {
+
+			throw new BLLException("Merci de saisir votre pseudo.");
+
+		}
+	}
+
+	public void validationNom(String nom) throws BLLException {
+
+		if (nom == null || nom.length() < 2) {
+			throw new BLLException("Le nom d'utilisateur doit contenir au moins 2 caractères.");
+		}
+	}
+
 }

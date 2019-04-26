@@ -79,12 +79,13 @@ public class InscriptionUtilisateur extends HttpServlet {
 		UtilisateurManager utilisateurManager = null;
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-		} 
-		catch (DALException e) {
+
+		} catch (DALException e) {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
 			rd.forward(request, response);
 			return;
+
 		}
 
 		Utilisateur utilisateur = null;
@@ -93,14 +94,13 @@ public class InscriptionUtilisateur extends HttpServlet {
 			request.setAttribute("utilisateur", utilisateur);
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
-		} 
-		catch (BLLException e) {
+		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/inscription.jsp");
 			rd.forward(request, response);
 			return;
 		}
 
-
 	}
+
 }
