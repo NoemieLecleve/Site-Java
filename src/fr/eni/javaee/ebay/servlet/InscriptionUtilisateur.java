@@ -90,6 +90,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 		Utilisateur utilisateur = null;
 		try {
 			utilisateur = utilisateurManager.creeUtilisateur(utilisateurJSP, MDPconfirm);
+			request.setAttribute("utilisateur", utilisateur);
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		} 
