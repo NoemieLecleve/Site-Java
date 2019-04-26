@@ -52,47 +52,8 @@
             </div>
         </nav>
 </header>
-<<<<<<< HEAD
-<main class="index">
-	<nav class="first-nav">
-		<ul class="nav nav-pills">
-		  <li class="nav-item">
-		    <a class="nav-link active" href="InscriptionUtilisateur">S'inscrire</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="ConnexionUtilisateur">Se connecter</a>
-		  </li>
-		</ul>
-	</nav>
-	<h1>Liste des Enchères</h1>
-	<strong>Filtres : </strong>	
-	<nav class="navbar navbar-light bg-light">
-	  <form class="form-inline">
-	    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">recherche</button>
-	  </form>
-	</nav>
-	<label>Catégorie : </label>
-	<select>
-		<option value="tout">Toutes</option>
-    	<option value="infor">Informatique</option>
-    	<option value="meuble">Ameublement</option>
-    	<option value="vetement">Vêtement</option>
-    	<option value="sport">Sport & Loisirs</option>
-	</select>
-	<!-- Div Cadre Rechercher -->
-	<section>
-		<article>
-		<div><!-- Image  --></div>
-		<div>
-			<h2>Meuble </h2>
-			<p>Prix : </p>
-			<p>Fin de l'enchère : </p>
-			<p>Vendeur : </p>
-		</div>
-		</article>
-	</section>
-=======
+
+
 <main>
 
      <h1 class="text-center font-weight-light text-secondary ">Trouvez l'objet de vos rÃªves </h1>
@@ -131,7 +92,7 @@
 
             </div>
         </div>
->>>>>>> branch 'master' of https://github.com/loubnaben/ebay.git
+
 </main>
 </body>
 </html>

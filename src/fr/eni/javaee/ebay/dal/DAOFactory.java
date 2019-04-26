@@ -10,7 +10,7 @@ public class DAOFactory {
 	}
 
 	public static ArticleDAO getArticleDAO() throws DALException {
-		// Methode à revoir
+		//TODO Methode à revoir
 		return new ArticleDAOImpl();
 	}
 
