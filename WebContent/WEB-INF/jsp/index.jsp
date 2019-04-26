@@ -37,7 +37,7 @@
                         <a class="nav-link" href="#">Vendre un article</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">${sessionPseudoUtilisateur}</a>
+                        <a class="nav-link" href="RecupererUtilisateur">${sessionPseudoUtilisateur}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="DeconnexionServlet">Se Déconnecter</a>

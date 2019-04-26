@@ -52,18 +52,27 @@
             </div>
         </nav>
 	</header>
-	<main>
+	<main>	
+	<form method="GET" action="RecupererUtilisateur">
 		<h2>Profil</h2>
 			<label for="pseudo">${utilisateur.pseudo}</label>
+			<br>
 			<label for="nom">${utilisateur.nom}</label>
+			<br>
 			<label for="prenom">${utilisateur.prenom}</label>
+			<br>
 			<label for="email">${utilisateur.email}</label>
+			<br>
 			<label for="telephone">${utilisateur.telephone}</label>
+			<br>
 			<label for="rue">${utilisateur.rue}</label>
-			<label for="codepostal">${utilisateur.codepostal}</label>
+			<br>
+			<label for="codepostal">${utilisateur.codePostal}</label>
+			<br>
 			<label for="ville">${utilisateur.ville}</label>
+			<br>
 			<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Modifier</button>
+	</form>
 	</main>
-
 </body>
 </html>
