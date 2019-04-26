@@ -17,9 +17,10 @@ import fr.eni.javaee.ebay.dal.DALException;
 public class ArticleDAOImpl implements ArticleDAO {
 
 	private Connection connexion;
-	private static final String SELECT_ALL = "select nom_article, date_fin_encheres, imagePath, u.no_utilisateur as no_utilisateur, "
-			+ " prix_vente, pseudo from  ARTICLES_VENDUS a"
-			+ " inner join  UTILISATEURS u on a.no_utilisateur = u.no_utilisateur;";
+
+	private static final String SELECT_ALL = "select nom_article, date_fin_encheres, imagePath, u.no_utilisateur as no_utilisateur, "									
+												+ " prix_vente, pseudo from  ARTICLES_VENDUS a"
+												+ " inner join  UTILISATEURS u on a.no_utilisateur = u.no_utilisateur;";
 
 	public ArticleDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();

@@ -41,10 +41,10 @@ public class IndexServlet extends HttpServlet {
 		ArticleManager articleManager = null;
 		try {
 			articleManager = ManagerFactory.getArticleManager();
-			List<ArticleVendu> listeArticles = articleManager.listerToutes();	
+			List<ArticleVendu> listeArticles = articleManager.listerToutes();		
 			request.setAttribute("listeEnchere", listeArticles);
-		} 
-		catch (DALException e) {
+		} catch (DALException e) {
+			
 			request.setAttribute("message", e.getMessage());
 		}		
 		
