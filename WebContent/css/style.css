@@ -26,15 +26,8 @@ main{
     margin-topt: 200px;
 
 }
-#img2{
 
-    height: 220px;
-}
-#img1{
-
-    height: 200px;
-}
-#img3{
+#img{
 
     height: 200px;
 }
@@ -183,9 +176,18 @@ legend{
 	text-align: center
 }
 
+li {
+	
+	list-style:none;
+}
 
-
-
+select{
+	
+	border-radius: 7px;
+	padding-right:20px ;
+	height:37px;
+	
+}
 
 
 
