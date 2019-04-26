@@ -17,9 +17,7 @@
 
 </head>
 <body>
-        <!-- ****** -->
-		<!-- HEADER -->
-		<!-- ****** -->
+     
 <header>
        <c:choose>
 		    <c:when test="${sessionScope.sessionIdUtilisateur != null}">
@@ -96,16 +94,13 @@
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
                 </form>
             </div>
+ 
         </nav>
 		    </c:otherwise>
 		</c:choose>
 	
 </header>
-
-
-        <!-- ***************** -->
-		<!-- CONTENU PRINCIPAL -->
-		<!-- ***************** -->
+  
 
 <main>
 	  <div>
@@ -144,9 +139,11 @@
                 </div>
 
             </div>
+ 
         </div>
+ 
 
-
+ 
 </main>
 </body>
 </html>

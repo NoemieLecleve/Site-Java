@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.javaee.ebay.bll.ArticleManager;
+import fr.eni.javaee.ebay.bll.BLLException;
+import fr.eni.javaee.ebay.bll.CategorieManager;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
 import fr.eni.javaee.ebay.bo.ArticleVendu;
+import fr.eni.javaee.ebay.bo.Categorie;
 import fr.eni.javaee.ebay.bo.Enchere;
 import fr.eni.javaee.ebay.dal.DALException;
 
@@ -39,11 +42,18 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArticleManager articleManager = null;
+		CategorieManager categorieManager = null;
+		
 		try {
 			articleManager = ManagerFactory.getArticleManager();
-			List<ArticleVendu> listeArticles = articleManager.listerToutes();		
-			request.setAttribute("listeEnchere", listeArticles);
-		} catch (DALException e) {
+			categorieManager = ManagerFactory.getCategorieManager();
+			
+			List<ArticleVendu> listeArticles = articleManager.listerToutes();
+			List<Categorie> listeCategories = categorieManager.listeCategories();
+			
+			request.setAttribute("listeArticles", listeArticles);
+			request.setAttribute("listeCategories", listeCategories);
+		} catch (DALException | BLLException e) {
 			
 			request.setAttribute("message", e.getMessage());
 		}		
