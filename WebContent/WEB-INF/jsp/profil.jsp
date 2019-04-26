@@ -54,14 +54,14 @@
 	</header>
 	<main>
 		<h2>Profil</h2>
-			<label for="pseudo">Pseudo</label>
-			<label for="nom">Nom</label>
-			<label for="prenom">Prenom</label>
-			<label for="email">Email</label>
-			<label for="telephone">Téléphone</label>
-			<label for="rue">Rue</label>
-			<label for="codepostal">Code Postal</label>
-			<label for="ville">Ville</label>
+			<label for="pseudo">${utilisateur.pseudo}</label>
+			<label for="nom">${utilisateur.nom}</label>
+			<label for="prenom">${utilisateur.prenom}</label>
+			<label for="email">${utilisateur.email}</label>
+			<label for="telephone">${utilisateur.telephone}</label>
+			<label for="rue">${utilisateur.rue}</label>
+			<label for="codepostal">${utilisateur.codepostal}</label>
+			<label for="ville">${utilisateur.ville}</label>
 			<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Modifier</button>
 	</main>
 
