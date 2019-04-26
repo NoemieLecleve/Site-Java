@@ -16,7 +16,7 @@ public class ManagerFactory {
 		return new UtilisateurManagerImpl();
 	}
 	
-	public static ArticleManager getEnchereManager() {
+	public static ArticleManager getArticleManager() throws DALException {
 		
 		return new ArticleManagerImpl();
 	}

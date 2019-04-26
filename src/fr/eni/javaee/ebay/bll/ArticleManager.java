@@ -2,10 +2,11 @@ package fr.eni.javaee.ebay.bll;
 
 import java.util.List;
 
-import fr.eni.javaee.ebay.bo.Enchere;
+import fr.eni.javaee.ebay.bo.ArticleVendu;
+import fr.eni.javaee.ebay.dal.DALException;
 
 public interface ArticleManager {
 	
-	List<Enchere> listerToutes();	
+	List<ArticleVendu> listerToutes() throws DALException;	
 
 }
