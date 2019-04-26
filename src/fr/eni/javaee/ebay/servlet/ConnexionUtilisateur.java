@@ -76,7 +76,8 @@ public class ConnexionUtilisateur extends HttpServlet {
 		// Utilisateur à la session, sinon suppression de la session.
 
 		if (utilisateur != null) {
-			session.setAttribute("sessionUtilisateur", utilisateur);
+			session.setAttribute("sessionIdUtilisateur", utilisateur.getNoUtilisateur());
+			session.setAttribute("sessionPseudoUtilisateur", utilisateur.getPseudo());
 			request.setAttribute("message", succes);
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
