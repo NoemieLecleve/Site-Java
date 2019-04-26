@@ -52,6 +52,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
 		} catch (DALException e) {
+			//TODO revoir exeption
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 			rd.forward(request, response);
