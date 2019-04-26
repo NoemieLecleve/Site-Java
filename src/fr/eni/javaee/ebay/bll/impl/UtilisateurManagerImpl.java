@@ -19,8 +19,10 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
 
-	// Connecter un utilisateur
 
+	/**
+	 * Ce manager demande à UtilisateurDAO de récupérer un utilisateur avec son pseudo et son mot de passe 
+	 */
 	@Override
 	public Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException {
 
@@ -74,12 +76,17 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 	}
 
-	// Cryptage du mot de passe
-
+	
+	/**
+	 * Ce manager permer de crypter le mot de passe de l'utilisateur avec le hash SHA256
+	 * @param password
+	 * @return
+	 * @throws BLLException
+	 */
 	public String cripterMDP(String password) throws BLLException {
 
 		MessageDigest md = null;
-		;
+
 		try {
 			md = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
@@ -95,7 +102,6 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return sb.toString();
 	}
 
-	// Valider l'adresse email saisie.
 
 	// Valider l'adresse email saisie.
 
@@ -163,6 +169,26 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		if (nom == null || nom.length() < 2) {
 			throw new BLLException("Le nom d'utilisateur doit contenir au moins 2 caractères.");
 		}
+	}
+	/**
+	 * Ce manager demande à UtilisateurDAO de rechercher un utilisateur avec son identifiant
+	 * @throws  BLLException
+	 */
+	@Override
+	public Utilisateur recuperer(Utilisateur utilisateur) throws BLLException {
+		
+		Utilisateur utilisateurRecuperer = null;
+		
+		try {
+			utilisateurRecuperer = utilisateurDAO.recuperer(utilisateur);
+		} 
+		catch (DALException  e) {
+			throw new BLLException(e.getMessage());
+		}
+		if(utilisateurRecuperer == null) {
+			throw new BLLException("Utilisateur inéxistant");
+		}
+		return utilisateurRecuperer;
 	}
 
 }
