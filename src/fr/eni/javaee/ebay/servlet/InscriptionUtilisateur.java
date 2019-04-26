@@ -91,7 +91,10 @@ public class InscriptionUtilisateur extends HttpServlet {
 		Utilisateur utilisateur = null;
 		try {
 			utilisateur = utilisateurManager.creeUtilisateur(utilisateurJSP, MDPconfirm);
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/loubnaben/ebay.git
 			request.setAttribute("utilisateur", utilisateur);
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
