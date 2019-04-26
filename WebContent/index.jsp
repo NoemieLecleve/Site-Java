@@ -29,18 +29,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Objets par Catégorie
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Loisirs</a>
-                            <a class="dropdown-item" href="#">Informatique et réseaux</a>
-                            <a class="dropdown-item" href="#">Articles pour la maison</a>
-                        </div>
-
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="#">Enchères</a>
                     </li>
@@ -55,6 +44,19 @@
                     </li>
                    </ul>
                 <form class="form-inline my-2 my-lg-0">
+                 <li class="nav-item dropdown">
+				 
+				    <select class="mdb-select md-form mr-2 font-weight-light" >
+						  <option  value="" disabled selected>Objets par catégorie</option>
+						  
+						  <c:forEach var="categorie" items="${listeCategories}">
+						  
+						  <option value="categorie">${categorie.libelle}</option>
+						  
+						  </c:forEach>
+					</select>
+                        
+                   </li>
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
                 </form>
@@ -63,25 +65,14 @@
 		    </c:when>    
 		    <c:otherwise>
 		    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="ebay.html">Accueil</a>
+            <a class="navbar-brand" href="index.jsp">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Objets par catégorie
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Loisirs</a>
-                            <a class="dropdown-item" href="#">Informatique et réseaux</a>
-                            <a class="dropdown-item" href="#">Articles pour la maison</a>
-                        </div>
-
-                    </li>
+                  
                     <li class="nav-item">
                         <a class="nav-link" href="InscriptionUtilisateur">S'inscrire</a>
                     </li>
@@ -89,7 +80,22 @@
                         <a class="nav-link" href="ConnexionUtilisateur">Se Connecter</a>
                     </li>
                    </ul>
-                <form class="form-inline my-2 my-lg-0">
+             <form class="form-inline my-2 my-lg-0">
+             
+                 <li class="nav-item dropdown">
+				 
+				    <select class="mdb-select md-form mr-2 font-weight-light" >
+						  <option  value="" disabled selected>Objets par catégorie</option>
+						  
+						  <c:forEach var="categorie" items="${listeCategories}">
+						  
+						  <option value="categorie">${categorie.libelle}</option>
+						  
+						  </c:forEach>
+					</select>
+                        
+                   </li>
+                    
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
                 </form>
@@ -107,25 +113,23 @@
      <h1 class="text-center font-weight-light text-secondary ">Trouvez l'objet de vos rêves </h1>
      </div>
         <br>
-
+	  <div class="element row" >
         <c:forEach items="${listeArticles}" var="article"> 
-        
-		        <div class="element" >
+        		      
 			        <div class="card  text-center element2" style="width: 18rem;">
-			            <img class="card-img-top" id ="img3" src="${article.imagePath}" alt="image article">
+			            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
 			            <div class="card-body">
 			                <h5 class="card-title">${article.nomArticle} </h5>
-			                <p class="card-text">${article.dateFinEncheres}</p>
-			                <p class="card-text"> ${article.prixVente}</p>
+			                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
+			                <h6 class="card-text"> ${article.prixVente}€</h6>
 			
 			                <a href="#" class="btn btn-primary">Voir l'ojet</a>
 		                </div>
 		                
 		            </div>
-	            </div>
+	         
        </c:forEach>
-
- 
+    </div>
 </main>
 </body>
 </html>
