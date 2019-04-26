@@ -12,6 +12,8 @@ public class ArticleVendu {
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;
+	private Categorie categorieArticle;
+	private Utilisateur utilisateur;
 
 	public ArticleVendu() {
 		// TODO Auto-generated constructor stub
@@ -26,9 +28,10 @@ public class ArticleVendu {
 	 * @param miseAPrix
 	 * @param prixVente
 	 * @param etatVente
+	 * @param categorieArticle
 	 */
 	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente) {
+			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, Categorie categorieArticle) {
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -37,6 +40,45 @@ public class ArticleVendu {
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
+		this.categorieArticle = categorieArticle;
+	}
+
+	public ArticleVendu(String nomArticle, Date dateFinEncheres, int prixVente, Utilisateur utilisateur) {
+		// TODO Auto-generated constructor stub
+		this.nomArticle = nomArticle;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixVente = prixVente;
+		this.utilisateur = utilisateur;
+	}
+
+	/**
+	 * @return the categorieArticle
+	 */
+	public Categorie getCategorieArticle() {
+		return categorieArticle;
+	}
+
+	/**
+	 * @return the utilisateur
+	 */
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	/**
+	 * @param utilisateur
+	 *            the utilisateur to set
+	 */
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	/**
+	 * @param categorieArticle
+	 *            the categorieArticle to set
+	 */
+	public void setCategorieArticle(Categorie categorieArticle) {
+		this.categorieArticle = categorieArticle;
 	}
 
 	/**

@@ -26,8 +26,7 @@ public class Categorie {
 	}
 
 	/**
-	 * @param noCategorie
-	 *            the noCategorie to set
+	 * @param noCategorie the noCategorie to set
 	 */
 	public void setNoCategorie(int noCategorie) {
 		this.noCategorie = noCategorie;
@@ -41,11 +40,11 @@ public class Categorie {
 	}
 
 	/**
-	 * @param libelle
-	 *            the libelle to set
+	 * @param libelle the libelle to set
 	 */
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 
+	
 }
