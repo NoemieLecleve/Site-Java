@@ -5,18 +5,33 @@ import fr.eni.javaee.ebay.dal.impl.CategorieDAOImpl;
 import fr.eni.javaee.ebay.dal.impl.UtilisateurDAOImpl;
 
 public class DAOFactory {
+	
+	private static UtilisateurDAO utilisateurDAO;
+	private static ArticleDAO articleDAO;
+	private static CategorieDAO categorieDAO;
 
 	public static UtilisateurDAO getUtilisateurDAO() throws DALException {
-		return new UtilisateurDAOImpl();
+		
+		if(utilisateurDAO == null) {
+			utilisateurDAO = new UtilisateurDAOImpl();
+		}
+		return utilisateurDAO;
 	}
 
 	public static ArticleDAO getArticleDAO() throws DALException {
-		// TODO Methode à revoir
-		return new ArticleDAOImpl();
+		
+		if(articleDAO == null) {
+			articleDAO = new ArticleDAOImpl();
+		}
+		return articleDAO;
 	}
 
 	public static CategorieDAO getCategorieDAO() throws DALException {
-		return new CategorieDAOImpl();
+		
+		if(categorieDAO == null) {
+			categorieDAO = new CategorieDAOImpl();
+		}
+		return categorieDAO;
 	}
 
 }
