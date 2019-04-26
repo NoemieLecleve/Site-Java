@@ -25,10 +25,7 @@
                 <ul class="navbar-nav mr-auto">
                   
                     <li class="nav-item">
-                        <a class="nav-link" href="InscriptionUtilisateur">S'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ConnexionUtilisateur">Se Connecter</a>
+                        <a class="nav-link" href="InscriptionUtilisateur"><i class="fas fa-sign-in-alt"></i>S'inscrire</a>
                     </li>
                    </ul>
              <form class="form-inline my-2 my-lg-0">
@@ -61,37 +58,37 @@
 		
 		<form method="post" action="ConnexionUtilisateur" class="container">
 		  <fieldset>
-		  <legend>Connexion</legend>
+		  <div class="jaune">
+		  	<legend>Connexion</legend>
+		  </div>
 		   <div class="background">
 		   <div class="main-padding login-wrapper">
             <div class="split-50 border">
                 <div class="split-wrap">
-                    <h2 class="text-center ">Connectez-vous</h2>
-            <form class="px-4 py-3">
-                <div class="form-group">
-                    <label for="exampleDropdownFormEmail1">Adresse email ou Pseudo :</label>
-                    <input type="text" class="form-control" name="identifiant" placeholder="Pseudo">
-                </div>
-                <div class="form-group">
-                    <label for="exampleDropdownFormPassword1">Mot de passe :</label>
-                    <input type="password" class="form-control" name="motdepasse" placeholder="mot de passe">
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                    <label class="form-check-label" for="dropdownCheck">
-                        Rester connecté
-                    </label>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-warning active">S'identifier</button>
-            </form>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-muted" href="s'inscrir">Pas encore de compte ? Inscrivez-vous gratuitement</a>
-            <a class="dropdown-item text-muted" href="#">Mot de passe oublié ?</a>
-
-        </div>
-        </div>
-        </div>	
+                  <strong class="text-center ">Connectez-vous</strong>
+	            <form class="px-4 py-3">
+	                <div class="form-group">
+	                    <label for="exampleDropdownFormEmail1">Adresse email ou Pseudo :</label>
+	                    <input type="text" class="form-control" name="identifiant" placeholder="Pseudo">
+	                </div>
+	                <div class="form-group">
+	                    <label for="exampleDropdownFormPassword1">Mot de passe :</label>
+	                    <input type="password" class="form-control" name="motdepasse" placeholder="mot de passe">
+	                </div>
+	                <div class="form-check">
+	                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+	                    <label class="form-check-label" for="dropdownCheck">Rester connecté</label>
+	                </div>
+	                <br>
+	                <button type="submit" class="btn btn-warning active">S'identifier</button>
+	            </form>
+	            <div class="dropdown-divider"></div>
+	            <a class="dropdown-item text-muted" href="s'inscrir">Pas encore de compte ? Inscrivez-vous gratuitement</a>
+	            <a class="dropdown-item text-muted" href="#">Mot de passe oublié ?</a>
+	
+	        </div>
+	        </div>
+	        </div>	
         <p class="erreur"> ${message}</p>	
 
 	  		  <!--   Vérification de la présence d'un objet utilisateur en session -->

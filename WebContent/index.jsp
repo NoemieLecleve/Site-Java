@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oxygen|Nunito|PT+Sans" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link href="css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -44,19 +44,19 @@
                     </li>
                    </ul>
                 <form class="form-inline my-2 my-lg-0">
-                 <li class="nav-item dropdown">
-				 
-				    <select class="mdb-select md-form mr-2 font-weight-light" >
-						  <option  value="" disabled selected>Objets par catégorie</option>
-						  
-						  <c:forEach var="categorie" items="${listeCategories}">
-						  
-						  <option value="categorie">${categorie.libelle}</option>
-						  
-						  </c:forEach>
-					</select>
-                        
-                   </li>
+                <ul>
+	                 <li class="nav-item dropdown">
+					    <select class="mdb-select md-form mr-2 font-weight-light" >
+							  <option  value="" disabled selected>Objets par catégorie</option>
+							  
+							  <c:forEach var="categorie" items="${listeCategories}">
+							  
+							  <option value="categorie">${categorie.libelle}</option>
+							  
+							  </c:forEach>
+						</select>    
+	                   </li>
+                   </ul>
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
                 </form>
@@ -74,10 +74,10 @@
                 <ul class="navbar-nav mr-auto">
                   
                     <li class="nav-item">
-                        <a class="nav-link" href="InscriptionUtilisateur">S'inscrire</a>
+                        <a class="nav-link" href="InscriptionUtilisateur"><i class="fas fa-sign-in-alt"></i>S'inscrire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ConnexionUtilisateur">Se Connecter</a>
+                        <a class="nav-link" href="ConnexionUtilisateur"><i class="fas fa-user"></i>Se Connecter</a>
                     </li>
                    </ul>
              <form class="form-inline my-2 my-lg-0">
@@ -110,7 +110,7 @@
 
 <main>
 	  <div>
-     <h1 class="text-center font-weight-light text-secondary ">Trouvez l'objet de vos rêves </h1>
+     <h1 class="text-center">Trouvez l'objet de vos rêves </h1>
      </div>
         <br>
 	  <div class="element row" >
