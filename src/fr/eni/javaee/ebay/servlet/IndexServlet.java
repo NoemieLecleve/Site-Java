@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.javaee.ebay.bll.EnchereManager;
+import fr.eni.javaee.ebay.bll.ArticleManager;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
 import fr.eni.javaee.ebay.bo.Enchere;
 
@@ -36,7 +36,7 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		EnchereManager enchereManager = ManagerFactory.getEnchereManager();		
+		ArticleManager enchereManager = ManagerFactory.getEnchereManager();		
 		
 		List<Enchere> listeEnchere = enchereManager.listerToutes();		
 		request.setAttribute("listeEnchere", listeEnchere);		
