@@ -58,6 +58,12 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
+	public Utilisateur(String pseudo, int idPseudo) {
+		// TODO Auto-generated constructor stub
+		this.noUtilisateur = idPseudo;
+		this.pseudo = pseudo;
+	}
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
