@@ -20,13 +20,19 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?;";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS " + "(pseudo,nom,prenom,email,telephone,"
 			+ "rue,code_postal,ville,mot_de_passe)" + " values (?,?,?,?,?,?,?,?,?)";
+	private static final String RECUPERE_UTILISATEUR = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?;";
+	
 
 	public UtilisateurDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
 	}
 
+	/**
+	 * Cette DAO permet de récupérer un utilisateur avec son pseudo et son mot de passe
+	 * @return un utilisateur
+	 */
 	@Override
-	public Utilisateur seConnecter(Utilisateur utilisateur) {
+	public Utilisateur seConnecter(Utilisateur utilisateur) throws DALException {
 
 		Utilisateur utilisateurAuthentifier = null;
 
@@ -52,10 +58,10 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 				utilisateurAuthentifier = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue,
 						codePostal, ville, motDePasse, credit, administrateur);
-				return utilisateurAuthentifier;
+
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DALException("Echec requête se connecter !");
 		}
 
 		return utilisateurAuthentifier;
@@ -138,6 +144,44 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		} catch (SQLException e) {
 			throw new DALException("Problème vérification email", e);
 		}
+	}
+
+	/**
+	 * Cette DAO permet de récupérer un utilisateur à partir de son identifiant
+	 */
+	@Override
+	public Utilisateur recuperer(Utilisateur utilisateur) throws DALException {
+		
+		Utilisateur utilisateurRecupere = null;
+		
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(RECUPERE_UTILISATEUR);			
+			prepare.setInt(1, utilisateur.getNoUtilisateur());
+			ResultSet resultat = prepare.executeQuery();
+			
+			if (resultat.next()) {
+				int noUtilisateur = resultat.getInt("no_utilisateur");
+				String pseudo = resultat.getString("pseudo");
+				String nom = resultat.getString("nom");
+				String prenom = resultat.getString("prenom");
+				String email = resultat.getString("email");
+				String telephone = resultat.getString("telephone");
+				String rue = resultat.getString("rue");
+				String codePostal = resultat.getString("code_postal");
+				String ville = resultat.getString("ville");
+				String motDePasse = resultat.getString("mot_de_passe");
+				int credit = resultat.getInt("credit");
+				boolean administrateur = resultat.getBoolean("administrateur");
+
+				utilisateurRecupere = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue,
+						codePostal, ville, motDePasse, credit, administrateur);
+			}
+			
+		}
+		catch(SQLException e){
+			throw new DALException("Echec requête récupérer un utilisateur ");
+		}		
+		return utilisateurRecupere;
 	}
 
 }
