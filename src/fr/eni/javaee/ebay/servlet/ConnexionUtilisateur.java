@@ -80,8 +80,7 @@ public class ConnexionUtilisateur extends HttpServlet {
 			session.setAttribute("sessionIdUtilisateur", utilisateur.getNoUtilisateur());
 			session.setAttribute("sessionPseudoUtilisateur", utilisateur.getPseudo());
 			request.setAttribute("message", succes);
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("home ");
 		} else {
 			request.setAttribute("message", erreur);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");

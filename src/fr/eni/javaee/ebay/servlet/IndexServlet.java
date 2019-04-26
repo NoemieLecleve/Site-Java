@@ -20,10 +20,10 @@ import fr.eni.javaee.ebay.dal.DALException;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("")
+@WebServlet({"", "/home"})
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String PAGE_INDEX = "index.jsp";
+	private static final String PAGE_INDEX = "/WEB-INF/jsp/index.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
