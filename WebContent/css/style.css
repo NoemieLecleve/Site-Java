@@ -1,11 +1,13 @@
 
-
+header nav{
+	height: 70px;
+}
 
 main{
 
 	 
      
-    margin-top: 50px ;
+    
     margin-left: auto;
     margin-right: auto;
     
@@ -33,10 +35,12 @@ main{
 }
 
 h1{
-
-    background: #e6f2ff;
+	background: linear-gradient(#7C90A3, #9FB4C8);
+    /*background: #7C90A3;  /* #e6f2ff; <---- La couleur de Loubna */
+    color: white;
+    font-family: 'Nunito', sans-serif;
     height: 130px;
-    line-height: 150;
+   padding-top: 40px;
 }
 
 .succes {
@@ -68,7 +72,14 @@ fieldset{
 		margin-right: 200px;	
 }
 
+.connexion strong {
+	font-size: 26px;
+	color: #747575;
+}
 
+.jaune{
+	background-color: #FFF5D2 ;
+}
 form{
 	display: block;
 	text-align: center;
@@ -109,9 +120,11 @@ div label {
 
 /* Page acceuil !! */
 
-.index h1 {
-	font-size: 25px;
+i.fas{
+	margin-right: 10px;
+	color: #6CD3D6;
 	}
+
 
 first-nav {
 	display: inline-block;
@@ -131,6 +144,12 @@ first-nav {
 	font-size: 26px;
 	color: #464340;
 }
+
+.element{
+	vertical-align: top;
+}
+
+
 
 /***** Formulaire inscription *****/
 .inscription{
