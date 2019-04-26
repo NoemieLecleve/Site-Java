@@ -72,7 +72,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Objets par spécialités
+                            Objets par catégorie
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -108,40 +108,22 @@
      </div>
         <br>
 
-        <div class="element">
-        <div class="card  text-center element2" style="width: 18rem;">
-            <img class="card-img-top" id ="img3" src="https://newvoradio.fr/wp-content/uploads/2017/07/cactus.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Déco : 8 vases pour des intérieurs originaux</h5>
-                <p class="card-text">Début de l'enchère : 25/04/2019 18:00:04</p>
-                <p class="card-text"> Fin de l'enchère : 25/04/2019 18:36:54</p>
-
-                <a href="#" class="btn btn-primary">Voir l'ojet</a>
-            </div>
-            </div>
-           <div class="card  text-center element2" style="width: 18rem;">
-            <img class="card-img-top" id ="img1" src="https://img.purch.com/o/aHR0cDovL3d3dy5sYXB0b3BtYWcuY29tL2ltYWdlcy93cC9wdXJjaC1hcGkvaW5jb250ZW50LzIwMTkvMDIvbWJwLmpwZw==" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">APPLE MACBOOK AIR 13.3</h5>
-                <p class="card-text">Début de l'enchère : 25/04/2019 18:00:04</p>
-                <p class="card-text"> Fin de l'enchère : 25/04/2019 18:36:54</p>
-                <a href="#" class="btn btn-primary">Voir l'ojet</a>
-            </div>
-
-        </div>
-            <div class="card  text-center element2" style="width: 18rem;">
-                <img class="card-img-top" id ="img2" src="https://static1.squarespace.com/static/52ee7408e4b0d94885a12285/t/58ac57663a0411fac304229b/1487689656333/?format=1500w" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Séjour 4 nuits pour 2 personnes en riad à Marrakech </h5>
-                    <p class="card-text">Début de l'enchère : 25/04/2019 18:00:04</p>
-                    <p class="card-text"> Fin de l'enchère : 25/04/2019 18:36:54</p>
-                    <a href="#" class="btn btn-primary">Voir l'ojet</a>
-                </div>
-
-            </div>
- 
-        </div>
- 
+        <c:forEach items="${listeArticles}" var="article"> 
+        
+		        <div class="element" >
+			        <div class="card  text-center element2" style="width: 18rem;">
+			            <img class="card-img-top" id ="img3" src="${article.imagePath}" alt="image article">
+			            <div class="card-body">
+			                <h5 class="card-title">${article.nomArticle} </h5>
+			                <p class="card-text">${article.dateFinEncheres}</p>
+			                <p class="card-text"> ${article.prixVente}</p>
+			
+			                <a href="#" class="btn btn-primary">Voir l'ojet</a>
+		                </div>
+		                
+		            </div>
+	            </div>
+       </c:forEach>
 
  
 </main>
