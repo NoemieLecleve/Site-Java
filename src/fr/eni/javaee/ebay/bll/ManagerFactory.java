@@ -6,25 +6,33 @@ import fr.eni.javaee.ebay.bll.impl.UtilisateurManagerImpl;
 import fr.eni.javaee.ebay.dal.DALException;
 
 public class ManagerFactory {
-	
-	/**
-	 * 
-	 * @return Une instance UtilisateurManagerImpl
-	 * @throws DALException
-	 */
-	public static UtilisateurManager getUtilisateurManageur() throws DALException {
+
+	private static UtilisateurManager utilisateurManager;
+	private static ArticleManager articleManager;
+	private static CategorieManager categorieManager;
+
+	public static UtilisateurManager getUtilisateurManageur() throws DALException  {
 		
-		return new UtilisateurManagerImpl();
+		if(utilisateurManager == null) {
+			utilisateurManager = new UtilisateurManagerImpl();
+		}		
+		return utilisateurManager;
 	}
 	
 	public static ArticleManager getArticleManager() throws DALException {
 		
-		return new ArticleManagerImpl();
+		if(articleManager == null) {
+			articleManager = new ArticleManagerImpl();
+		}
+		return articleManager;
 	}
 	
 	public static CategorieManager getCategorieManager() throws DALException{
 		
-		return new CategorieManagerImpl();
+		if(categorieManager == null) {
+			categorieManager = new CategorieManagerImpl();
+		}		
+		return categorieManager;
 	}
 
 }
