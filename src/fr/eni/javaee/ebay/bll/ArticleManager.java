@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.eni.javaee.ebay.bo.Enchere;
 
-public interface EnchereManager {
+public interface ArticleManager {
 	
 	List<Enchere> listerToutes();	
 

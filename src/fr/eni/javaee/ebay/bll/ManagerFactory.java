@@ -1,6 +1,6 @@
 package fr.eni.javaee.ebay.bll;
 
-import fr.eni.javaee.ebay.bll.impl.EnchereManagerImpl;
+import fr.eni.javaee.ebay.bll.impl.ArticleManagerImpl;
 import fr.eni.javaee.ebay.bll.impl.UtilisateurManagerImpl;
 import fr.eni.javaee.ebay.dal.DALException;
 
@@ -16,9 +16,9 @@ public class ManagerFactory {
 		return new UtilisateurManagerImpl();
 	}
 	
-	public static EnchereManager getEnchereManager() {
+	public static ArticleManager getEnchereManager() {
 		
-		return new EnchereManagerImpl();
+		return new ArticleManagerImpl();
 	}
 
 }
