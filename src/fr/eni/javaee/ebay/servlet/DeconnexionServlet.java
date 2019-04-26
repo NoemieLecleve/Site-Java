@@ -31,7 +31,7 @@ public class DeconnexionServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(true);
 		session.invalidate();	
-		request.getRequestDispatcher( PAGE_INDEX ).forward(request, response);
+		response.sendRedirect("home");
 	}
 
 	/**

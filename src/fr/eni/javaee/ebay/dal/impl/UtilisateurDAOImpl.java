@@ -61,7 +61,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 			}
 		} catch (SQLException e) {
-			throw new DALException("Echec requête se connecter !");
+			throw new DALException("Echec requête se connecter !", e);
 		}
 
 		return utilisateurAuthentifier;
@@ -92,15 +92,16 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			}
 		} catch (SQLException e) {
 
-			throw new DALException("Problème pour interroger la base de donnes", e);
+			throw new DALException("Echec requête creer utilisateur", e);
 		}
 		return utilisateur;
 
 	}
 
-	public void verifierPseudoExistant(Utilisateur utilisateur) throws DALException {
+	public boolean verifierPseudoExistant(Utilisateur utilisateur) throws DALException {
 
 		int nbrePseudo;
+		boolean pseudoExiste = false;
 
 		try {
 
@@ -114,17 +115,20 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 				nbrePseudo = resultat.getInt("num_pseudo");
 				if (nbrePseudo != 0) {
-					throw new DALException("Pseudo existant !");
+					pseudoExiste = true;
 				}
 			}
-		} catch (SQLException e) {
-			throw new DALException("Problème vérification pseudo", e);
+		} 
+		catch (SQLException e) {
+			throw new DALException("Echec requête vérification pseudo", e);
 		}
+		return pseudoExiste;
 	}
 
-	public void verifierEmailExistant(Utilisateur utilisateur) throws DALException {
+	public boolean verifierEmailExistant(Utilisateur utilisateur) throws DALException {
 
 		int nbreEmail;
+		boolean emailExiste = false;
 
 		try {
 
@@ -138,12 +142,13 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 				nbreEmail = resultat.getInt("num_email");
 				if (nbreEmail != 0) {
-					throw new DALException("Email existant !");
+					emailExiste = true;
 				}
 			}
 		} catch (SQLException e) {
-			throw new DALException("Problème vérification email", e);
+			throw new DALException("Echec requête vérification email", e);
 		}
+		return emailExiste;
 	}
 
 	/**
