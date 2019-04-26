@@ -14,6 +14,7 @@ public class ArticleVendu {
 	private int etatVente;
 	private Categorie categorieArticle;
 	private Utilisateur utilisateur;
+	private String imagePath;
 
 	public ArticleVendu() {
 		// TODO Auto-generated constructor stub
@@ -43,12 +44,27 @@ public class ArticleVendu {
 		this.categorieArticle = categorieArticle;
 	}
 
-	public ArticleVendu(String nomArticle, Date dateFinEncheres, int prixVente, Utilisateur utilisateur) {
-		// TODO Auto-generated constructor stub
+	public ArticleVendu(String nomArticle, Date dateFinEncheres, int prixVente, String imagePath, Utilisateur utilisateur) {
+		
 		this.nomArticle = nomArticle;
 		this.dateFinEncheres = dateFinEncheres;
 		this.prixVente = prixVente;
 		this.utilisateur = utilisateur;
+		this.imagePath = imagePath;
+	}
+
+	/**
+	 * @return the imagePath
+	 */
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	/**
+	 * @param imagePath the imagePath to set
+	 */
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 
 	/**

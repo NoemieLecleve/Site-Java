@@ -1,6 +1,7 @@
 package fr.eni.javaee.ebay.bll;
 
 import fr.eni.javaee.ebay.bll.impl.ArticleManagerImpl;
+import fr.eni.javaee.ebay.bll.impl.CategorieManagerImpl;
 import fr.eni.javaee.ebay.bll.impl.UtilisateurManagerImpl;
 import fr.eni.javaee.ebay.dal.DALException;
 
@@ -19,6 +20,11 @@ public class ManagerFactory {
 	public static ArticleManager getArticleManager() throws DALException {
 		
 		return new ArticleManagerImpl();
+	}
+	
+	public static CategorieManager getCategorieManager() throws DALException{
+		
+		return new CategorieManagerImpl();
 	}
 
 }
