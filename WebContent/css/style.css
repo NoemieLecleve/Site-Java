@@ -214,6 +214,7 @@ select{
 	border-radius: 7px;
 	padding-right:20px ;
 	height:37px;
+	 
 	
 }
 
@@ -234,7 +235,24 @@ th{
 	color: #506267;
 }
 
+/* Page modifier profil  */
 
+.element4{
 
+    
+    margin-left: 600px;
+    
+    
 
+}
+.element5{
+
+  
+    margin-left: 200px;
+    margin-right: 100px;
+    
+ 
+    
+
+}
 

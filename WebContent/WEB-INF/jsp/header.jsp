@@ -20,7 +20,7 @@
 	                        <a class="nav-link" href="#">Vendre un article</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="#">${sessionPseudoUtilisateur}</a>
+	                        <a class="nav-link" href="RecupererUtilisateur">${sessionPseudoUtilisateur}</a>
 	                    </li>
 	                    <li class="nav-item">
 	                        <a class="nav-link" href="DeconnexionServlet">Se Déconnecter</a>
@@ -29,7 +29,7 @@
 	                <form class="form-inline my-2 my-lg-0">
 	                <ul>
 		                 <li class="nav-item dropdown">
-						    <select class="mdb-select md-form mr-2 font-weight-light" >
+						    <select class="mdb-select md-form mr-2 mt-3 font-weight-light" >
 								  <option  value="" disabled selected>Objets par catégorie</option>
 								  
 								  <c:forEach var="categorie" items="${listeCategories}">
@@ -68,7 +68,7 @@
                  <li class="nav-item dropdown">
 				 
 				    <select class="mdb-select md-form mr-2 font-weight-light" >
-						  <option  value="" disabled selected>Objets par catégorie</option>
+						  <option   disabled selected>Objets par catégorie</option>
 						  
 						  <c:forEach var="categorie" items="${listeCategories}">
 						  
