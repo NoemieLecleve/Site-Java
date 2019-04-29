@@ -59,8 +59,12 @@
 							</div>
 							<div>
 								<label for="password">Nouveau mot de passe</label>
-								<input id="password" type="password" name="nouveauMotPasse">							
+								<input id="password" type="password" name="nouveauMotPasse">						
 							</div>
+							<div>
+								<label for="passwordConfirme">Confirmer le mot de passe</label>
+								<input id="passwordConfirme" type="password" name="passwordConfirme">							
+							</div>	
 						
 						</div>
 						<!-- FORMULAIRE DROIT -->
@@ -81,10 +85,7 @@
 								<label for="ville">Ville</label>
 								<input id="ville" type="text" name="ville" value="${utilisateur.ville}">							
 							</div>
-							<div>
-								<label for="passwordConfirme">Confirmer</label>
-								<input id="passwordConfirme" type="password" name="passwordConfirme">							
-							</div>						
+												
 						</div>			  
 					</div>
 					<br>
@@ -94,7 +95,7 @@
 					</div>
 					<!-- BOUTONS -->
 					<div>
-						<a class="btn btn-primary mr-2" href="ModifierUtilisateur">Enregister</button>
+						<button type="submit" class="btn btn-primary mr-2" >Enregister</button>
 			            <a class="btn btn-info" href="SupprimerUtilisateur">Supprimer mon Compte</a>
 					</div>
 					<p>${message}</p>				

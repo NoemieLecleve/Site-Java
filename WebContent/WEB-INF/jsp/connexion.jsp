@@ -31,7 +31,7 @@
                   <strong class="text-center ">Connectez-vous</strong>
 	            	<form class="px-4 py-3">
 		                <div class="form-group">
-		                    <label for="exampleDropdownFormEmail1">Adresse email ou Pseudo :</label>
+		                    <label for="exampleDropdownFormEmail1"> Pseudo :</label>
 		                    <input type="text" class="form-control" name="identifiant" placeholder="Pseudo">
 		                </div>
 		                <div class="form-group">
