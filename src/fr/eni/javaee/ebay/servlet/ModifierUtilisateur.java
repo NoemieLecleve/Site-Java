@@ -64,11 +64,13 @@ public class ModifierUtilisateur extends HttpServlet {
 
 			utilisateur = utilisateurManager.recuperer(utilisateur);
 			request.setAttribute("utilisateur", utilisateur);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
+			rd.forward(request, response);
 
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("home");
 			return;
 
 		} catch (DALException e) {
