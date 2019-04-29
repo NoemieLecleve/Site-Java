@@ -41,10 +41,7 @@
 								<label for="pseudo">Pseudo</label>
 								<input id="pseudo" type="text" name="pseudo" value="${utilisateur.pseudo}">							
 							</div>
-							<div>
-								<label for="prenom">Prénom</label>
-								<input id="prenom" type="text" name="prenom" value="${utilisateur.prenom}">							
-							</div>
+							
 							<div>
 								<label for="telephone">Téléphone</label>
 								<input id="telephone" type="text" name="telephone" value="${utilisateur.telephone}">							
@@ -69,6 +66,11 @@
 						</div>
 						<!-- FORMULAIRE DROIT -->
 						<div id="formDroit">
+							
+							<div>
+								<label for="prenom">Prénom</label>
+								<input id="prenom" type="text" name="prenom" value="${utilisateur.prenom}">							
+							</div>
 							<div>
 								<label for="nom">Nom</label>
 								<input id="nom" type="text" name="nom" value="${utilisateur.nom}">							
@@ -91,11 +93,11 @@
 					<br>
 					<!-- Fin formulaire principale -->
 					<div>
-						<p>Credit : ${utilisateur.credit}</p>
+						<p class="font-weight-bold">Credit : ${utilisateur.credit}</p>
 					</div>
 					<!-- BOUTONS -->
 					<div>
-						<button type="submit" class="btn btn-primary mr-2" >Enregister</button>
+						<button type="submit" class="btn btn-primary mr-2" >Mettre à jour</button>
 			            <a class="btn btn-info" href="SupprimerUtilisateur">Supprimer mon Compte</a>
 					</div>
 					<p>${message}</p>				

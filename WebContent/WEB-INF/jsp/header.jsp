@@ -5,7 +5,7 @@
        <c:choose>
 		    <c:when test="${sessionScope.sessionIdUtilisateur != null}">
 		     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	            <a class="navbar-brand" href="">Accueil</a>
+	            <a class="navbar-brand" href="home">Accueil</a>
 	            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	                <span class="navbar-toggler-icon"></span>
 	            </button>
@@ -64,6 +64,8 @@
                     </li>
                    </ul>
              <form class="form-inline my-2 my-lg-0">
+        
+             
              
                  <li class="nav-item dropdown">
 				 
@@ -78,6 +80,7 @@
 					</select>
                         
                    </li>
+                 </ul>  
                     
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
