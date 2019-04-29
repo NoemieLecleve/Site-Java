@@ -29,22 +29,72 @@
 	  <div>
      <h1 class="text-center">Trouvez l'objet de vos rêves </h1>
      </div>
-        <br>
+     
+     <div class="row">
+     
+          <div class="border border-light border my-2 rounded element4 " >
+	     
+		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
+				    <input type="radio" class="custom-control-input" id="customControlValidation1" name="enchere1" required >
+				    <label class="custom-control-label font-weight-bold" for="customControlValidation1">Achats</label>
+				  </div>
+				
+				  <div class="custom-control custom-checkbox  mb-3 ml-5">
+				    <input type= "checkbox" class="custom-control-input" id="customControlValidation2" name="enchere2" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation2">Enchères Ouvertes</label>
+				  </div>
+				  
+				  <div class="custom-control custom-checkbox  mb-3 ml-5">
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation3" name="enchere3" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation3">Mes enchères en cours</label> 
+				  </div>
+				  
+				  <div class="custom-control custom-checkbox  mb-3 ml-5">
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation4" name="enchere4" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation4">Mes enchères en cours</label> 
+				  </div>
+		  </div>
+		  
+		  
+		   <div class="border border-light border my-2 rounded element5 " >
+		   
+		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
+				    <input type="radio" class="custom-control-input " id="customControlValidation5" name="enchere1"required >
+				    <label class="custom-control-label font-weight-bold" for="customControlValidation5">Mes ventes</label>
+				  </div>
+				
+				  <div class="custom-control custom-checkbox  mb-3 ml-5">
+				    <input type= "checkbox" class="custom-control-input" id="customControlValidation6" name="enchere5" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation6">Mes ventes en cours</label>
+				  </div>
+				  
+				  <div class="custom-control custom-checkbox  mb-3 ml-5">
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation7" name="enchere6" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation7">Ventes non débutées</label> 
+				  </div>
+				  
+				  <div class="custom-control custom-checkbox  mb-3 ml-5">
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation8" name="enchere7" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation8">Ventes terminées</label> 
+				  </div>
+		  </div>
+	  </div>
+      <br>
+      
 	  <div class="element row" >
         <c:forEach items="${listeArticles}" var="article"> 
         		      
-			        <div class="card  text-center element2" style="width: 18rem;">
-			            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
-			            <div class="card-body">
-			                <h5 class="card-title">${article.nomArticle} </h5>
-			                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
-			                <h6 class="card-text"> ${article.prixVente}€</h6>
-			
-			                <a href="#" class="btn btn-primary">Voir l'ojet</a>
-		                </div>		                
-		            </div>
-	         
-       </c:forEach>
+	        <div class="card  text-center element2" style="width: 18rem;">
+	            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
+	            <div class="card-body">
+	                <h5 class="card-title">${article.nomArticle} </h5>
+	                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
+	                <h6 class="card-text"> ${article.prixVente}€</h6>
+	
+	                <a href="#" class="btn btn-primary">Voir l'ojet</a>
+                </div>		                
+             </div>
+        </c:forEach>
     </div>
 </main>
 </body>
