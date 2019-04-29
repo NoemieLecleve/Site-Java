@@ -21,41 +21,7 @@
 		<!-- HEADER -->
 		<!-- ****** -->
 		<header>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="http://localhost:8080/ProjetEBAY/">Accueil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  
-                    <li class="nav-item">
-                        <a class="nav-link" href="ConnexionUtilisateur"><i class="fas fa-user"></i>Se Connecter</a>
-                    </li>
-                   </ul>
-             <form class="form-inline my-2 my-lg-0">
-             
-                 <li class="nav-item dropdown">
-				 
-				    <select class="mdb-select md-form mr-2 font-weight-light" >
-						  <option  value="" disabled selected>Objets par catégorie</option>
-						  
-						  <c:forEach var="categorie" items="${listeCategories}">
-						  
-						  <option value="categorie">${categorie.libelle}</option>
-						  
-						  </c:forEach>
-					</select>
-                        
-                   </li>
-                    
-                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
-                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
-                </form>
-            </div>
- 
-        </nav>
+			<%@ include file="header.jsp" %>
 		</header>
 		
 		<!-- ***************** -->
