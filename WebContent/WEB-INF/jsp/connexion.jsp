@@ -52,44 +52,40 @@
         </nav>
 </header>
 
-
-<main class="connexion"> 		  
-	  		   	
-		
+<main class="connexion"> 		  			
 		<form method="post" action="ConnexionUtilisateur" class="container">
 		  <fieldset>
-		  <div class="jaune">
-		  	<legend>Connexion</legend>
-		  </div>
-		   <div class="background">
-		   <div class="main-padding login-wrapper">
-            <div class="split-50 border">
-                <div class="split-wrap">
+		  	<div class="blue">
+		  		<legend>Connexion</legend>
+		  	</div>
+			   <div class="background">
+			    <div class="main-padding login-wrapper">
+	             <div class="split-50 border">
+                  <div class="split-wrap">
                   <strong class="text-center ">Connectez-vous</strong>
-	            <form class="px-4 py-3">
-	                <div class="form-group">
-	                    <label for="exampleDropdownFormEmail1">Adresse email ou Pseudo :</label>
-	                    <input type="text" class="form-control" name="identifiant" placeholder="Pseudo">
-	                </div>
-	                <div class="form-group">
-	                    <label for="exampleDropdownFormPassword1">Mot de passe :</label>
-	                    <input type="password" class="form-control" name="motdepasse" placeholder="mot de passe">
-	                </div>
-	                <div class="form-check">
-	                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
-	                    <label class="form-check-label" for="dropdownCheck">Rester connecté</label>
-	                </div>
-	                <br>
-	                <button type="submit" class="btn btn-warning active">S'identifier</button>
-	            </form>
+	            	<form class="px-4 py-3">
+		                <div class="form-group">
+		                    <label for="exampleDropdownFormEmail1">Adresse email ou Pseudo :</label>
+		                    <input type="text" class="form-control" name="identifiant" placeholder="Pseudo">
+		                </div>
+		                <div class="form-group">
+		                    <label for="exampleDropdownFormPassword1">Mot de passe :</label>
+		                    <input type="password" class="form-control" name="motdepasse" placeholder="mot de passe">
+		                </div>
+		                <div class="form-check">
+		                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+		                    <label class="form-check-label" for="dropdownCheck">Rester connecté</label>
+		                </div>
+		                <br>
+		                <button type="submit" class="btn btn-warning active">S'identifier</button>
+	            	</form>
 	            <div class="dropdown-divider"></div>
-	            <a class="dropdown-item text-muted" href="s'inscrir">Pas encore de compte ? Inscrivez-vous gratuitement</a>
+	            <a class="dropdown-item text-muted" href="InscriptionUtilisateur">Pas encore de compte ? Inscrivez-vous gratuitement</a>
 	            <a class="dropdown-item text-muted" href="#">Mot de passe oublié ?</a>
-	
-	        </div>
-	        </div>
+	       		 </div>
+	       	  </div>
 	        </div>	
-        <p class="erreur"> ${message}</p>	
+       		  <p class="erreur"> ${message}</p>	
 
 	  		  <!--   Vérification de la présence d'un objet utilisateur en session -->
                 <c:if test="${!empty sessionScope.sessionUtilisateur}">
@@ -97,7 +93,7 @@
                     <p>${sessionScope.sessionUtilisateur.pseudo}</p>             
                 </c:if> 
              </div>
-  		  </fieldset>
+  		   </fieldset>
   		  </form>	
 </main>
 </body>

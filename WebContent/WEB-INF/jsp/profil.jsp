@@ -53,26 +53,51 @@
         </nav>
 	</header>
 	<main>	
-	<form method="GET" action="RecupererUtilisateur">
-		<h2>Profil</h2>
-			<label for="pseudo">${utilisateur.pseudo}</label>
-			<br>
-			<label for="nom">${utilisateur.nom}</label>
-			<br>
-			<label for="prenom">${utilisateur.prenom}</label>
-			<br>
-			<label for="email">${utilisateur.email}</label>
-			<br>
-			<label for="telephone">${utilisateur.telephone}</label>
-			<br>
-			<label for="rue">${utilisateur.rue}</label>
-			<br>
-			<label for="codepostal">${utilisateur.codePostal}</label>
-			<br>
-			<label for="ville">${utilisateur.ville}</label>
-			<br>
-			<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Modifier</button>
-	</form>
+		<form method="GET" action="RecupererUtilisateur" class="container">
+			<h2>Profil</h2>
+			<table class="table table-striped ">
+				  <thead class="table-info">
+				    <tr>
+				      <th scope="col" colspan="2" id="information">Mes informations</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">Pseudo</th>
+				      <td>${utilisateur.pseudo}</td>
+				    </tr>
+				    <tr >
+				      <th scope="row" >Nom</th>
+				      <td>${utilisateur.nom}</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Prénom</th>
+				      <td>${utilisateur.prenom}</td>
+				    </tr>
+				      <tr>
+				      <th scope="row">Email</th>
+				      <td>${utilisateur.email}</td>
+				    </tr>
+				      <tr>
+				      <th scope="row">Téléphone</th>
+				      <td>${utilisateur.telephone}</td>
+				    </tr>
+				      <tr>
+				      <th scope="row">Rue</th>
+				      <td>${utilisateur.rue}</td>
+				    </tr>
+				      <tr>
+				      <th scope="row">Code Postal</th>
+				      <td>${utilisateur.codePostal}</td>
+				    </tr>
+				      <tr>
+				      <th scope="row">Ville</th>
+				      <td>${utilisateur.ville}</td>
+				    </tr>
+				  </tbody>
+			</table>
+			<button class="btn  btn-info btn-lg" type="submit">Modifier</button>
+		</form>
 	</main>
 </body>
 </html>

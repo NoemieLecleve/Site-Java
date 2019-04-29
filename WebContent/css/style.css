@@ -4,9 +4,7 @@ header nav{
 }
 
 main{
-
-	 
-     
+ 
     
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +34,6 @@ main{
 
 h1{
 	background: linear-gradient(#7C90A3, #9FB4C8);
-    /*background: #7C90A3;  /* #e6f2ff; <---- La couleur de Loubna */
     color: white;
     font-family: 'Nunito', sans-serif;
     height: 130px;
@@ -58,7 +55,14 @@ fieldset{
 	margin: 20px;
 }
 
-
+.blue{
+	display: flex;	 
+	margin-left: 200px;
+	margin-right: 200px;
+	background: #e6f2ff;
+	border-radius: 7px;
+	margin-bottom: 25px;
+}
 
 .container{
 	margin: 0 auto;
@@ -72,14 +76,19 @@ fieldset{
 		margin-right: 200px;	
 }
 
+.connexion {
+	padding-top: 120px;
+}
+
 .connexion strong {
 	font-size: 26px;
 	color: #747575;
 }
 
-.jaune{
-	background-color: #FFF5D2 ;
+.connexion legend {
+	
 }
+
 form{
 	display: block;
 	text-align: center;
@@ -208,7 +217,22 @@ select{
 	
 }
 
+/* Page profil  */
 
+tr {
+	text-align: left;
+}
+
+th{
+	font-weight: ;
+	color: #606060;
+}
+
+#information{
+	font-size: 20px;
+	font-weight: bold;
+	color: #506267;
+}
 
 
 
