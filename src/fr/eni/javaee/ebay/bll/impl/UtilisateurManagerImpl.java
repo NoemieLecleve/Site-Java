@@ -21,7 +21,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 
 	/**
-	 * Ce manager demande à UtilisateurDAO de récupérer un utilisateur avec son pseudo et son mot de passe 
+	 * Cette méthode demande à UtilisateurDAO de récupérer un utilisateur avec son pseudo et son mot de passe 
 	 */
 	@Override
 	public Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException {
@@ -90,9 +90,9 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 
 	
 	/**
-	 * Ce manager permer de crypter le mot de passe de l'utilisateur avec le hash SHA256
+	 * Cette méthode permer de crypter le mot de passe de l'utilisateur avec le hash SHA256
 	 * @param password
-	 * @return
+	 * @return Le mot de passe crypté
 	 * @throws BLLException
 	 */
 	public String cripterMDP(String password) throws BLLException {
@@ -183,7 +183,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		}
 	}
 	/**
-	 * Ce manager demande à UtilisateurDAO de rechercher un utilisateur avec son identifiant
+	 * Cette méthode demande à UtilisateurDAO de rechercher un utilisateur avec son identifiant
 	 * @throws  BLLException
 	 */
 	@Override
@@ -204,7 +204,7 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	}
 
 	/**
-	 * Manager permettant de modifier un utilisateur en vérifiant les champs du formulaire 
+	 * Cette méthode vérifie les champs du formulaire puis fait appel à UtilisateurDAO pour supprimer l'utilisateur en base de données  
 	 */
 	@Override
 	public Utilisateur modifierUtilisateur(Utilisateur utilisateur, String nouveauPass, String confirmationPass) throws BLLException {
@@ -272,10 +272,29 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 	}
 
 
+	/**
+	 * Cette méthode fait appel à UtilisateurDAO pour supprimer un utilisateur en base de donnée avec son identifiant
+	 */
 	@Override
 	public Utilisateur supprimerUtilisateur(Utilisateur utilisateur) throws BLLException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		int nombreDeLigne = 0;
+		
+		try {
+			nombreDeLigne = utilisateurDAO.supprimerUtilisateur(utilisateur);
+		} 
+		catch (DALException e) {			
+			e.printStackTrace();
+			throw new BLLException(e.getMessage());
+		}
+		// Succès de la suppression
+		if(nombreDeLigne == 1) {
+			return utilisateur;
+		}
+		else {
+			throw new BLLException("Echec suppression utilisateur !");
+		}
+		
 	}
 
 }

@@ -8,7 +8,7 @@ public interface UtilisateurDAO {
 	Utilisateur recuperer(Utilisateur utilisateur) throws DALException;
 	Utilisateur creerUtilisateur (Utilisateur utilisateur) throws DALException;
 	int modifierUtilisateur(Utilisateur utilisateur) throws DALException; 
-	boolean supprimerUtilisateur(Utilisateur utilisateur) throws DALException;
+	int supprimerUtilisateur(Utilisateur utilisateur) throws DALException;
 	boolean verifierPseudoExistant(Utilisateur utilisateur) throws DALException;
 	boolean verifierEmailExistant(Utilisateur utilisateur) throws DALException;
 	boolean verifierMotDePasseExistant(Utilisateur utilisateur)throws DALException;

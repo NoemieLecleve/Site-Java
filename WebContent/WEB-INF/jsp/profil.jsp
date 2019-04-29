@@ -61,8 +61,8 @@
 				    </tr>
 				  </tbody>
 			</table>
-			<a class="btn btn-primary mr-2" href="ModifierProfil.jsp">Modifier</button>
-			<a class="btn btn-info" href="index.jsp">Annuler</a>
+			<a class="btn btn-primary mr-2" href="ModifierUtilisateur">Modifier</button>
+			<a class="btn btn-info" href="home">Annuler</a>
 		</form>
 	</main>
 </body>
