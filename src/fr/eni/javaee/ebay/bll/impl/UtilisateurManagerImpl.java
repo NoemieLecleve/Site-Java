@@ -225,27 +225,18 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		String motDePasseCripter = cripterMDP(motDePasse);
 		utilisateur.setMotDePasse(motDePasseCripter);
 
-		// Vérification de l'unicité pseudo et email en base
 		// Vérification du mot de passe utilisateur
 		try {
-			emailExiste = utilisateurDAO.verifierEmailExistant(utilisateur);
-			pseudoExiste = utilisateurDAO.verifierPseudoExistant(utilisateur);
+
 			motDePasseExiste = utilisateurDAO.verifierMotDePasseExistant(utilisateur);
 		} 
 		catch (DALException e1) {
 
 			throw new BLLException(e1.getMessage());
 		}
-		
-		// Gestion des erreurs d'unicité pseudo et email
-		if(pseudoExiste) {
-			throw new BLLException("Utilisateur existant");
-		}
-		else if(emailExiste) {
-			throw new BLLException("Email existant");
-		}
-		// Erreur de mot de passe
-		else if(!motDePasseExiste) {
+
+		// Erreur de mot de passe non trouvé
+		if(!motDePasseExiste) {
 			throw new BLLException("Erreur mot de passe !");
 		}
 		// Sinon modification de l'utilisateur

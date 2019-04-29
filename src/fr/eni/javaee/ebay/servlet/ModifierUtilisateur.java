@@ -113,12 +113,12 @@ public class ModifierUtilisateur extends HttpServlet {
 		}
 
 		try {
-			Utilisateur utilisateurModifie = utilisateurManager.modifierUtilisateur(utilisateur, MDPconfirm,
-					nouveauMDP);
-			request.setAttribute("utilisateurModifie", utilisateurModifie);
+			utilisateurManager.modifierUtilisateur(utilisateur, MDPconfirm,	nouveauMDP);
+
 			response.sendRedirect("RecupererUtilisateur");
 
-		} catch (BLLException e) {
+		} 
+		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 		}
 		HttpSession session = request.getSession();
@@ -133,15 +133,11 @@ public class ModifierUtilisateur extends HttpServlet {
 			utilisateurBdd = utilisateurManager.recuperer(utilisateurBdd);
 			request.setAttribute("utilisateur", utilisateurBdd);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
-			rd.forward(request, response);
-
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-			response.sendRedirect("home");
-			return;
-
 		}
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
+		rd.forward(request, response);
 	}
 
 }
