@@ -92,7 +92,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 		try {
 			utilisateur = utilisateurManager.creeUtilisateur(utilisateurJSP, MDPconfirm);
 			request.setAttribute("utilisateur", utilisateur);
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("home");
 			rd.forward(request, response);
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());

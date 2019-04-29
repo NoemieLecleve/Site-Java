@@ -64,8 +64,7 @@
                     </li>
                    </ul>
              <form class="form-inline my-2 my-lg-0">
-        
-              
+         
                  <li class="nav-item dropdown">
 				 
 				    <select class="mdb-select md-form mr-2 font-weight-light" >
@@ -79,8 +78,6 @@
 					</select>
                         
                    </li>
-              
-                    
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
                 </form>

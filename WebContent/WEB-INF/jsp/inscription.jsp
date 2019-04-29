@@ -93,8 +93,8 @@
 					
 					<!-- BOUTONS -->
 					<div>
-						<button class="btn btn-primary">Créer</button>
-						<a class="btn btn-info" href="index.jsp">Annuler</a>
+						<button type="submit" class="btn btn-primary">Créer</button>
+						<a class="btn btn-info" href="home">Annuler</a>
 					</div>
 					<p>${message}</p>				
 				</fieldset>
