@@ -28,7 +28,8 @@ public class ArticleManagerImpl implements ArticleManager {
 		
 		try {
 			return articleDAO.listerToutes();
-		} catch (DALException e) {
+		} 
+		catch (DALException e) {
 			throw new BLLException(e.getMessage());
 		}
 	}
