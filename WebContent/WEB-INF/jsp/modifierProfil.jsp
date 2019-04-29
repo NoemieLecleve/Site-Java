@@ -41,10 +41,7 @@
 								<label for="pseudo">Pseudo</label>
 								<input id="pseudo" type="text" name="pseudo" value="${utilisateur.pseudo}">							
 							</div>
-							<div>
-								<label for="prenom">Prénom</label>
-								<input id="prenom" type="text" name="prenom" value="${utilisateur.prenom}">							
-							</div>
+							
 							<div>
 								<label for="telephone">Téléphone</label>
 								<input id="telephone" type="text" name="telephone" value="${utilisateur.telephone}">							
@@ -59,12 +56,21 @@
 							</div>
 							<div>
 								<label for="password">Nouveau mot de passe</label>
-								<input id="password" type="password" name="nouveauMotPasse">							
+								<input id="password" type="password" name="nouveauMotPasse">						
 							</div>
+							<div>
+								<label for="passwordConfirme">Confirmer le mot de passe</label>
+								<input id="passwordConfirme" type="password" name="passwordConfirme">							
+							</div>	
 						
 						</div>
 						<!-- FORMULAIRE DROIT -->
 						<div id="formDroit">
+							
+							<div>
+								<label for="prenom">Prénom</label>
+								<input id="prenom" type="text" name="prenom" value="${utilisateur.prenom}">							
+							</div>
 							<div>
 								<label for="nom">Nom</label>
 								<input id="nom" type="text" name="nom" value="${utilisateur.nom}">							
@@ -81,20 +87,17 @@
 								<label for="ville">Ville</label>
 								<input id="ville" type="text" name="ville" value="${utilisateur.ville}">							
 							</div>
-							<div>
-								<label for="passwordConfirme">Confirmer</label>
-								<input id="passwordConfirme" type="password" name="passwordConfirme">							
-							</div>						
+												
 						</div>			  
 					</div>
 					<br>
 					<!-- Fin formulaire principale -->
 					<div>
-						<p>Credit : ${utilisateur.credit}</p>
+						<p class="font-weight-bold">Credit : ${utilisateur.credit}</p>
 					</div>
 					<!-- BOUTONS -->
 					<div>
-						<a class="btn btn-primary mr-2" href="ModifierUtilisateur">Enregister</button>
+						<button type="submit" class="btn btn-primary mr-2" >Mettre à jour</button>
 			            <a class="btn btn-info" href="SupprimerUtilisateur">Supprimer mon Compte</a>
 					</div>
 					<p>${message}</p>				
