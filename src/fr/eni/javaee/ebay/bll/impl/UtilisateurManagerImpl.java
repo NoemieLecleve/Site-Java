@@ -203,4 +203,79 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return utilisateurRecuperer;
 	}
 
+	/**
+	 * Manager permettant de modifier un utilisateur en vérifiant les champs du formulaire 
+	 */
+	@Override
+	public Utilisateur modifierUtilisateur(Utilisateur utilisateur, String nouveauPass, String confirmationPass) throws BLLException {
+		
+		boolean emailExiste;
+		boolean pseudoExiste;
+		boolean motDePasseExiste;
+		
+		// Validation des champs saisis
+		validationEmail(utilisateur.getEmail());
+		validationPseudo(utilisateur.getPseudo());
+		validationNom(utilisateur.getNom());
+		validationNom(utilisateur.getPrenom());		
+		confirmationMotDePasse(nouveauPass, confirmationPass);
+		
+		// Cryptage du password
+		String motDePasse = utilisateur.getMotDePasse();
+		String motDePasseCripter = cripterMDP(motDePasse);
+		utilisateur.setMotDePasse(motDePasseCripter);
+
+		// Vérification de l'unicité pseudo et email en base
+		// Vérification du mot de passe utilisateur
+		try {
+			emailExiste = utilisateurDAO.verifierEmailExistant(utilisateur);
+			pseudoExiste = utilisateurDAO.verifierPseudoExistant(utilisateur);
+			motDePasseExiste = utilisateurDAO.verifierMotDePasseExistant(utilisateur);
+		} 
+		catch (DALException e1) {
+
+			throw new BLLException(e1.getMessage());
+		}
+		
+		// Gestion des erreurs d'unicité pseudo et email
+		if(pseudoExiste) {
+			throw new BLLException("Utilisateur existant");
+		}
+		else if(emailExiste) {
+			throw new BLLException("Email existant");
+		}
+		// Erreur de mot de passe
+		else if(!motDePasseExiste) {
+			throw new BLLException("Erreur mot de passe !");
+		}
+		// Sinon modification de l'utilisateur
+		else {
+			
+			try {
+				// Cryptage du password
+				motDePasseCripter = cripterMDP(nouveauPass);
+				utilisateur.setMotDePasse(motDePasseCripter);
+				int nombreDeLigneModifier = utilisateurDAO.modifierUtilisateur(utilisateur);
+				// Vérification du succès de la modification de l'utilisateur
+				if(nombreDeLigneModifier == 1) {
+					return utilisateur;
+				}
+				else {
+					throw new BLLException("Utilisateur non modifié !");
+				}				
+
+			} catch (DALException e) {
+
+				throw new BLLException(e.getMessage());
+			}			
+		}
+	}
+
+
+	@Override
+	public Utilisateur supprimerUtilisateur(Utilisateur utilisateur) throws BLLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
