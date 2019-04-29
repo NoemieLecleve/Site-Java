@@ -271,4 +271,11 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		}
 	}
 
+
+	@Override
+	public Utilisateur supprimerUtilisateur(Utilisateur utilisateur) throws BLLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
