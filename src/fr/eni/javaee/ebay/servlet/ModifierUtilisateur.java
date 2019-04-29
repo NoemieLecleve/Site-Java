@@ -98,10 +98,16 @@ public class ModifierUtilisateur extends HttpServlet {
 		String motDePasse = request.getParameter(CHAMP_PASS);
 		String nouveauMDP = request.getParameter(CHAMP_NEWPASS);
 		String MDPconfirm = request.getParameter(CHAMP_PASSCONFIRM);
+		
+		HttpSession session = request.getSession();
+
+		int idUtilisateur = (int) session.getAttribute("sessionIdUtilisateur");
 
 		// Creer un utilisateur à partir de la JSP
 		Utilisateur utilisateur = new Utilisateur(identifiant, nom, prenom, email, telephone, rue, codePostal, ville,
 				motDePasse, CREDIT, ADMIN);
+		
+		utilisateur.setNoUtilisateur(idUtilisateur);
 
 		UtilisateurManager utilisateurManager = null;
 		try {
@@ -116,14 +122,13 @@ public class ModifierUtilisateur extends HttpServlet {
 			utilisateurManager.modifierUtilisateur(utilisateur, MDPconfirm,	nouveauMDP);
 
 			response.sendRedirect("RecupererUtilisateur");
+			return;
 
 		} 
 		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 		}
-		HttpSession session = request.getSession();
 
-		int idUtilisateur = (int) session.getAttribute("sessionIdUtilisateur");
 
 		try {
 

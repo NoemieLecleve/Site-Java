@@ -59,7 +59,8 @@ public class RecupererUtilisateur extends HttpServlet {
 			utilisateur = utilisateurManager.recuperer(utilisateur);
 			request.setAttribute("utilisateur", utilisateur);
 			
-		} catch (BLLException e) {
+		} 
+		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profil.jsp");
 			rd.forward(request, response);
