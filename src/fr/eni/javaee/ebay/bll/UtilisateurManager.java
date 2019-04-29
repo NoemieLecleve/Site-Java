@@ -7,5 +7,5 @@ public interface UtilisateurManager {
 	Utilisateur seConnecter(Utilisateur utilisateur) throws BLLException;
 	Utilisateur recuperer(Utilisateur utilisateur)throws BLLException;
 	Utilisateur creeUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException;
-	Utilisateur modifierUtilisateur(Utilisateur utilisateur, String confirmation)throws BLLException;
+	Utilisateur modifierUtilisateur(Utilisateur utilisateur, String nouveauPass, String confirmation)throws BLLException;
 }
