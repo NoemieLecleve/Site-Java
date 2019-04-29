@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
@@ -21,19 +22,6 @@ import fr.eni.javaee.ebay.dal.DALException;
 @WebServlet("/SupprimerUtilisateur")
 public class SupprimerUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String CHAMP_PSEUDO = "pseudo";
-	private static final String CHAMP_PRENOM = "prenom";
-	private static final String CHAMP_NOM = "nom";
-	private static final String CHAMP_TEL = "telephone";
-	private static final String CHAMP_CODEPOSTAL = "codePostal";
-	private static final String CHAMP_EMAIL = "email";
-	private static final String CHAMP_RUE = "rue";
-	private static final String CHAMP_VILLE = "ville";
-	private static final String CHAMP_PASS = "password";
-	private static final String CHAMP_NEWPASS = "nouveauMotPasse";
-	private static final String CHAMP_PASSCONFIRM = "passwordConfirme";
-	private static final int CREDIT = 0;
-	private static final boolean ADMIN = false;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -50,8 +38,11 @@ public class SupprimerUtilisateur extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
-		rd.forward(request, response);
+
+		HttpSession session = request.getSession(true);
+		session.invalidate();
+		response.sendRedirect("home");
+
 	}
 
 	/**
@@ -61,24 +52,13 @@ public class SupprimerUtilisateur extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// Récupération des paramétres de la requete
-		String identifiant = request.getParameter(CHAMP_PSEUDO);
-		String prenom = request.getParameter(CHAMP_PRENOM);
-		String nom = request.getParameter(CHAMP_NOM);
-		String telephone = request.getParameter(CHAMP_TEL);
-		String codePostal = request.getParameter(CHAMP_CODEPOSTAL);
-		String email = request.getParameter(CHAMP_EMAIL);
-		String rue = request.getParameter(CHAMP_RUE);
-		String ville = request.getParameter(CHAMP_VILLE);
-		String motDePasse = request.getParameter(CHAMP_PASS);
-		String nouveauMDP = request.getParameter(CHAMP_NEWPASS);
-		String MDPconfirm = request.getParameter(CHAMP_PASSCONFIRM);
+		// 1:Récupération l'identifiant de l'utilisateur dans la session
 
-		// Creer un utilisateur à partir de la JSP
-		Utilisateur utilisateur = new Utilisateur(identifiant, nom, prenom, email, telephone, rue, codePostal, ville,
-				motDePasse, CREDIT, ADMIN);
+		HttpSession session = request.getSession();
+		int idUtilisateur = (int) session.getAttribute("sessionIdUtilisateur");
 
 		UtilisateurManager utilisateurManager = null;
+
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
 
@@ -91,10 +71,11 @@ public class SupprimerUtilisateur extends HttpServlet {
 		}
 
 		try {
-			Utilisateur utilisateurSupprime = utilisateurManager.supprimerUtilisateur(utilisateur);
-			request.setAttribute("utilisateurModifie", utilisateurSupprime);
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			Utilisateur utilisateuraSupprimer = new Utilisateur();
+			utilisateuraSupprimer.setNoUtilisateur(idUtilisateur);
+			utilisateuraSupprimer = utilisateurManager.supprimerUtilisateur(utilisateuraSupprimer);
+			request.setAttribute("utilisateur", utilisateuraSupprimer);
+
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");

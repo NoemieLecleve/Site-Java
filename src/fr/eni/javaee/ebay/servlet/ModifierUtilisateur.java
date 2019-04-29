@@ -64,7 +64,7 @@ public class ModifierUtilisateur extends HttpServlet {
 
 			utilisateur = utilisateurManager.recuperer(utilisateur);
 			request.setAttribute("utilisateur", utilisateur);
-			
+
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 			rd.forward(request, response);
 
@@ -109,25 +109,35 @@ public class ModifierUtilisateur extends HttpServlet {
 
 		} catch (DALException e) {
 			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
-			rd.forward(request, response);
-			return;
 
 		}
 
 		try {
-			Utilisateur utilisateurModifie = utilisateurManager.modifierUtilisateur(utilisateur, MDPconfirm,
-					nouveauMDP);
-			request.setAttribute("utilisateurModifie", utilisateurModifie);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profil.jsp");
-			rd.forward(request, response);
+			utilisateurManager.modifierUtilisateur(utilisateur, MDPconfirm,	nouveauMDP);
+
+			response.sendRedirect("RecupererUtilisateur");
+
+		} 
+		catch (BLLException e) {
+			request.setAttribute("message", e.getMessage());
+		}
+		HttpSession session = request.getSession();
+
+		int idUtilisateur = (int) session.getAttribute("sessionIdUtilisateur");
+
+		try {
+
+			Utilisateur utilisateurBdd = new Utilisateur();
+			utilisateurBdd.setNoUtilisateur(idUtilisateur);
+
+			utilisateurBdd = utilisateurManager.recuperer(utilisateurBdd);
+			request.setAttribute("utilisateur", utilisateurBdd);
+
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
-			rd.forward(request, response);
-			return;
 		}
-
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
+		rd.forward(request, response);
 	}
 
 }

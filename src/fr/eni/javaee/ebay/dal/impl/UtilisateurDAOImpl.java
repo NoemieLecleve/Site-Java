@@ -26,6 +26,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 														"SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, "
 														+ "rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? "
 														+ "WHERE no_utilisateur = ?;";
+	private static final String SUPPRIMER_UTILISATEUR = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
 	
 	
 
@@ -72,7 +73,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 		return utilisateurAuthentifier;
 	}
-
+	/**
+	 * Cette méthode permet de créer un utilisateur en base de données
+	 */
 	public Utilisateur creerUtilisateur(Utilisateur utilisateur) throws DALException {
 
 		try {
@@ -256,13 +259,22 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		return nombreLigne;
 
 	}
-
+	/**
+	 * Cette méthode supprime un utilisateur en base de donnée avec son identifiant
+	 */
 	@Override
-	public boolean supprimerUtilisateur(Utilisateur utilisateur) throws DALException {
-		// TODO Auto-generated method stub
-		return false;
+	public int supprimerUtilisateur(Utilisateur utilisateur) throws DALException {
+		
+		int nombreDeLigne = 0;
+		
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(SUPPRIMER_UTILISATEUR);
+			prepare.setInt(1, utilisateur.getNoUtilisateur());
+			nombreDeLigne = prepare.executeUpdate();
+		}
+		catch(SQLException e) {
+			throw new DALException("Echec requête supprimer utilisateur");
+		}
+		return nombreDeLigne;
 	}
-
-
-
 }
