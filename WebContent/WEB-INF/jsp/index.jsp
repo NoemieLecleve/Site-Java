@@ -39,8 +39,7 @@
 			                <h6 class="card-text"> ${article.prixVente}€</h6>
 			
 			                <a href="#" class="btn btn-primary">Voir l'ojet</a>
-		                </div>
-		                
+		                </div>		                
 		            </div>
 	         
        </c:forEach>
