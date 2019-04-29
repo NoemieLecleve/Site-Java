@@ -7,6 +7,7 @@ public interface UtilisateurDAO {
 	Utilisateur seConnecter(Utilisateur utilisateur)throws DALException;
 	Utilisateur recuperer(Utilisateur utilisateur)throws DALException;
 	Utilisateur creerUtilisateur (Utilisateur utilisateur) throws DALException;
+	Utilisateur modifierUtilisateur(Utilisateur utilisateur)throws DALException; 
 	boolean verifierPseudoExistant(Utilisateur utilisateur) throws DALException;
 	boolean verifierEmailExistant(Utilisateur utilisateur) throws DALException;
 

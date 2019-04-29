@@ -203,4 +203,53 @@ public class UtilisateurManagerImpl implements UtilisateurManager {
 		return utilisateurRecuperer;
 	}
 
+	/**
+	 * Manager permettant de modifier un utilisateur en vérifiant les champs du formulaire 
+	 */
+	@Override
+	public Utilisateur modifierUtilisateur(Utilisateur utilisateur, String confirmation) throws BLLException {
+		
+		boolean emailExiste;
+		boolean pseudoExiste;
+		
+		// Validation des champs saisis
+		validationEmail(utilisateur.getEmail());
+		validationPseudo(utilisateur.getPseudo());
+		confirmationMotDePasse(utilisateur.getMotDePasse(), confirmation);
+		validationNom(utilisateur.getNom());
+		validationNom(utilisateur.getPrenom());
+
+		// Vérification de l'unicité pseudo et email en base 
+		try {
+			emailExiste = utilisateurDAO.verifierEmailExistant(utilisateur);
+			pseudoExiste= utilisateurDAO.verifierPseudoExistant(utilisateur);
+		} catch (DALException e1) {
+
+			throw new BLLException(e1.getMessage());
+		}
+		
+		// Gestion des erreurs d'unicité pseudo et email
+		if(pseudoExiste) {
+			throw new BLLException("Utilisateur existant");
+		}
+		else if(emailExiste) {
+			throw new BLLException("Email existant");
+		}
+		// Sinon modification de l'utilisateur
+		else {
+			String motDePasse = utilisateur.getMotDePasse();
+			String motDePasseCripter = cripterMDP(motDePasse);
+			utilisateur.setMotDePasse(motDePasseCripter);
+
+			try {
+
+				return utilisateurDAO.creerUtilisateur(utilisateur);
+
+			} catch (DALException e) {
+
+				throw new BLLException(e.getMessage());
+			}			
+		}
+	}
+
 }

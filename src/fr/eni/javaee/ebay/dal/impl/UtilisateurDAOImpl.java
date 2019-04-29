@@ -14,13 +14,17 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	private Connection connexion;
 	private static final String VERIFICATION_EMAIL = "SELECT count(no_utilisateur) as 'num_email' "
-			+ "FROM UTILISATEURS WHERE email =? ";
+														+ "FROM UTILISATEURS WHERE email =? ";
 	private static final String VERIFICATION_PSEUDO = "SELECT count(no_utilisateur) as 'num_pseudo' "
-			+ "FROM UTILISATEURS WHERE pseudo=?";
+														+ "FROM UTILISATEURS WHERE pseudo=?";
 	private static final String CONNECTER_UTILISATEUR = "SELECT * FROM utilisateurs WHERE pseudo = ? AND mot_de_passe = ?;";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS " + "(pseudo,nom,prenom,email,telephone,"
-			+ "rue,code_postal,ville,mot_de_passe)" + " values (?,?,?,?,?,?,?,?,?)";
+														+ "rue,code_postal,ville,mot_de_passe)" + " values (?,?,?,?,?,?,?,?,?)";
 	private static final String RECUPERE_UTILISATEUR = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?;";
+	private static final String MODIFIER_UTILISATEUR = "UPDATE UTILISATEURS " + 
+														"SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, "
+														+ "rue = ?, code_postal = ?, ville = ?, mot_de_passe = ? "
+														+ "WHERE no_utilisateur = ?;";
 	
 
 	public UtilisateurDAOImpl() throws DALException {
@@ -187,6 +191,34 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			throw new DALException("Echec requête récupérer un utilisateur ");
 		}		
 		return utilisateurRecupere;
+	}
+
+	@Override
+	public Utilisateur modifierUtilisateur(Utilisateur utilisateur) throws DALException {
+		
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(MODIFIER_UTILISATEUR);
+
+			prepare.setString(1, utilisateur.getPseudo());
+			prepare.setString(2, utilisateur.getNom());
+			prepare.setString(3, utilisateur.getPrenom());
+			prepare.setString(4, utilisateur.getEmail());
+			prepare.setString(5, utilisateur.getTelephone());
+			prepare.setString(6, utilisateur.getRue());
+			prepare.setString(7, utilisateur.getCodePostal());
+			prepare.setString(8, utilisateur.getVille());
+			prepare.setString(9, utilisateur.getMotDePasse());
+			prepare.setInt(10,  utilisateur.getNoUtilisateur());
+
+			prepare.executeUpdate();
+
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException("Echec requête modifier utilisateur", e);
+		}
+		return utilisateur;
+
 	}
 
 }
