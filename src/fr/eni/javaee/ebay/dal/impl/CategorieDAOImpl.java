@@ -30,9 +30,10 @@ public class CategorieDAOImpl implements CategorieDAO {
 			ResultSet resultat = prepare.executeQuery();
 
 			while (resultat.next()) {
+				int categorieId = resultat.getInt("no_categorie");
 				String libelle = resultat.getString("libelle");
 
-				Categorie categorie = new Categorie(libelle);
+				Categorie categorie = new Categorie(categorieId, libelle);
 
 				categories.add(categorie);
 
