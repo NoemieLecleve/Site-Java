@@ -16,6 +16,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 
 	private Connection connexion;
 	private static final String SELECT_CATEGORIES = "SELECT * FROM categories";
+	private static final String SELECT_CATEGORIE_BY_ID = "SELECT * FROM CATEGORIES WHERE no_categorie = ?;";
 
 	public CategorieDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
@@ -45,6 +46,30 @@ public class CategorieDAOImpl implements CategorieDAO {
 		}
 		return categories;
 
+	}
+
+	/**
+	 * Cette méthode permet de récupérer une catégorie avec son identifiant
+	 */
+	@Override
+	public Categorie recupererCategorie(int categorieId) throws DALException {
+		
+		Categorie categorie = null;
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(SELECT_CATEGORIE_BY_ID);
+			prepare.setInt(1, categorieId);
+			ResultSet resultat = prepare.executeQuery();
+			
+			if(resultat.next()) {
+				String libelle = resultat.getString("libelle");
+				categorie = new Categorie(categorieId, libelle);
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			throw new DALException("Echec requête récuperer une catégorie");
+		}
+		return categorie;
 	}
 
 }
