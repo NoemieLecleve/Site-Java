@@ -47,28 +47,19 @@ public class SupprimerUtilisateur extends HttpServlet {
 
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-
-		} catch (DALException e) {
-			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
-			rd.forward(request, response);
-			return;
-
-		}
-
-		try {
 			Utilisateur utilisateuraSupprimer = new Utilisateur();
 			utilisateuraSupprimer.setNoUtilisateur(idUtilisateur);
 			utilisateuraSupprimer = utilisateurManager.supprimerUtilisateur(utilisateuraSupprimer);
 			session.invalidate();
 			response.sendRedirect("home");
 
-		} catch (BLLException e) {
+		} 
+		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 			rd.forward(request, response);
-
 		}
+
 
 	}
 

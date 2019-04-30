@@ -21,11 +21,19 @@ public class ArticleDAOImpl implements ArticleDAO {
 	private static final String SELECT_ALL = "select nom_article, date_fin_encheres, a.imagePath as 'imagePath', u.no_utilisateur as no_utilisateur, "
 			+ " prix_vente, pseudo from  ARTICLES_VENDUS a"
 			+ " inner join  UTILISATEURS u on a.no_utilisateur = u.no_utilisateur;";
+	private static final String INSERER_ARTICLE = "INSERT INTO ARTICLES_VENDUS "
+			+ "(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, imagePath, no_utilisateur, no_categorie) " 
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+			
 
 	public ArticleDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
 	}
 
+	/**
+	 * Cette méthode liste tous les articles en ventes
+	 * @throws DALException
+	 */
 	public List<ArticleVendu> listerToutes() throws DALException {
 
 		List<ArticleVendu> articles = new ArrayList<ArticleVendu>();
@@ -50,11 +58,48 @@ public class ArticleDAOImpl implements ArticleDAO {
 				articles.add(article);
 			}
 
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException("Problème de création de liste d'articles");
 
 		}
 		return articles;
+	}
+
+	/**
+	 * Cette méthode permet de créer un nouvel article en base de donnée
+	 * @throws DALException
+	 */
+	@Override
+	public boolean creerArticle(ArticleVendu article) throws DALException {
+		
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(INSERER_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			prepare.setString(1, article.getNomArticle());
+			prepare.setString(2, article.getDescription());
+			prepare.setDate(3, (java.sql.Date) article.getDateDebutEncheres());
+			prepare.setDate(4, (java.sql.Date) article.getDateFinEncheres());
+			prepare.setInt(5, article.getMiseAPrix());
+			prepare.setString(6,  article.getImagePath());
+			prepare.setInt(7, article.getUtilisateur().getNoUtilisateur());
+			prepare.setInt(8, article.getCategorieArticle().getNoCategorie());
+			prepare.execute();
+			
+			ResultSet resultat = prepare.getGeneratedKeys();
+			
+			if(resultat.next()) {
+				article.setNoArticle(resultat.getInt(1));
+				return true;
+			}
+			else {
+				return false;
+			}			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			throw new DALException("Echec requête créer un article");
+		}		
 	}
 }

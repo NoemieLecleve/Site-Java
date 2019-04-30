@@ -1,6 +1,7 @@
 package fr.eni.javaee.ebay.servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -54,13 +55,12 @@ public class VendreArticle extends HttpServlet {
 			 
 			request.setAttribute("listeCategories", listeCategories);
 			
-		} catch (DALException | BLLException e) {
+		} 
+		catch (BLLException e) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
 			rd.forward(request, response);
 			request.setAttribute("message", e.getMessage());
 		}
-		
-	
 	
 	}
 	
@@ -68,19 +68,26 @@ public class VendreArticle extends HttpServlet {
 		
 		// 1:Récupération des paramétres de la requete
 		
-				String nomArticle = request.getParameter("nomArticle");
-				String description = request.getParameter("description");
-				String imagePath = request.getParameter("imagePath");
-				String rueRetrait = request.getParameter("rueRetrait");
-				String villeRetrait = request.getParameter("villeRetrait");
-				String codePostalRetrait = request.getParameter("codePostalRetrait");
-				
-				int noCategorie = Integer.parseInt(request.getParameter("noCategorie"));
-				int miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
-				   
-			    Date dateDebutEncheres=new SimpleDateFormat("dd/MM/yyyy").parse("dateDebutEncheres");
-			    
-			    Date dateFinEncheres=new SimpleDateFormat("dd/MM/yyyy").parse("dateFinEncheres");
+		String nomArticle = request.getParameter("nomArticle");
+		String description = request.getParameter("description");
+		String imagePath = request.getParameter("imagePath");
+		String rueRetrait = request.getParameter("rueRetrait");
+		String villeRetrait = request.getParameter("villeRetrait");
+		String codePostalRetrait = request.getParameter("codePostalRetrait");
+		
+		int noCategorie = Integer.parseInt(request.getParameter("noCategorie"));
+		int miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
+		   
+		Date dateDebutEncheres = null;
+		Date dateFinEncheres = null;
+		try {
+			  dateDebutEncheres = new SimpleDateFormat("dd/MM/yyyy").parse("dateDebutEncheres");
+			  dateFinEncheres=new SimpleDateFormat("dd/MM/yyyy").parse("dateFinEncheres");
+		} 
+		catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}			   
 		
 		// 2Récupération l'identifiant de l'utilisateur dans la session
 		
@@ -90,42 +97,43 @@ public class VendreArticle extends HttpServlet {
 		
 		// 3:Récupération de l'utilisateur via l'identifiant à la BLL -> DAO
 				
-			        UtilisateurManager utilisateurManager = null;
-			        CategorieManager categorieManager = null;
-			        ArticleManager  articleManager= null;
-			        
-			        utilisateurManager = ManagerFactory.getUtilisateurManageur();
-					
-			        categorieManager = ManagerFactory.getCategorieManager();
-			        
-			        articleManager = ManagerFactory.getArticleManager();
-					 
-				 //Creer un utilisateur,une categorie et un retrait:
-				 					 
-					Utilisateur utilisateur = new Utilisateur();
-					utilisateur.setNoUtilisateur(idUtilisateur);
-					utilisateur = utilisateurManager.recuperer(utilisateur);
-					
-					Categorie categorieArticle= new Categorie();
-					categorieArticle = categorieManager.recupererCategorie(noCategorie);
-					
-					Retrait retrait= new Retrait (rueRetrait,villeRetrait,codePostalRetrait);
-								      
-
+        UtilisateurManager utilisateurManager = null;
+        CategorieManager categorieManager = null;
+        ArticleManager  articleManager= null;
+        
+        try {
+			utilisateurManager = ManagerFactory.getUtilisateurManageur();
+			categorieManager   = ManagerFactory.getCategorieManager();
+			articleManager     = ManagerFactory.getArticleManager();
+			
+	        //Creer un utilisateur,une categorie et un retrait:
+			 
+			Utilisateur utilisateur = new Utilisateur();
+			utilisateur.setNoUtilisateur(idUtilisateur);
+			Categorie categorieArticle= new Categorie();
+			Retrait retrait= new Retrait (rueRetrait,villeRetrait,codePostalRetrait);
+			
+			utilisateur = utilisateurManager.recuperer(utilisateur);
+			categorieArticle = categorieManager.recupererCategorie(noCategorie);
+			
 	     // 4:Creer un article à partir des parametres de la JSP
-	 
+		 
 		   ArticleVendu articleVendu = new ArticleVendu(nomArticle, description, dateDebutEncheres,dateFinEncheres, 
 	                                                    miseAPrix,categorieArticle, utilisateur,retrait,imagePath);
 				
-				 
-				 
-		   ArticleVendu  article  = articleManager.creerArticle(articleVendu);
-
-
+		   ArticleVendu article = articleManager.creerArticle(articleVendu);
 		   request.setAttribute("article", article);
-		   
-		    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
+		   //TODO détail de la vente
+		    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
 			rd.forward(request, response);
+		} 
+        catch (BLLException e) {
+        	
+        	request.setAttribute("message", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
+			rd.forward(request, response);
+			
+		}
 		
 	}	 
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/DeconnexionServlet")
 public class DeconnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String PAGE_INDEX = "index.jsp";
+	private static final String PAGE_INDEX = "home";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,7 +31,7 @@ public class DeconnexionServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(true);
 		session.invalidate();	
-		response.sendRedirect("home");
+		response.sendRedirect(PAGE_INDEX);
 	}
 
 	/**

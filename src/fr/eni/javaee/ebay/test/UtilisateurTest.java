@@ -54,7 +54,7 @@ class UtilisateurTest {
 		
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-		} catch (DALException e) {
+		} catch (BLLException e) {
 			fail(e.getMessage());
 		}
 		/*

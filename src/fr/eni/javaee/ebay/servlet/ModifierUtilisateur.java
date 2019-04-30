@@ -68,14 +68,13 @@ public class ModifierUtilisateur extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");
 			rd.forward(request, response);
 
-		} catch (BLLException e) {
+		} 
+		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 			response.sendRedirect("home");
 			return;
 
-		} catch (DALException e) {
-			e.printStackTrace();
-		}
+		} 
 
 	}
 
@@ -112,23 +111,15 @@ public class ModifierUtilisateur extends HttpServlet {
 		UtilisateurManager utilisateurManager = null;
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-
-		} catch (DALException e) {
-			request.setAttribute("message", e.getMessage());
-
-		}
-
-		try {
 			utilisateurManager.modifierUtilisateur(utilisateur, MDPconfirm,	nouveauMDP);
 
 			response.sendRedirect("RecupererUtilisateur");
 			return;
-
 		} 
 		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-		}
 
+		}
 
 		try {
 
@@ -137,8 +128,8 @@ public class ModifierUtilisateur extends HttpServlet {
 
 			utilisateurBdd = utilisateurManager.recuperer(utilisateurBdd);
 			request.setAttribute("utilisateur", utilisateurBdd);
-
-		} catch (BLLException e) {
+		} 
+		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modifierProfil.jsp");

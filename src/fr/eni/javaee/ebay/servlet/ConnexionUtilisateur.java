@@ -49,20 +49,12 @@ public class ConnexionUtilisateur extends HttpServlet {
 
 		// Gestion d'erreur de connexion
 		UtilisateurManager utilisateurManager = null;
-		try {
-			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-		} catch (DALException e) {
-			//TODO revoir exeption
-			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
-			rd.forward(request, response);
-			return;
-		}
-
 		Utilisateur utilisateur = null;
 		try {
+			utilisateurManager = ManagerFactory.getUtilisateurManageur();
 			utilisateur = utilisateurManager.seConnecter(utilisateurJSP);
 		} catch (BLLException e) {
+			//TODO revoir exeption
 			request.setAttribute("message", e.getMessage());
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 			rd.forward(request, response);
@@ -85,9 +77,6 @@ public class ConnexionUtilisateur extends HttpServlet {
 			request.setAttribute("message", erreur);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 			rd.forward(request, response);
-
 		}
-
 	}
-
 }

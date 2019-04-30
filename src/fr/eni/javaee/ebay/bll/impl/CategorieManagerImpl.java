@@ -28,4 +28,24 @@ public class CategorieManagerImpl implements CategorieManager {
 		}
 	}
 
+	/**
+	 * Cette méthode demande à CategorieDAO de récupérer une catégorie avec son identifiant
+	 * @param no_categorie
+	 * @throws BLLException
+	 */
+	@Override
+	public Categorie recupererCategorie(int categorieId) throws BLLException {
+		
+		Categorie categorie = null;
+		
+		try {
+			categorie = categorieDAO.recupererCategorie(categorieId);
+		} 
+		catch (DALException e) {
+			e.printStackTrace();
+			throw new BLLException(e.getMessage());
+		}
+		return categorie;
+	}
+
 }

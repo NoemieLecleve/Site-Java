@@ -44,21 +44,12 @@ public class RecupererUtilisateur extends HttpServlet {
 		UtilisateurManager utilisateurManager = null;
 		try {
 			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-		} catch (DALException e) {
-			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profil.jsp");
-			rd.forward(request, response);
-			return;
-		}
-					
-		try {
 			 
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur.setNoUtilisateur(idUtilisateur);
 			
 			utilisateur = utilisateurManager.recuperer(utilisateur);
 			request.setAttribute("utilisateur", utilisateur);
-			
 		} 
 		catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
@@ -66,6 +57,7 @@ public class RecupererUtilisateur extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
+
 		// 3: Transmettre l'utilisateur à la JSP
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profil.jsp");
