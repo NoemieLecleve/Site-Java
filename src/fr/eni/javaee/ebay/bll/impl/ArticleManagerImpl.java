@@ -48,7 +48,7 @@ public class ArticleManagerImpl implements ArticleManager {
 			validerDateFin(article.getDateFinEncheres());
 			
 			// Validation du retrait de l'article
-			validerRue.article.get
+			//TODO validerRue(article.)
 			articleDAO.creerArticle(article);
 			return article;
 			
