@@ -41,10 +41,14 @@ public class ArticleManagerImpl implements ArticleManager {
 	public ArticleVendu creerArticle(ArticleVendu article) throws BLLException{
 		
 		try {
+			// Validation des champs de l'article
 			validerNom(article.getNomArticle());
 			validerDescription(article.getDescription());
 			validerDateDebut(article.getDateDebutEncheres());
 			validerDateFin(article.getDateFinEncheres());
+			
+			// Validation du retrait de l'article
+			validerRue.article.get
 			articleDAO.creerArticle(article);
 			return article;
 			
@@ -59,33 +63,46 @@ public class ArticleManagerImpl implements ArticleManager {
 		}		
 	}
 	
-	public void validerNom(String champ) throws BLLException{
-		
+	public void validerNom(String champ) throws BLLException{		
 		
 		if(champ.isEmpty() || champ == null) {
 			throw new BLLException ("Le nom est obligatoire");
 		}		
 	}
-	public void validerDescription(String champ) throws BLLException{
-		
+	public void validerDescription(String champ) throws BLLException{		
 		
 		if(champ.isEmpty() || champ == null) {
 			throw new BLLException ("La description est obligatoire");
 		}		
 	}
-	public void validerDateDebut(Date date) throws BLLException{
-		
+	public void validerDateDebut(Date date) throws BLLException{		
 		
 		if(date == null) {
 			throw new BLLException ("La date de début est obligatoire");
 		}		
 	}
-	public void validerDateFin(Date date) throws BLLException{
-		
+	public void validerDateFin(Date date) throws BLLException{		
 		
 		if(date == null) {
 			throw new BLLException ("La date de fin est obligatoire");
 		}		
 	}
-
+	public void validerRue(String champ) throws BLLException{		
+		
+		if(champ.isEmpty() || champ == null) {
+			throw new BLLException ("La rue est obligatoire");
+		}		
+	}
+	public void validerCodePostal(String champ) throws BLLException{		
+		
+		if(champ.isEmpty() || champ == null) {
+			throw new BLLException ("Le codepostal est obligatoire");
+		}		
+	}
+	public void validerVille(String champ) throws BLLException{		
+		
+		if(champ.isEmpty() || champ == null) {
+			throw new BLLException ("La ville est obligatoire");
+		}		
+	}
 }
