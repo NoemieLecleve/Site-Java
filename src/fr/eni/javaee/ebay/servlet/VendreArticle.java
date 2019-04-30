@@ -93,7 +93,10 @@ public class VendreArticle extends HttpServlet {
 			        UtilisateurManager utilisateurManager = null;
 				 
 			        utilisateurManager = ManagerFactory.getUtilisateurManageur();
-						
+					
+			        categorieManager = ManagerFactory.getCategorieManager();
+			        
+			        ArticleManager = ManagerFactory.getArticleManager();
 					 
 				 //Creer un utilisateur,une categorie et un retrait:
 				 					 
@@ -102,7 +105,7 @@ public class VendreArticle extends HttpServlet {
 					utilisateur = utilisateurManager.recuperer(utilisateur);
 					
 					Categorie categorieArticle= new Categorie();
-					categorieArticle = utilisateurManager.recupererCategorie(noCategorie);
+					categorieArticle = categorieManager.recupererCategorie(noCategorie);
 					
 					Retrait retrait= new Retrait (rueRetrait,villeRetrait,codePostalRetrait);
 								      
@@ -114,7 +117,7 @@ public class VendreArticle extends HttpServlet {
 				
 				 
 				 
-		   ArticleVendu  article  = utilisateurManager.creerArticle(articleVendu);
+		   ArticleVendu  article  = ArticleManager.creerArticle(articleVendu);
 
 
 		   request.setAttribute("article", article);
