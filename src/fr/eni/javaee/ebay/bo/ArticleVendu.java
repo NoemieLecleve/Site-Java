@@ -60,7 +60,14 @@ public class ArticleVendu {
 		this.imagePath = imagePath;
 	}
 
-	 
+	public ArticleVendu(String nomArticle, Date dateFinEncheres, int miseAPrix, String imagePath, Utilisateur utilisateur) {
+		super();
+		this.nomArticle = nomArticle;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.utilisateur = utilisateur;
+		this.imagePath = imagePath;
+	}
 
 
 	/**
