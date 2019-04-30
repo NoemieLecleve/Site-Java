@@ -24,6 +24,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 	private static final String INSERER_ARTICLE = "INSERT INTO ARTICLES_VENDUS "
 			+ "(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, imagePath, no_utilisateur, no_categorie) " 
 			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+	private static final String AJOUTER_LIEU_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
 			
 
 	public ArticleDAOImpl() throws DALException {
@@ -91,6 +92,13 @@ public class ArticleDAOImpl implements ArticleDAO {
 			
 			if(resultat.next()) {
 				article.setNoArticle(resultat.getInt(1));
+				//no_article,rue, code_postal, ville
+				prepare = connexion.prepareStatement(AJOUTER_LIEU_RETRAIT);
+				prepare.setInt(1, article.getNoArticle());
+				prepare.setString(2, article.getRetrait().getRueRetrait());
+				prepare.setString(3, article.getRetrait().getCodePostalRetrait());
+				prepare.setString(4, article.getRetrait().getVilleRetrait());
+				prepare.execute();
 				return true;
 			}
 			else {

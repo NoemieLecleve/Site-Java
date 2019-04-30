@@ -70,6 +70,16 @@ public class ArticleVendu {
 	}
 
 
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+
 	/**
 	 * @return the imagePath
 	 */
