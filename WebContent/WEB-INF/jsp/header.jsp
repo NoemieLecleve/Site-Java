@@ -17,7 +17,7 @@
 	                        <a class="nav-link" href="#">Enchères</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="#">Vendre un article</a>
+	                        <a class="nav-link" href="VendreArticle">Vendre un article</a>
 	                    </li>
 	                    <li class="nav-item">
 	                        <a class="nav-link" href="RecupererUtilisateur">${sessionPseudoUtilisateur}</a>
@@ -34,7 +34,7 @@
 								  
 								  <c:forEach var="categorie" items="${listeCategories}">
 								  
-								  <option value="categorie">${categorie.libelle}</option>
+								  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 								  
 								  </c:forEach>
 							</select>    
