@@ -253,13 +253,36 @@ th{
 /************ Page Vente article ************/
 
 .vente h2{
-	font-size: 30px;
-	color: 3C3C3C;
-	margin: 25px;
+	font-size: 28px;
+	color: #6F6F6F;
+	margin: 40px;
+	text-align:center;
 }
 
 .vente legend{
 	padding-right: 60px;
+	color: #686E6F;
+	display: block;
+	text-decoration: underline overline #F9FBFB;
+}
+
+.vente label {
+	font-weight: bold;
+	color: #51BCC9;
+	text-align: left;
+	font-size: 17px;
+}
+
+ .vente fieldset div {
+ text-align: left;
+ }
+
+.cadre{
+	margin: 10px;
+	margin-left: 200px;
+	margin-right: 200px;
+	background: #e6f2ff;
+	border-radius: 7px;
 }
 
 #retrait{

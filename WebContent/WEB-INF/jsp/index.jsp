@@ -29,9 +29,9 @@
 	  <div>
      <h1 class="text-center">Trouvez l'objet de vos rêves </h1>
      </div>
-     
-     <div class="row">
-     
+	   <c:if test="${sessionScope.sessionIdUtilisateur != null}">
+	    <!--  Si l'utilisateur est connecté, on affiche les select -->
+	     <div class="row">
           <div class="border border-light border my-2 rounded element4 " >
 	     
 		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
@@ -54,8 +54,6 @@
 				    <label class="custom-control-label font-weight-light" for="customControlValidation4">Mes enchères remportées</label> 
 				  </div>
 		  </div>
-		  
-		  
 		   <div class="border border-light border my-2 rounded element5 " >
 		   
 		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
@@ -78,7 +76,8 @@
 				    <label class="custom-control-label font-weight-light" for="customControlValidation8">Ventes terminées</label> 
 				  </div>
 		  </div>
-	  </div>
+	   </div>
+	  </c:if>
       <br>
       
 	  <div class="element row" >

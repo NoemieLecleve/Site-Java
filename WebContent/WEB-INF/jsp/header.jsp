@@ -4,6 +4,7 @@
 
        <c:choose>
 		    <c:when test="${sessionScope.sessionIdUtilisateur != null}">
+		    <!--  Si l'utilisateur est connecté, on affiche le contenu -->
 		     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	            <a class="navbar-brand" href="home">Accueil</a>
 	            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +27,7 @@
 	                        <a class="nav-link" href="DeconnexionServlet">Se Déconnecter</a>
 	                    </li>
 	                   </ul>
-	                <form class="form-inline my-2 my-lg-0">
+	                <form method="POST" action="IndexServlet" class="form-inline my-2 my-lg-0" >
 	                <ul>
 		                 <li class="nav-item dropdown">
 						    <select class="mdb-select md-form mr-2 mt-3 font-weight-light" >

@@ -18,11 +18,14 @@
 		<%@ include file="header.jsp" %>
 	</header>
 <main class="container vente">
-		<h2 class="text-center">Nouvelle vente</h2>
+		<div class="cadre text-center">
+			<h2 class="text-center">Nouvelle vente</h2>
+		</div>
 		<div class="image">			
 		</div>
 		<form method="POST" action="VendreArticle" class="form-horizontal ">
 		  <div class="form-group row justify-content-center">
+		  
 		  	<fieldset class="col-4 ">
 		  		<legend>Article à vendre</legend>
 				    <div class="col-md-10 mb-2">
