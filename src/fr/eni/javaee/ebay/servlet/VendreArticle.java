@@ -91,12 +91,14 @@ public class VendreArticle extends HttpServlet {
 		// 3:Récupération de l'utilisateur via l'identifiant à la BLL -> DAO
 				
 			        UtilisateurManager utilisateurManager = null;
-				 
+			        CategorieManager categorieManager = null;
+			        ArticleManager  articleManager= null;
+			        
 			        utilisateurManager = ManagerFactory.getUtilisateurManageur();
 					
 			        categorieManager = ManagerFactory.getCategorieManager();
 			        
-			        ArticleManager = ManagerFactory.getArticleManager();
+			        articleManager = ManagerFactory.getArticleManager();
 					 
 				 //Creer un utilisateur,une categorie et un retrait:
 				 					 
@@ -117,7 +119,7 @@ public class VendreArticle extends HttpServlet {
 				
 				 
 				 
-		   ArticleVendu  article  = ArticleManager.creerArticle(articleVendu);
+		   ArticleVendu  article  = articleManager.creerArticle(articleVendu);
 
 
 		   request.setAttribute("article", article);
