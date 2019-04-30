@@ -20,7 +20,7 @@
 <main class="container">
 		<h2 class="text-center">Nouvelle vente</h2>
 		<div class="image">	
-			<img src="${article.imagePath}" class="rounded float-left img-thumbnail">
+			
 		</div>
 		<form method="POST" action="VendreArticle" class="form-horizontal ">
 		  <div class="form-group row justify-content-center">
@@ -42,6 +42,10 @@
 							 <option value="${categorie.noCategorie}">${categorie.libelle}</option> 
 							 </c:forEach>
 						</select>  
+				    </div>
+				    <div class="col-md-9 mb-1">
+				    	<label for="imagePath" class="control-label">Photo de l'article</label>
+				    	<input type="text" class="form-control" name="imagePath" placeholder="http/..." value="${article.imagePath}" >
 				    </div>
 				    <div class="col-md-9 mb-1">
 				      <label for="miseAPrix"  class="control-label">Mise a prix</label>
