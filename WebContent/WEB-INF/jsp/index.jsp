@@ -45,13 +45,13 @@
 				  </div>
 				  
 				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation3" name="enchere3" required>
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation3" name="enchere2" required>
 				    <label class="custom-control-label font-weight-light" for="customControlValidation3">Mes enchères en cours</label> 
 				  </div>
 				  
 				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation4" name="enchere4" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation4">Mes enchères en cours</label> 
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation4" name="enchere2" required>
+				    <label class="custom-control-label font-weight-light" for="customControlValidation4">Mes enchères remportées</label> 
 				  </div>
 		  </div>
 		  
@@ -64,17 +64,17 @@
 				  </div>
 				
 				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type= "checkbox" class="custom-control-input" id="customControlValidation6" name="enchere5" required>
+				    <input type= "checkbox" class="custom-control-input" id="customControlValidation6" name="enchere2" required>
 				    <label class="custom-control-label font-weight-light" for="customControlValidation6">Mes ventes en cours</label>
 				  </div>
 				  
 				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation7" name="enchere6" required>
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation7" name="enchere2" required>
 				    <label class="custom-control-label font-weight-light" for="customControlValidation7">Ventes non débutées</label> 
 				  </div>
 				  
 				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation8" name="enchere7" required>
+				    <input type="checkbox" class="custom-control-input" id="customControlValidation8" name="enchere2" required>
 				    <label class="custom-control-label font-weight-light" for="customControlValidation8">Ventes terminées</label> 
 				  </div>
 		  </div>
@@ -91,7 +91,7 @@
 	                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
 	                <h6 class="card-text"> ${article.miseAPrix}€</h6>
 	
-	                <a href="#" class="btn btn-primary">Voir l'ojet</a>
+	                <a href="DetailVente" class="btn btn-primary">détail Vente</a>
                 </div>		                
              </div>
         </c:forEach>

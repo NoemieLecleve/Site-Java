@@ -48,6 +48,7 @@ public class VendreArticle extends HttpServlet {
 			List<Categorie> listeCategories = categorieManager.listeCategories();
 
 			request.setAttribute("listeCategories", listeCategories);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
 			rd.forward(request, response);
 
@@ -68,19 +69,21 @@ public class VendreArticle extends HttpServlet {
 		String description = request.getParameter("description");
 		String imagePath = request.getParameter("imagePath");
 		String rueRetrait = request.getParameter("rueRetrait");
+		String dateDebutEncheresJSP=request.getParameter("dateDebutEncheres");
+		String dateFinEncheresJSP=request.getParameter("dateFinEncheres");
 		String villeRetrait = request.getParameter("villeRetrait");
 		String codePostalRetrait = request.getParameter("codePostalRetrait");
 
 		int noCategorie = Integer.parseInt(request.getParameter("noCategorie"));
+		System.out.println("*******************" + request.getParameter("miseAPrix"));
 		int miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
 
 		Date dateDebutEncheres = null;
 		Date dateFinEncheres = null;
 		try {
-			dateDebutEncheres = new SimpleDateFormat("dd/MM/yyyy").parse("dateDebutEncheres");
-			dateFinEncheres = new SimpleDateFormat("dd/MM/yyyy").parse("dateFinEncheres");
+			dateDebutEncheres = new SimpleDateFormat("yyyy-MM-dd").parse(dateDebutEncheresJSP);
+			dateFinEncheres = new SimpleDateFormat("yyyy-MM-dd").parse(dateFinEncheresJSP);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
