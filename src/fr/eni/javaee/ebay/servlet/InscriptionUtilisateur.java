@@ -74,7 +74,7 @@ public class InscriptionUtilisateur extends HttpServlet {
 
 		// Creer un utilisateur à partir de la JSP
 		Utilisateur utilisateurJSP = new Utilisateur(identifiant, nom, prenom, email, telephone, rue, codePostal, ville,
-				motDePasse, CREDIT, ADMIN);
+				                                     motDePasse, CREDIT, ADMIN);
 
 		UtilisateurManager utilisateurManager = null;
 		try {

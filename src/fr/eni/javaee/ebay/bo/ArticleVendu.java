@@ -11,28 +11,20 @@ public class ArticleVendu {
 	private Date dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
-	private int etatVente;
+	private boolean etatVente;
 	private Categorie categorieArticle;
 	private Utilisateur utilisateur;
+	private Retrait retrait;
 	private String imagePath;
 
 	public ArticleVendu() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param noArticle
-	 * @param nomArticle
-	 * @param description
-	 * @param dateDebutEncheres
-	 * @param dateFinEncheres
-	 * @param miseAPrix
-	 * @param prixVente
-	 * @param etatVente
-	 * @param categorieArticle
-	 */
+	 
 	public ArticleVendu(int noArticle, String nomArticle, String description, Date dateDebutEncheres,
-			Date dateFinEncheres, int miseAPrix, int prixVente, int etatVente, Categorie categorieArticle) {
+			Date dateFinEncheres, int miseAPrix, int prixVente, boolean etatVente, Categorie categorieArticle,Utilisateur utilisateur, Retrait retrait,String imagePath ) {
+		
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -42,16 +34,31 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 		this.etatVente = etatVente;
 		this.categorieArticle = categorieArticle;
-	}
-
-	public ArticleVendu(String nomArticle, Date dateFinEncheres, int prixVente, String imagePath, Utilisateur utilisateur) {
-		
-		this.nomArticle = nomArticle;
-		this.dateFinEncheres = dateFinEncheres;
-		this.prixVente = prixVente;
 		this.utilisateur = utilisateur;
+		this.retrait = retrait;
 		this.imagePath = imagePath;
 	}
+	
+
+
+
+	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres,Date dateFinEncheres, 
+			            int miseAPrix,Categorie categorieArticle,Utilisateur utilisateur, Retrait retrait,String imagePath ) {
+		
+		 
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.categorieArticle = categorieArticle;
+		this.utilisateur = utilisateur;
+		this.retrait = retrait;
+		this.imagePath = imagePath;
+	}
+
+	 
+
 
 	/**
 	 * @return the imagePath
@@ -205,7 +212,7 @@ public class ArticleVendu {
 	/**
 	 * @return the etatVente
 	 */
-	public int getEtatVente() {
+	public boolean getEtatVente() {
 		return etatVente;
 	}
 
@@ -213,7 +220,7 @@ public class ArticleVendu {
 	 * @param etatVente
 	 *            the etatVente to set
 	 */
-	public void setEtatVente(int etatVente) {
+	public void setEtatVente(boolean etatVente) {
 		this.etatVente = etatVente;
 	}
 
