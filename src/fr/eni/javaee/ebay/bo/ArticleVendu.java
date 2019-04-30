@@ -9,6 +9,9 @@ public class ArticleVendu {
 	private String description;
 	private Date dateDebutEncheres;
 	private Date dateFinEncheres;
+	/**
+	 * Prix initial de l'objet
+	 */
 	private int miseAPrix;
 	private int prixVente;
 	private int etatVente;

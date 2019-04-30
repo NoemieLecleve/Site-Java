@@ -7,6 +7,7 @@ import fr.eni.javaee.ebay.dal.DALException;
 
 public interface ArticleManager {
 	
-	List<ArticleVendu> listerToutes() throws BLLException;	
+	List<ArticleVendu> listerToutes() throws BLLException;
+	ArticleVendu creerArticle(ArticleVendu article) throws BLLException;
 
 }

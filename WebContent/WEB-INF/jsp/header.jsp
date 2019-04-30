@@ -39,7 +39,7 @@
 								  </c:forEach>
 							</select>    
 		                   </li>
-	                   </ul>
+	                 </ul>
 	                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
 	                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
 	                </form>

@@ -1,5 +1,6 @@
 package fr.eni.javaee.ebay.bll.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import fr.eni.javaee.ebay.bll.ArticleManager;
@@ -21,7 +22,6 @@ public class ArticleManagerImpl implements ArticleManager {
 	/**
 	 * Liste toutes les encheres du site
 	 * @throws BLLException 
-	 * @throws DALException 
 	 */
 	@Override
 	public List<ArticleVendu> listerToutes() throws BLLException  {
@@ -32,6 +32,60 @@ public class ArticleManagerImpl implements ArticleManager {
 		catch (DALException e) {
 			throw new BLLException(e.getMessage());
 		}
+	}
+	/**
+	 * Cette méthode transmet un article 
+	 * @throws BLLException
+	 */
+	@Override
+	public ArticleVendu creerArticle(ArticleVendu article) throws BLLException{
+		
+		try {
+			validerNom(article.getNomArticle());
+			validerDescription(article.getDescription());
+			validerDateDebut(article.getDateDebutEncheres());
+			validerDateFin(article.getDateFinEncheres());
+			articleDAO.creerArticle(article);
+			return article;
+			
+		} 
+		catch (BLLException e) {					
+			e.printStackTrace();
+			throw new BLLException(e.getMessage());
+		} 
+		catch (DALException e) {				
+			e.printStackTrace();
+			throw new BLLException(e.getMessage());
+		}		
+	}
+	
+	public void validerNom(String champ) throws BLLException{
+		
+		
+		if(champ.isEmpty() || champ == null) {
+			throw new BLLException ("Le nom est obligatoire");
+		}		
+	}
+	public void validerDescription(String champ) throws BLLException{
+		
+		
+		if(champ.isEmpty() || champ == null) {
+			throw new BLLException ("La description est obligatoire");
+		}		
+	}
+	public void validerDateDebut(Date date) throws BLLException{
+		
+		
+		if(date == null) {
+			throw new BLLException ("La date de début est obligatoire");
+		}		
+	}
+	public void validerDateFin(Date date) throws BLLException{
+		
+		
+		if(date == null) {
+			throw new BLLException ("La date de fin est obligatoire");
+		}		
 	}
 
 }

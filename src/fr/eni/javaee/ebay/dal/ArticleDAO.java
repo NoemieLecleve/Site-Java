@@ -7,5 +7,6 @@ import fr.eni.javaee.ebay.bo.ArticleVendu;
 public interface ArticleDAO {
 
 	List<ArticleVendu> listerToutes() throws DALException;
+	boolean creerArticle(ArticleVendu article) throws DALException;
 
 }
