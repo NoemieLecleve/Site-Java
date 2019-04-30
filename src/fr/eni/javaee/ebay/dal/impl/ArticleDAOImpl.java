@@ -77,11 +77,14 @@ public class ArticleDAOImpl implements ArticleDAO {
 		
 		try {
 			PreparedStatement prepare = connexion.prepareStatement(INSERER_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			java.sql.Date dateDebutSQL = new java.sql.Date(article.getDateDebutEncheres().getTime());
+			java.sql.Date dateFinSQL = new java.sql.Date(article.getDateFinEncheres().getTime());
 
 			prepare.setString(1, article.getNomArticle());
 			prepare.setString(2, article.getDescription());
-			prepare.setDate(3, (java.sql.Date) article.getDateDebutEncheres());
-			prepare.setDate(4, (java.sql.Date) article.getDateFinEncheres());
+			prepare.setDate(3, dateDebutSQL);
+			prepare.setDate(4, dateFinSQL);
 			prepare.setInt(5, article.getMiseAPrix());
 			prepare.setString(6,  article.getImagePath());
 			prepare.setInt(7, article.getUtilisateur().getNoUtilisateur());
