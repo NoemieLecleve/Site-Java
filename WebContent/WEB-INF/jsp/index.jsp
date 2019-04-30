@@ -89,7 +89,7 @@
 	            <div class="card-body">
 	                <h5 class="card-title">${article.nomArticle} </h5>
 	                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
-	                <h6 class="card-text"> ${article.prixVente}€</h6>
+	                <h6 class="card-text"> ${article.miseAPrix}€</h6>
 	
 	                <a href="#" class="btn btn-primary">Voir l'ojet</a>
                 </div>		                
