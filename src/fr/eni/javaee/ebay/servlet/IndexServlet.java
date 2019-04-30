@@ -55,7 +55,7 @@ public class IndexServlet extends HttpServlet {
 
 			request.setAttribute("listeArticles", listeArticles);
 			request.setAttribute("listeCategories", listeCategories);
-		} catch (DALException | BLLException e) {
+		} catch (BLLException e) {
 
 			request.setAttribute("message", e.getMessage());
 		}

@@ -11,26 +11,44 @@ public class ManagerFactory {
 	private static ArticleManager articleManager;
 	private static CategorieManager categorieManager;
 
-	public static UtilisateurManager getUtilisateurManageur() throws DALException  {
+	public static UtilisateurManager getUtilisateurManageur() throws BLLException  {
 		
 		if(utilisateurManager == null) {
-			utilisateurManager = new UtilisateurManagerImpl();
+			try {
+				utilisateurManager = new UtilisateurManagerImpl();
+			} catch (DALException e) {
+				
+				e.printStackTrace();
+				throw new BLLException(e.getMessage());
+			}
 		}		
 		return utilisateurManager;
 	}
 	
-	public static ArticleManager getArticleManager() throws DALException {
+	public static ArticleManager getArticleManager() throws BLLException {
 		
 		if(articleManager == null) {
-			articleManager = new ArticleManagerImpl();
+			try {
+				articleManager = new ArticleManagerImpl();
+			} catch (DALException e) {
+				
+				e.printStackTrace();
+				throw new BLLException(e.getMessage());
+			}
 		}
 		return articleManager;
 	}
 	
-	public static CategorieManager getCategorieManager() throws DALException{
+	public static CategorieManager getCategorieManager() throws BLLException{
 		
 		if(categorieManager == null) {
-			categorieManager = new CategorieManagerImpl();
+			try {
+				categorieManager = new CategorieManagerImpl();
+			} catch (DALException e) {
+				
+				e.printStackTrace();
+				throw new BLLException(e.getMessage());
+			}
 		}		
 		return categorieManager;
 	}
