@@ -17,10 +17,9 @@
 	<header>
 		<%@ include file="header.jsp" %>
 	</header>
-<main class="container">
+<main class="container vente">
 		<h2 class="text-center">Nouvelle vente</h2>
-		<div class="image">	
-			
+		<div class="image">			
 		</div>
 		<form method="POST" action="VendreArticle" class="form-horizontal ">
 		  <div class="form-group row justify-content-center">
@@ -60,7 +59,7 @@
 					      <input type="date" class="form-control" name="dateFinEncheres" value="${article.dateFinEncheres}" required>
 					   </div>
 				 </fieldset>
-		    <fieldset class="col-4 col align-self-center border">
+		    <fieldset class="col-4 col align-self-center" id="retrait">
 		    	<legend class="">Retrait</legend>
 				    <div class="col-md-10 mb-2">
 					    <label for="rue" class="control-label">Rue</label>
@@ -81,6 +80,7 @@
 		  		<button class="btn btn-danger btn-lg col-2" type="reset">Annuler</button>
 		  </div>
 	</form>
+	 	<p class="erreur"> ${message}</p>	
 </main>
 </body>
 </html>

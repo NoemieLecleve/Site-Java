@@ -219,7 +219,7 @@ select{
 	
 }
 
-/* Page profil  */
+/************ Page profil  ************/
 
 tr {
 	text-align: left;
@@ -236,24 +236,33 @@ th{
 	color: #506267;
 }
 
-/* Page modifier profil  */
+/********** Page modifier profil  *************/
 
-.element4{
-
-    
+.element4{  
     margin-left: 600px;
-    
-    
-
 }
-.element5{
 
-  
-    margin-left: 200px;
+.element5{
+   margin-left: 200px;
     margin-right: 100px;
     
  
-    
-
 }
 
+
+/************ Page Vente article ************/
+
+.vente h2{
+	font-size: 30px;
+	color: 3C3C3C;
+	margin: 25px;
+}
+
+.vente legend{
+	padding-right: 60px;
+}
+
+#retrait{
+	
+	
+}
