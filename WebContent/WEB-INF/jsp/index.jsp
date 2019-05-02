@@ -123,7 +123,7 @@
 		                <h5 class="card-title">${article.nomArticle} </h5>
 		                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
 		                <h6 class="card-text"> ${article.miseAPrix}&euro;</h6>
-		                <a href="DetailVente" class="btn btn-primary">détail Vente</a>
+		                <a href="DetailVente?articleId=${article.noArticle}" class="btn btn-primary">détail Vente</a>
 	                </div>		                
 	             </div>
 	        </c:forEach>
