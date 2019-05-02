@@ -72,28 +72,32 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//TODO Transmettre les catégories
 System.out.println(">>>>>>>>>>>>>>>n°catégorie" + request.getParameter(CHAMP_CATEGORIE));
 System.out.println(">>>>>>>>>>>>>>>nom" + request.getParameter(CHAMP_RECHERCHE));
 		int noCategorie = Integer.parseInt(request.getParameter(CHAMP_CATEGORIE));
 		String nomArticle = request.getParameter(CHAMP_RECHERCHE);
 
 		RechercheManager rechercheManager = null;
-
+		CategorieManager categorieManager = null;
+		
 		try {
 			rechercheManager = ManagerFactory.getRechercheManager();
-			rechercheManager.articleRechercher(noCategorie, nomArticle);
+			categorieManager = ManagerFactory.getCategorieManager();			
+			
+			List<ArticleVendu> listeArticles = rechercheManager.articleRechercher(noCategorie, nomArticle);
+			List<Categorie> listeCategories = categorieManager.listeCategories();
 
-			RequestDispatcher rd = request.getRequestDispatcher(PAGE_INDEX);
-			rd.forward(request, response);
+			request.setAttribute("listeArticles", listeArticles);
+			request.setAttribute("listeCategories", listeCategories);
 
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher(PAGE_INDEX);
-			rd.forward(request, response);
 
 		} 
 
-		// doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher(PAGE_INDEX);
+		rd.forward(request, response);
 
 	}
 

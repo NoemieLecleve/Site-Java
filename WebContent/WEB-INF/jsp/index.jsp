@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -122,7 +122,7 @@
 		               <div class="card-body">
 		                <h5 class="card-title">${article.nomArticle} </h5>
 		                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
-		                <h6 class="card-text"> ${article.miseAPrix}€</h6>
+		                <h6 class="card-text"> ${article.miseAPrix}&euro;</h6>
 		                <a href="DetailVente" class="btn btn-primary">détail Vente</a>
 	                </div>		                
 	             </div>
