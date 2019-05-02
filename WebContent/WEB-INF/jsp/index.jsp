@@ -25,19 +25,19 @@
 </header>
   
 
-<main> 
+<main class="index"> 
 
    
       <div class="row">
-		<div class="col">
+		<div class="col" id="nopadding">
 	      <c:if test="${sessionScope.sessionIdUtilisateur != null}">
 	      <!--  Si l'utilisateur est connecté, on affiche les select -->
 	       <form>
-			  <div class="form-group row">
+			  <div class="form-group row col-11" id="nopadding">
 			    <input type="text" class="form-control" id="texte" placeholder="Nom de l'article ?">
 			  </div>
 			  <div class="form-group row">
-			     <select class="mdb-select md-form mr-2 mt-3 font-weight-light"  name="noCategorie">
+			     <select class="mdb-select md-form ml-3 mt-1 font-weight-light"  name="noCategorie">
 					  <option  value="" disabled selected>Objets par catégorie</option>
 					  
 					  <c:forEach var="categorie" items="${listeCategories}">
@@ -52,7 +52,7 @@
 			      <div class="col-sm-12">
 			      
 			      <div class="form-check">
-			         <input type="checkbox" class="custom-control-input" id="Ventes">
+			         <input type="radio" class="custom-control-input" id="Ventes" name="cocher" value="1">
                      <label class="custom-control-label" for="Ventes">Ventes</label>
 				    </div>
 			        <div class="form-check">
@@ -74,8 +74,8 @@
 			       <div class="col-sm-12">
 			      
 			      <div class="form-check">
-			         <input type="checkbox" class="custom-control-input" id="Ventes">
-                     <label class="custom-control-label" for="Ventes">Achats</label>
+			         <input type="radio" class="custom-control-input" id="Achats" name="cocher" value="2">
+                     <label class="custom-control-label" for="Achats">Achats</label>
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
@@ -97,16 +97,16 @@
 			  </fieldset>
 			  <div class="form-group row">
 			    <div class="col-sm-10">
-			      <button type="submit" class="btn btn-primary">Sign in</button>
+			      <button type="submit" class="btn btn-outline-info btn-lg btn-block">Rechercher</button>
 			    </div>
 			  </div>
 			</form>
 		  </c:if>
 		  </div>
-		  <div class="col-10">
+		  <div class="col-10" id="nopadding">
 	            <div id="imgheader">
 			   		<h1 class="text-center" id="h1">Trouvez l'objet de vos rêves ! </h1>
-				</div>
+			</div>
 	  </div>
 	  </div>
 	     
@@ -117,13 +117,13 @@
 		    <div class="col-sm-1"></div>
 		      <div class="col-sm-10 element2 ">
       		     <c:forEach items="${listeArticles}" var="article">     
-		         <div class="card  text-center " style="width: 18rem;">
+		         <div class="card  text-center mt-3" style="width: 18rem;">
 		            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
 		               <div class="card-body">
 		                <h5 class="card-title">${article.nomArticle} </h5>
-		                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
+		                <h6 class="card-text">Date de début : ${article.dateFinEncheres}</h6>
 		                <h6 class="card-text"> ${article.miseAPrix}€</h6>
-		                <a href="DetailVente" class="btn btn-primary">détail Vente</a>
+		                <a href="DetailVente" class="btn btn-info">Voir le détail</a>
 	                </div>		                
 	             </div>
 	        </c:forEach>

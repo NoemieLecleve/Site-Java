@@ -1,65 +1,5 @@
 
-header nav{
-	height: 70px;
-}
 
-#imgheader{
-	background-image: url(../images/header.jpg);
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 568px;
-	padding: 125px 0 125px;
-}
-
-.bandeautitre {
-	display: block;
-
-}
-
-main{
-    
-    margin-left: auto;
-    margin-right: auto;
-    
-}
-
-.element{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    
-
-}
-
-.element2{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding-top: 100px;
-
-}
-form {
-	
-	margin-top: 50px;
-	margin-left: 25px;
-}
-.card{
-	
-	height: 420px;
-}
-
-#img{
-
-    height: 220px;
-}
-
-
-#h1{
- 	font-size: 44px;
-	font-family: 'Comfortaa', cursive;
-	padding: 130px;
-    color: white;
-}
 
 .succes {
 	color: green;
@@ -106,9 +46,6 @@ fieldset{
 	color: #747575;
 }
 
-.connexion legend {
-	
-}
 
 form{
 	display: block;
@@ -149,6 +86,80 @@ div label {
 
 
 /* Page acceuil !! */
+
+
+header nav{
+	height: 70px;
+}
+
+#imgheader{
+	background-image: url(../images/header.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 568px;
+	padding: 125px 0 125px;
+	margin-right: 230px;
+}
+
+.bandeautitre {
+	display: block;
+
+}
+
+
+main{
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.card{
+	
+	height: 420px;
+}
+
+#img{
+
+    height: 220px;
+}
+
+
+#h1{
+ 	font-size: 44px;
+	font-family: 'Comfortaa', cursive;
+	padding: 130px;
+    color: white;
+}
+
+h6 {
+	color: #7F8789;
+}
+
+.element{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+
+}
+
+.element2{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 70px;
+
+}
+.index form {
+	
+	padding: 30px;
+	height: 568px;
+	background-color: #FCFCF9;
+}
+
+.btn-outline-info{
+	margin-top: 25px;
+}
 
 i.fas{
 	margin-right: 10px;
@@ -306,3 +317,13 @@ th{
 	border-radius: 7px;
 }
 
+
+/****** Responsive design *****/
+/* VERSION MOBILE */
+
+@media screen and (max-width: 767px)
+{
+	header {
+      
+  }
+  
