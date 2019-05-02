@@ -30,18 +30,18 @@
 	                <form method="POST" action="IndexServlet" class="form-inline my-2 my-lg-0" >
 	                <ul>
 		                 <li class="nav-item dropdown">
-						    <select class="mdb-select md-form mr-2 mt-3 font-weight-light" >
+						    <select class="mdb-select md-form mr-2 mt-3 font-weight-light"  name="noCategorie">
 								  <option  value="" disabled selected>Objets par catégorie</option>
 								  
 								  <c:forEach var="categorie" items="${listeCategories}">
 								  
-								  <option value="${categorie.noCategorie}" name="categorie">${categorie.libelle}</option>
+								  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 								  
 								  </c:forEach>
 							</select>    
 		                   </li>
 	                 </ul>
-	                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search" name="recherche">
+	                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search" name="nomArticle">
 	                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
 	                </form>
 	            </div>
