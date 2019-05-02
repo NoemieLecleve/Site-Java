@@ -77,8 +77,19 @@ public class ArticleVendu {
 		this(nomArticle, dateFinEncheres, miseAPrix, imagePath, utilisateur);
 		this.description = description;
 		this.categorieArticle = categorie;
+	
 		
 	}
+
+	
+	public ArticleVendu(String nomArticle, String description, int miseAPrix, Date dateFinEncheres,
+			Utilisateur utilisateur, String imagePath, Categorie categorie, Retrait retrait) {
+		this(nomArticle, dateFinEncheres, miseAPrix, imagePath, utilisateur);
+		this.description = description;
+		this.categorieArticle = categorie;
+		this.retrait = retrait;
+	}
+
 
 	public Retrait getRetrait() {
 		return retrait;

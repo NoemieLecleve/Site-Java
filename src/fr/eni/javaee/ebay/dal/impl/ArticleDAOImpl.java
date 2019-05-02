@@ -10,6 +10,7 @@ import java.util.List;
 
 import fr.eni.javaee.ebay.bo.ArticleVendu;
 import fr.eni.javaee.ebay.bo.Categorie;
+import fr.eni.javaee.ebay.bo.Retrait;
 import fr.eni.javaee.ebay.bo.Utilisateur;
 import fr.eni.javaee.ebay.dal.ArticleDAO;
 import fr.eni.javaee.ebay.dal.ConnectionProvider;
@@ -30,6 +31,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 	private static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM ARTICLES_VENDUS a "
 			+	"INNER JOIN CATEGORIES c ON a.NO_CATEGORIE = c.no_categorie "
 			+	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
+			+   "INNER JOIN RETRAITS r ON r.no_article = r.no_article "
 			+	"WHERE no_article=?; ";
 	
 	public ArticleDAOImpl() throws DALException {
@@ -143,11 +145,15 @@ public class ArticleDAOImpl implements ArticleDAO {
 				String pseudo = resultat.getString("pseudo");
 				int no_Categorie = resultat.getInt("no_categorie");
 				String libelle = resultat.getString("libelle");
+				String rue = resultat.getString("rue");
+				String ville = resultat.getString("ville");
+				String codePostale = resultat.getString("code_postal");
 				
+				Retrait retrait = new Retrait (rue,ville,codePostale );
 				Utilisateur utilisateur = new Utilisateur(pseudo, idUtilisateur);
 				Categorie categorie= new Categorie (no_Categorie, libelle);
 				
-				article  = new ArticleVendu(nomArticle,description,prixInitial,dateFinEncheres,utilisateur,imagePath,categorie);
+				article  = new ArticleVendu(nomArticle,description,prixInitial,dateFinEncheres,utilisateur,imagePath,categorie,retrait);
 			}
 		}
 		catch(SQLException e) {
