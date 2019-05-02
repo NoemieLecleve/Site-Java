@@ -25,7 +25,7 @@
 		<form method="GET" action="DetailVente">
 			<h2>Détail de la vente</h2>
 			<div class="image float-md-left">	
-			<img src="${imagePath}" alt="image article">		
+			<img src="${article.imagePath}" alt="image article">		
 			</div>
 			<table class="table table-striped container col-5">
 				  <thead class="table-info">
@@ -58,7 +58,7 @@
 				    </tr>
 				      <tr>
 				      <th scope="row">Retrait</th>
-				      <td>${article.utilisateur}</td>
+				      <td>${article.retrait.rueRetrait}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">Vendeur</th>

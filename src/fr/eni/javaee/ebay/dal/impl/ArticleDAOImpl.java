@@ -28,11 +28,11 @@ public class ArticleDAOImpl implements ArticleDAO {
 			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
 	private static final String AJOUTER_LIEU_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
 			
-	private static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM ARTICLES_VENDUS a "
-			+	"INNER JOIN CATEGORIES c ON a.NO_CATEGORIE = c.no_categorie "
-			+	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
-			+   "INNER JOIN RETRAITS r ON r.no_article = a.no_article "
-			+	"WHERE no_article=?; ";
+	private static final String SELECT_ARTICLE_BY_ID = 		"SELECT * FROM ARTICLES_VENDUS a " 
+														+	"INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie "
+														+ 	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
+														+	"INNER JOIN RETRAITS r ON r.no_article = a.no_article "
+														+	"WHERE a.no_article=?;";
 	
 	public ArticleDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
