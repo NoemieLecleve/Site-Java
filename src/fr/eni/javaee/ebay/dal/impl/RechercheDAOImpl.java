@@ -24,8 +24,9 @@ public class RechercheDAOImpl implements RechercheDAO{
 	
 	private Connection connexion;
 
-	private static final String SELECT_ARTICLE_BY_NUM_NOM = "SELECT * FROM ARTICLES_VENDUS A INNER JOIN CATEGORIE C "
-															+ "ON A.NO_CATEGORIE = C.NO_ARTICLE WHERE no_categorie=? and nom_article like ?;";
+	private static final String SELECT_ARTICLE_BY_NUM_NOM = "SELECT * FROM ARTICLES_VENDUS A "
+															+ "INNER JOIN CATEGORIES C ON A.NO_CATEGORIE = C.no_categorie "
+															+ "WHERE a.no_categorie=5 and A.nom_article like '%?%';";
 
 	
 	
@@ -44,7 +45,7 @@ public class RechercheDAOImpl implements RechercheDAO{
 			PreparedStatement prepare = connexion.prepareStatement(SELECT_ARTICLE_BY_NUM_NOM);
 			
 			prepare.setInt(1, numCategorie);
-			prepare.setString(2,"%"+nomArticles+"%");
+			prepare.setString(2,nomArticles);
 			
 			ResultSet resultat = prepare.executeQuery();
 			
