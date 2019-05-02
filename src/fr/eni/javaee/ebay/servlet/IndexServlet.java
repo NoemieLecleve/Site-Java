@@ -25,8 +25,8 @@ import fr.eni.javaee.ebay.bo.Categorie;
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String PAGE_INDEX = "/WEB-INF/jsp/index.jsp";
-	private static final String CHAMP_CATEGORIE = "categorie";
-	private static final String CHAMP_RECHERCHE = "recherche";
+	private static final String CHAMP_CATEGORIE = "noCategorie";
+	private static final String CHAMP_RECHERCHE = "nomArticle";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -73,14 +73,14 @@ public class IndexServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String categorie = request.getParameter(CHAMP_CATEGORIE);
-		String recherche = request.getParameter(CHAMP_RECHERCHE);
+		int noCategorie = Integer.parseInt(request.getParameter(CHAMP_CATEGORIE));
+		String nomArticle = request.getParameter(CHAMP_RECHERCHE);
 
 		RechercheManager rechercheManager = null;
 
 		try {
 			rechercheManager = ManagerFactory.getRechercheManager();
-			rechercheManager.articleRechercher(categorie, recherche);
+			rechercheManager.articleRechercher(noCategorie, nomArticle);
 
 			RequestDispatcher rd = request.getRequestDispatcher("home");
 			rd.forward(request, response);
@@ -92,7 +92,7 @@ public class IndexServlet extends HttpServlet {
 
 		}
 
-		doGet(request, response);
+		// doGet(request, response);
 
 	}
 

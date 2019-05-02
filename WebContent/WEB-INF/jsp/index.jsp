@@ -78,8 +78,7 @@
 	   </div>
 	  </c:if>
       <br>
-      
-	  <div class="element row" >
+	  <div class="element row container" >
         <c:forEach items="${listeArticles}" var="article"> 
         		      
 	        <div class="card  text-center element2" style="width: 18rem;">
@@ -93,7 +92,7 @@
                 </div>		                
              </div>
         </c:forEach>
-    </div>
+       </div>
 </main>
 </body>
 </html>
