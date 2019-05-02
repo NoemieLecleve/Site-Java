@@ -26,14 +26,13 @@
   
 
 <main>
-	  <div>
-     <h1 class="text-center">Trouvez l'objet de vos rêves </h1>
-     </div>
+     <div id="imgheader">
+		   		<h1 class="text-center" id="h1">Trouvez l'objet de vos reves ! </h1>
+	</div>
 	   <c:if test="${sessionScope.sessionIdUtilisateur != null}">
 	    <!--  Si l'utilisateur est connecté, on affiche les select -->
 	     <div class="row">
-          <div class="border border-light border my-2 rounded element4 " >
-	     
+          <div class="border border-light border my-2 rounded element4 " > 
 		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
 				    <input type="radio" class="custom-control-input" id="customControlValidation1" name="enchere1" required >
 				    <label class="custom-control-label font-weight-bold" for="customControlValidation1">Achats</label>

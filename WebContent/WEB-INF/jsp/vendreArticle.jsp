@@ -66,15 +66,15 @@
 		    	<legend class="">Retrait</legend>
 				    <div class="col-md-10 mb-2">
 					    <label for="rue" class="control-label">Rue</label>
-			     		<input type="text" class="form-control" name="rueRetrait" value="${retrait.rueRetrait}" required>
+			     		<input type="text" class="form-control" name="rueRetrait" value="${utilisateur.rue}" required>
 				    </div>
 				    <div class="col-md-10 mb-2">
 				       <label for="codePostal" class="control-label">Code Postal</label>
-		      		   <input type="text" class="form-control" name="codePostalRetrait" value="${retrait.codePostalRetrait}" required>
+		      		   <input type="text" class="form-control" name="codePostalRetrait" value="${utilisateur.codePostal}" required>
 				    </div>
 				     <div class="col-md-10 mb-2">
 				       <label for="ville" class="control-label">Ville</label>
-		      		   <input type="text" class="form-control" name="villeRetrait" value="${retrait.villeRetrait}" required>
+		      		   <input type="text" class="form-control" name="villeRetrait" value="${utilisateur.ville}" required>
 				    </div>
 		    </fieldset>
 		    </div>	  

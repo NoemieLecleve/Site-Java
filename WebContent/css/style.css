@@ -3,8 +3,20 @@ header nav{
 	height: 70px;
 }
 
+#imgheader{
+	background-image: url(../images/header.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 568px;
+	padding: 125px 0 125px;
+}
+
+.bandeautitre {
+	display: block;
+
+}
+
 main{
- 
     
     margin-left: auto;
     margin-right: auto;
@@ -15,15 +27,16 @@ main{
 
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    
 
 }
 
 .element2{
-
-    
+  
     margin-left: 200px;
     margin-right: 100px;
-    margin-topt: 200px;
+    margin-top: 200px;
 
 }
 
@@ -32,12 +45,12 @@ main{
     height: 200px;
 }
 
-h1{
-	background: linear-gradient(#7C90A3, #9FB4C8);
+
+#h1{
+ 	font-size: 44px;
+	font-family: 'Comfortaa', cursive;
+	padding: 130px;
     color: white;
-    font-family: 'Nunito', sans-serif;
-    height: 130px;
-   padding-top: 40px;
 }
 
 .succes {
@@ -285,7 +298,3 @@ th{
 	border-radius: 7px;
 }
 
-#retrait{
-	
-	
-}

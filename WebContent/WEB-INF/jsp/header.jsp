@@ -35,17 +35,18 @@
 								  
 								  <c:forEach var="categorie" items="${listeCategories}">
 								  
-								  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+								  <option value="${categorie.noCategorie}" name="categorie">${categorie.libelle}</option>
 								  
 								  </c:forEach>
 							</select>    
 		                   </li>
 	                 </ul>
-	                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
+	                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search" name="recherche">
 	                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
 	                </form>
 	            </div>
             </nav>
+  
 		    </c:when>    
 		    <c:otherwise>
 		    <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -85,5 +86,6 @@
             </div>
  
         </nav>
+  
 		    </c:otherwise>
 		</c:choose>
