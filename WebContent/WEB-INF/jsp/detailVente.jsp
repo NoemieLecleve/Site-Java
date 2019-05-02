@@ -39,8 +39,10 @@
 				      <td>${article.description}</td>
 				    </tr>
 				    <tr >
+ 
 				      <th scope="row" >Catégorie</th>
 				      <td>${article.categorieArticle.libelle}</td>
+ 
 				    </tr>
 				    <tr>
 				      <th scope="row">Meilleur offre</th>
