@@ -22,12 +22,15 @@
 	</header>
 	 
 	<main class="connexion">	
-		<form method="GET" action="DetailVente" class="container">
-			<h2>Détail de la Vente</h2>
-			<table class="table table-striped ">
+		<form method="GET" action="DetailVente">
+			<h2>Détail de la vente</h2>
+			<div class="image float-md-left">	
+			<img src="${imagePath}" alt="image article">		
+			</div>
+			<table class="table table-striped container col-5">
 				  <thead class="table-info">
 				    <tr>
-				      <th scope="col" colspan="2" id="information">Mes informations</th>
+				      <th scope="col" colspan="2" id="information">${article.nomArticle}</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -40,27 +43,32 @@
 				      <td>${article.categorie}</td>
 				    </tr>
 				    <tr>
-				      <th scope="row">Mise à Prix</th>
-				      <td>${article.miseAPrix}</td>
+				      <th scope="row">Meilleur offre</th>
+				      <td></td>
 				    </tr>
 				      <tr>
-				      <th scope="row">Fin d'Enchère</th>
+				      <th scope="row">Mise à prix</th>
 				      <td>${article.dateFinEncheres}</td>
 				    </tr>
 				      <tr>
-				      <th scope="row">Retrait</th>
+				      <th scope="row">Fin de l'enchère</th>
 				      <td>${article.retrait}</td>
 				    </tr>
 				      <tr>
-				      <th scope="row">Vendeur</th>
+				      <th scope="row">Retrait</th>
 				      <td>${article.utilisateur}</td>
 				    </tr>
-				      <tr>
+				    <tr>
+				      <th scope="row">Vendeur</th>
+				      <td>${utilisateur.pseudo}</td>
+				    </tr>
+				    <tr>
 				      <th scope="row">Ma proposition</th>
-				      <td>${utilisateur.codePostal}</td>
+				      <td><input type="number" class="form-control" name="miseAPrix"></td>
+				     </tr>
 				    </tbody>
 			</table>
-			<a class="btn btn-primary mr-2" href="ModifierUtilisateur">Enchérir</button>
+			<a class="btn btn-primary mr-2" href="">Enchérir</a>
 			
 		</form>
 	</main>
