@@ -91,9 +91,10 @@ System.out.println(">>>>>>>>>>>>>>>nom" + request.getParameter(CHAMP_RECHERCHE))
 			RequestDispatcher rd = request.getRequestDispatcher(PAGE_INDEX);
 			rd.forward(request, response);
 
-		} 
+		}
 
 		// doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 
 	}
 
