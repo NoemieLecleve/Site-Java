@@ -19,7 +19,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	private Connection connexion;
 
-	private static final String SELECT_ALL = "select nom_article, date_fin_encheres, a.imagePath as 'imagePath', u.no_utilisateur as no_utilisateur, "
+	private static final String SELECT_ALL = "select a.no_article, nom_article, date_fin_encheres, a.imagePath as 'imagePath', u.no_utilisateur as no_utilisateur, "
 			+ " prix_initial, pseudo from  ARTICLES_VENDUS a"
 			+ " inner join  UTILISATEURS u on a.no_utilisateur = u.no_utilisateur;";
 	private static final String INSERER_ARTICLE = "INSERT INTO ARTICLES_VENDUS "
@@ -49,6 +49,8 @@ public class ArticleDAOImpl implements ArticleDAO {
 			ResultSet resultat = prepare.executeQuery();
 
 			while (resultat.next()) {
+				
+				int numeroArticle = resultat.getInt("no_article");
 				String nomArticle = resultat.getString("nom_article");
 				Date dateFinEncheres = resultat.getDate("date_fin_encheres");
 				String imagePath = resultat.getString("imagePath");
@@ -58,7 +60,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 				Utilisateur utilisateur = new Utilisateur(pseudo, idPseudo);
 
-				ArticleVendu article = new ArticleVendu(nomArticle, dateFinEncheres, prixInitial, imagePath, utilisateur);
+				ArticleVendu article = new ArticleVendu(numeroArticle, nomArticle, dateFinEncheres, prixInitial, imagePath, utilisateur);
 
 				article.setUtilisateur(utilisateur);
 				articles.add(article);
