@@ -9,5 +9,6 @@ public interface ArticleManager {
 	
 	List<ArticleVendu> listerToutes() throws BLLException;
 	ArticleVendu creerArticle(ArticleVendu article) throws BLLException;
+	ArticleVendu recupererArticle(int articleId) throws BLLException;
 
 }

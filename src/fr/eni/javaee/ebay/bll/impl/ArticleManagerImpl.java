@@ -6,6 +6,7 @@ import java.util.List;
 import fr.eni.javaee.ebay.bll.ArticleManager;
 import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bo.ArticleVendu;
+import fr.eni.javaee.ebay.bo.Categorie;
 import fr.eni.javaee.ebay.dal.ArticleDAO;
 import fr.eni.javaee.ebay.dal.DALException;
 import fr.eni.javaee.ebay.dal.DAOFactory;
@@ -33,6 +34,26 @@ public class ArticleManagerImpl implements ArticleManager {
 			throw new BLLException(e.getMessage());
 		}
 	}
+	/**
+	 * Cette méthode demande à ArticleDAO de récupérer un article avec son identifiant
+	 * @param no_article
+	 * @throws BLLException
+	 */
+	@Override
+	public ArticleVendu recupererArticle(int articleId) throws BLLException {
+		
+		ArticleVendu article = null;
+		
+		try {
+			article = articleDAO.recupererArticle(articleId);
+		} 
+		catch (DALException e) {
+			e.printStackTrace();
+			throw new BLLException(e.getMessage());
+		}
+		return article;
+	}
+	
 	/**
 	 * Cette méthode transmet un article 
 	 * @throws BLLException

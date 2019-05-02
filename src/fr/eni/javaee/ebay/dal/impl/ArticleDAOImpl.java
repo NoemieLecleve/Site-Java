@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import fr.eni.javaee.ebay.bo.ArticleVendu;
+import fr.eni.javaee.ebay.bo.Categorie;
 import fr.eni.javaee.ebay.bo.Utilisateur;
 import fr.eni.javaee.ebay.dal.ArticleDAO;
 import fr.eni.javaee.ebay.dal.ConnectionProvider;
@@ -26,7 +27,11 @@ public class ArticleDAOImpl implements ArticleDAO {
 			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
 	private static final String AJOUTER_LIEU_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
 			
-
+	private static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM ARTICLES_VENDUS a "
+			+	"INNER JOIN CATEGORIES c ON a.NO_CATEGORIE = c.no_categorie "
+			+	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
+			+	"WHERE no_article=?; ";
+	
 	public ArticleDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
 	}
@@ -113,4 +118,42 @@ public class ArticleDAOImpl implements ArticleDAO {
 			throw new DALException("Echec requête créer un article");
 		}		
 	}
+    
+	/**
+	 * Cette méthode permet de rechercher un nouvel article en base de donnée avec son identifiant
+	 * @throws DALException
+	 */
+	public ArticleVendu recupererArticle(int articleId) throws DALException {
+		
+		ArticleVendu article = null;
+		try {
+			PreparedStatement prepare = connexion.prepareStatement(SELECT_ARTICLE_BY_ID);
+			prepare.setInt(1, articleId);
+			ResultSet resultat = prepare.executeQuery();
+			
+			if(resultat.next()) {
+				String nomArticle = resultat.getString("nom_article");
+				String description = resultat.getString("description");
+				int prixInitial = resultat.getInt("prix_initial");
+				Date dateFinEncheres = resultat.getDate("date_fin_encheres");
+				int idUtilisateur = resultat.getInt("no_utilisateur");
+				String imagePath = resultat.getString("imagePath");
+				String pseudo = resultat.getString("pseudo");
+				int no_Categorie = resultat.getInt("no_categorie");
+				String libelle = resultat.getString("libelle");
+				
+				Utilisateur utilisateur = new Utilisateur(pseudo, idUtilisateur);
+				Categorie categorie= new Categorie (no_Categorie, libelle);
+				
+				article  = new ArticleVendu(nomArticle,description,prixInitial,dateFinEncheres,utilisateur,imagePath,categorie);
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			throw new DALException("Echec requête récuperer une catégorie");
+		}
+		return article;
+	}
+
 }
+
