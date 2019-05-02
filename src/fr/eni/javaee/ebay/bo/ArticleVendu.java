@@ -70,6 +70,21 @@ public class ArticleVendu {
 	}
 
 
+	
+
+
+
+
+
+	public ArticleVendu(String nomArticle, String description, int miseAPrix, Date dateFinEncheres,
+			Utilisateur utilisateur, String imagePath,Categorie categorie) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+
+
 	public Retrait getRetrait() {
 		return retrait;
 	}
