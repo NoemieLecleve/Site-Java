@@ -25,73 +25,111 @@
 </header>
   
 
-<main>
-     <div id="imgheader">
-		   		<h1 class="text-center" id="h1">Trouvez l'objet de vos reves ! </h1>
-	</div>
-	   <c:if test="${sessionScope.sessionIdUtilisateur != null}">
-	    <!--  Si l'utilisateur est connecté, on affiche les select -->
-	     <div class="row">
-          <div class="border border-light border my-2 rounded element4 " > 
-		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
-				    <input type="radio" class="custom-control-input" id="customControlValidation1" name="enchere1" required >
-				    <label class="custom-control-label font-weight-bold" for="customControlValidation1">Achats</label>
-				  </div>
-				
-				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type= "checkbox" class="custom-control-input" id="customControlValidation2" name="enchere2" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation2">Enchères Ouvertes</label>
-				  </div>
-				  
-				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation3" name="enchere2" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation3">Mes enchères en cours</label> 
-				  </div>
-				  
-				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation4" name="enchere2" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation4">Mes enchères remportées</label> 
-				  </div>
+<main> 
+
+   
+      <div class="row">
+		<div class="col-2">
+	      <c:if test="${sessionScope.sessionIdUtilisateur != null}">
+	      <!--  Si l'utilisateur est connecté, on affiche les select -->
+	       <form>
+			  <div class="form-group row">
+			    <input type="text" class="form-control" id="texte" placeholder="Nom de l'article ?">
+			  </div>
+			  <div class="form-group row">
+			     <select class="mdb-select md-form mr-2 mt-3 font-weight-light"  name="noCategorie">
+					  <option  value="" disabled selected>Objets par catégorie</option>
+					  
+					  <c:forEach var="categorie" items="${listeCategories}">
+					  
+					  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+					  
+					  </c:forEach>
+				</select>    
+			  </div>
+			  <fieldset class="form-group">
+			    <div class="row">	      
+			      <div class="col-sm-12">
+			      
+			      <div class="form-check">
+			         <input type="checkbox" class="custom-control-input" id="Ventes">
+                     <label class="custom-control-label" for="Ventes">Ventes</label>
+				    </div>
+			        <div class="form-check">
+			         <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="Ventes1">Ventes términées
+					  </label>
+			        </div>
+			        <div class="form-check">
+			          <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="Ventes1">Ventes non débutées
+					  </label>
+			        </div>
+			        <div class="form-check">
+			          <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="Ventes1">Mes ventes en cours
+					  </label>
+			        </div>
+			       </div>
+			       <div class="col-sm-12">
+			      
+			      <div class="form-check">
+			         <input type="checkbox" class="custom-control-input" id="Ventes">
+                     <label class="custom-control-label" for="Ventes">Achats</label>
+				    </div>
+			        <div class="form-check">
+			         <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="Achats1">Enchères ouvertes
+					  </label>
+			        </div>
+			        <div class="form-check">
+			          <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="Achats1">Mes enchères en cours
+					  </label>
+			        </div>
+			        <div class="form-check">
+			          <label class="form-check-label">
+					    <input type="radio" class="form-check-input" name="Achats1">Mes enchères remportées
+					  </label>
+			        </div>
+			       </div>
+			    </div>
+			  </fieldset>
+			  <div class="form-group row">
+			    <div class="col-sm-10">
+			      <button type="submit" class="btn btn-primary">Sign in</button>
+			    </div>
+			  </div>
+			</form>
+		  </c:if>
 		  </div>
-		   <div class="border border-light border my-2 rounded element5 " >
-		   
-		        <div class="custom-control custom-radio mb-3 my-4 ml-4">
-				    <input type="radio" class="custom-control-input " id="customControlValidation5" name="enchere1"required >
-				    <label class="custom-control-label font-weight-bold" for="customControlValidation5">Mes ventes</label>
-				  </div>
-				
-				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type= "checkbox" class="custom-control-input" id="customControlValidation6" name="enchere2" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation6">Mes ventes en cours</label>
-				  </div>
-				  
-				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation7" name="enchere2" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation7">Ventes non débutées</label> 
-				  </div>
-				  
-				  <div class="custom-control custom-checkbox  mb-3 ml-5">
-				    <input type="checkbox" class="custom-control-input" id="customControlValidation8" name="enchere2" required>
-				    <label class="custom-control-label font-weight-light" for="customControlValidation8">Ventes terminées</label> 
-				  </div>
-		  </div>
-	   </div>
-	  </c:if>
-      <br>
-	  <div class="element row container" >
-        <c:forEach items="${listeArticles}" var="article"> 
-        		      
-	        <div class="card  text-center element2" style="width: 18rem;">
-	            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
-	            <div class="card-body">
-	                <h5 class="card-title">${article.nomArticle} </h5>
-	                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
-	                <h6 class="card-text"> ${article.miseAPrix}€</h6>
-	
-	                <a href="DetailVente" class="btn btn-primary">détail Vente</a>
-                </div>		                
-             </div>
-        </c:forEach>
+		  <div class="col-10">
+	            <div id="imgheader">
+			   		<h1 class="text-center" id="h1">Trouvez l'objet de vos rêves ! </h1>
+				</div>
+	  </div>
+	  </div>
+	     
+	  <br>
+	  
+	  <div class="container">
+		  <div class="row">
+		    <div class="col-sm-1"></div>
+		      <div class="col-sm-10 element2 ">
+      		     <c:forEach items="${listeArticles}" var="article">     
+		         <div class="card  text-center " style="width: 18rem;">
+		            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
+		               <div class="card-body">
+		                <h5 class="card-title">${article.nomArticle} </h5>
+		                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
+		                <h6 class="card-text"> ${article.miseAPrix}€</h6>
+		                <a href="DetailVente" class="btn btn-primary">détail Vente</a>
+	                </div>		                
+	             </div>
+	        </c:forEach>
+    	</div>
+    	<div class="col-sm-1"></div>
+       </div>
        </div>
 </main>
 </body>
