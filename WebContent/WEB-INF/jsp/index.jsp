@@ -29,7 +29,7 @@
 
    
       <div class="row">
-		<div class="col-2">
+		<div class="col">
 	      <c:if test="${sessionScope.sessionIdUtilisateur != null}">
 	      <!--  Si l'utilisateur est connecté, on affiche les select -->
 	       <form>
@@ -48,7 +48,7 @@
 				</select>    
 			  </div>
 			  <fieldset class="form-group">
-			    <div class="row">	      
+			    <div class="row text-left">	      
 			      <div class="col-sm-12">
 			      
 			      <div class="form-check">

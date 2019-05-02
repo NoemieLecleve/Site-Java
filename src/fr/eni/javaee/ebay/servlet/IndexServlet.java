@@ -90,9 +90,10 @@ public class IndexServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 			rd.forward(request, response);
 
-		} 
+		}
 
 		// doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 
 	}
 
