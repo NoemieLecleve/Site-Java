@@ -14,6 +14,7 @@ import fr.eni.javaee.ebay.bll.ArticleManager;
 import fr.eni.javaee.ebay.bll.BLLException;
 import fr.eni.javaee.ebay.bll.CategorieManager;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
+import fr.eni.javaee.ebay.bll.RechercheManager;
 import fr.eni.javaee.ebay.bo.ArticleVendu;
 import fr.eni.javaee.ebay.bo.Categorie;
 
