@@ -45,7 +45,7 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println(">>>>>>>>>>>>>>>GET");
 		ArticleManager articleManager = null;
 		CategorieManager categorieManager = null;
 
@@ -72,7 +72,8 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+System.out.println(">>>>>>>>>>>>>>>n°catégorie" + request.getParameter(CHAMP_CATEGORIE));
+System.out.println(">>>>>>>>>>>>>>>nom" + request.getParameter(CHAMP_RECHERCHE));
 		int noCategorie = Integer.parseInt(request.getParameter(CHAMP_CATEGORIE));
 		String nomArticle = request.getParameter(CHAMP_RECHERCHE);
 
@@ -82,12 +83,12 @@ public class IndexServlet extends HttpServlet {
 			rechercheManager = ManagerFactory.getRechercheManager();
 			rechercheManager.articleRechercher(noCategorie, nomArticle);
 
-			RequestDispatcher rd = request.getRequestDispatcher("home");
+			RequestDispatcher rd = request.getRequestDispatcher(PAGE_INDEX);
 			rd.forward(request, response);
 
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher(PAGE_INDEX);
 			rd.forward(request, response);
 
 		} 
