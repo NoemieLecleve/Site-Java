@@ -40,25 +40,11 @@ public class DetailVente extends HttpServlet {
 			throws ServletException, IOException {
 
 		ArticleManager articleManager = null;
-		UtilisateurManager utilisateurManager = null;
-		
-		HttpSession session = request.getSession();
-		int idUtilisateur=(int) session.getAttribute("sessionIdUtilisateur");
 		int articleId =Integer.parseInt(request.getParameter("articleId"));
 		try {
 			
-			utilisateurManager = ManagerFactory.getUtilisateurManageur();
-			Utilisateur utilisateur = new Utilisateur();
-			utilisateur.setNoUtilisateur(idUtilisateur);
-			utilisateur = utilisateurManager.recuperer(utilisateur);
-			
-			
-			
 			articleManager = ManagerFactory.getArticleManager();
-			ArticleVendu article = articleManager.recupererArticle(articleId);
-			
-			
-			request.setAttribute("utilisateur", utilisateur);
+			ArticleVendu article = articleManager.recupererArticle(articleId);	
 			request.setAttribute("article", article);
 		
 		} catch (BLLException e) {
