@@ -27,7 +27,7 @@ public class RechercheDAOImpl implements RechercheDAO{
 	private static final String SELECT_ARTICLE_BY_NUM_NOM = 	"SELECT * FROM ARTICLES_VENDUS A "
 															+	"INNER JOIN CATEGORIES C ON A.NO_CATEGORIE = C.no_categorie "
 															+	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
-															+	"WHERE a.no_categorie=? or A.nom_article like ?; ";	
+															+	"WHERE a.no_categorie=? and lower(A.nom_article) like ?; ";	
 	
 	public RechercheDAOImpl() throws DALException {
 		
@@ -44,7 +44,7 @@ public class RechercheDAOImpl implements RechercheDAO{
 				PreparedStatement prepare = connexion.prepareStatement(SELECT_ARTICLE_BY_NUM_NOM);
 				
 				prepare.setInt(1, numCategorie);
-				prepare.setString(2, nomArticles);
+				prepare.setString(2, "%" + nomArticles.toLowerCase() + "%");
 				
 				ResultSet resultat = prepare.executeQuery();
 				
