@@ -39,20 +39,33 @@ public class VendreArticle extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		CategorieManager categorieManager = null;
-
-		try {
-
-			categorieManager = ManagerFactory.getCategorieManager();
-
-			List<Categorie> listeCategories = categorieManager.listeCategories();
-
-			request.setAttribute("listeCategories", listeCategories);
+			CategorieManager categorieManager = null;
+			UtilisateurManager utilisateurManager = null;
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
-			rd.forward(request, response);
+			HttpSession session = request.getSession();
+			int idUtilisateur=(int) session.getAttribute("sessionIdUtilisateur");
 
-		} catch (BLLException e) {
+			
+			try {
+				
+				utilisateurManager = ManagerFactory.getUtilisateurManageur();
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setNoUtilisateur(idUtilisateur);
+				utilisateur = utilisateurManager.recuperer(utilisateur);
+			
+				
+				categorieManager = ManagerFactory.getCategorieManager();
+				List<Categorie> listeCategories = categorieManager.listeCategories();
+	
+				
+				request.setAttribute("listeCategories", listeCategories);
+				request.setAttribute("utilisateur", utilisateur);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
+				rd.forward(request, response);
+
+		
+			} catch (BLLException e) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/vendreArticle.jsp");
 			rd.forward(request, response);
 			request.setAttribute("message", e.getMessage());
@@ -75,7 +88,7 @@ public class VendreArticle extends HttpServlet {
 		String codePostalRetrait = request.getParameter("codePostalRetrait");
 
 		int noCategorie = Integer.parseInt(request.getParameter("noCategorie"));
-		System.out.println("*******************" + request.getParameter("miseAPrix"));
+		 
 		int miseAPrix = Integer.parseInt(request.getParameter("miseAPrix"));
 
 		Date dateDebutEncheres = null;
@@ -121,6 +134,7 @@ public class VendreArticle extends HttpServlet {
 
 			ArticleVendu article = articleManager.creerArticle(articleVendu);
 			request.setAttribute("article", article);
+			request.setAttribute("retrait", retrait);
 			// TODO détail de la vente
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
 			rd.forward(request, response);
