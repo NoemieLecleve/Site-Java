@@ -57,7 +57,7 @@
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Ventes términées
+					    <input type="radio" class="form-check-input" name="Ventes1">Ventes terminées
 					  </label>
 			        </div>
 			        <div class="form-check">
@@ -97,7 +97,7 @@
 			  </fieldset>
 			  <div class="form-group row">
 			    <div class="col-sm-10">
-			      <button type="submit" class="btn btn-outline-info btn-lg btn-block">Rechercher</button>
+			      <button type="submit" class="btn btn-outline-info btn-lg btn-block ml-3">Rechercher</button>
 			    </div>
 			  </div>
 			</form>
@@ -121,9 +121,9 @@
 		            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
 		               <div class="card-body">
 		                <h5 class="card-title">${article.nomArticle} </h5>
-		                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
+		                <h6 class="card-text">Date de début: ${article.dateFinEncheres}</h6>
 		                <h6 class="card-text"> ${article.miseAPrix}&euro;</h6>
-		                <a href="DetailVente?articleId=${article.noArticle}" class="btn btn-primary">détail Vente</a>
+		                <a href="DetailVente?articleId=${article.noArticle}" class="btn btn-info">Voir le détail</a>
 	                </div>		                
 	             </div>
 	        </c:forEach>
