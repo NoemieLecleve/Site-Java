@@ -136,8 +136,7 @@ public class VendreArticle extends HttpServlet {
 			request.setAttribute("article", article);
 			request.setAttribute("retrait", retrait);
 			// TODO détail de la vente
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("DetailVente?articleId=" + article.getNoArticle());
 		} catch (BLLException e) {
 
 			request.setAttribute("message", e.getMessage());
