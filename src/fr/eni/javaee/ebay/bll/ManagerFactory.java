@@ -78,7 +78,7 @@ public class ManagerFactory {
 	 * @return Une instance de RechercheManagerImpl
 	 * @throws DALException
 	 */
-	public static RechercheManager getRechercheManager() throws DALException {
+	public static RechercheManager getRechercheManager() throws BLLException {
 		
 		if(rechercheManager == null) {
 			try {
@@ -86,7 +86,7 @@ public class ManagerFactory {
 			} catch (DALException e) {
 				
 				e.printStackTrace();
-				throw new DALException(e.getMessage());
+				throw new BLLException(e.getMessage());
 			}			
 		}
 		return rechercheManager;
