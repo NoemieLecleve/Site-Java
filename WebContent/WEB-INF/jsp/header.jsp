@@ -30,8 +30,7 @@
 	                <ul>
 		                 <li class="nav-item dropdown">
 						    <select class="mdb-select md-form mr-2 mt-3 font-weight-light"  name="noCategorie">
-								 
-								  <option   disabled selected>Objets par catégorie</option>
+
 								  <c:forEach var="categorie" items="${listeCategories}">
 								  
 								  	<option value="${categorie.noCategorie}">${categorie.libelle}</option>
@@ -69,7 +68,6 @@
                  <li class="nav-item dropdown">
 				 
 				    <select class="mdb-select md-form mr-2 font-weight-light" name="noCategorie">
-						  <option   disabled selected>Objets par cat�gorie</option>
 						  
 						  <c:forEach var="categorie" items="${listeCategories}">
 						  

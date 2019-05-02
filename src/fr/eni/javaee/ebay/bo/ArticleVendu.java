@@ -69,21 +69,12 @@ public class ArticleVendu {
 		this.imagePath = imagePath;
 	}
 
-
-	
-
-
-
-
-
 	public ArticleVendu(String nomArticle, String description, int miseAPrix, Date dateFinEncheres,
-			Utilisateur utilisateur, String imagePath,Categorie categorie) {
-		// TODO Auto-generated constructor stub
+						Utilisateur utilisateur, String imagePath, Categorie categorie) {
+		this(nomArticle, dateFinEncheres, miseAPrix, imagePath, utilisateur);
+		this.description = description;
+		
 	}
-
-
-	
-
 
 	public Retrait getRetrait() {
 		return retrait;
