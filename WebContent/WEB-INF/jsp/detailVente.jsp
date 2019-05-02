@@ -39,7 +39,7 @@
 				      <td>${article.description}</td>
 				    </tr>
 				    <tr >
-				      <th scope="row" >Catégorie</th>
+				      <th scope="row">Catégorie</th>
 				      <td>${article.categorie}</td>
 				    </tr>
 				    <tr>
