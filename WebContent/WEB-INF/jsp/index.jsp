@@ -117,17 +117,19 @@
 		    <div class="col-sm-1"></div>
 		      <div class="col-sm-10 element2 ">
       		     <c:forEach items="${listeArticles}" var="article">     
-		         <div class="card  text-center mt-3" style="width: 18rem;">
-		            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
-		               <div class="card-body">
-		                <h5 class="card-title">${article.nomArticle} </h5>
-		                <h6 class="card-text">Date de début: ${article.dateFinEncheres}</h6>
-		                <h6 class="card-text"> ${article.miseAPrix}&euro;</h6>
-		                <a href="DetailVente?articleId=${article.noArticle}" class="btn btn-info">Voir le détail</a>
-	                </div>		                
-	             </div>
-	        </c:forEach>
-    	</div>
+
+			         <div class="card  text-center mt-3" style="width: 18rem;">
+			            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
+			               <div class="card-body">
+			                <h5 class="card-title">${article.nomArticle} </h5>
+			                <h6 class="card-text">date de début: ${article.dateFinEncheres}</h6>
+			                <h6 class="card-text"> ${article.miseAPrix}&euro;</h6>
+			                <a href="DetailVente?articleId=${article.noArticle}" class="btn btn-primary">détail Vente</a>
+		                </div>		                
+		             </div>
+		        </c:forEach>
+    		</div>
+
     	<div class="col-sm-1"></div>
        </div>
        </div>
