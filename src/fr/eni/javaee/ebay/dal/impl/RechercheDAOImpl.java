@@ -24,12 +24,10 @@ public class RechercheDAOImpl implements RechercheDAO{
 	
 	private Connection connexion;
 
-	private static final String SELECT_ARTICLE_BY_NUM_NOM = "SELECT * FROM ARTICLES_VENDUS A "
-															+ "INNER JOIN CATEGORIES C ON A.NO_CATEGORIE = C.no_categorie "
-															+ "WHERE a.no_categorie=5 and A.nom_article like '%?%';";
-
-	
-	
+	private static final String SELECT_ARTICLE_BY_NUM_NOM = 	"SELECT * FROM ARTICLES_VENDUS A "
+															+	"INNER JOIN CATEGORIES C ON A.NO_CATEGORIE = C.no_categorie "
+															+	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
+															+	"WHERE a.no_categorie=? and lower(A.nom_article) like ?; ";	
 	
 	public RechercheDAOImpl() throws DALException {
 		
@@ -37,21 +35,22 @@ public class RechercheDAOImpl implements RechercheDAO{
 		
 	}
 	
-  public ArticleVendu articleRechercher(int numCategorie, String nomArticles) throws DALException {
-		
-	  ArticleVendu articleRechercher = null;
-		try {
+	public List<ArticleVendu> articleRechercher(int numCategorie, String nomArticles) throws DALException {
 			
-			PreparedStatement prepare = connexion.prepareStatement(SELECT_ARTICLE_BY_NUM_NOM);
-			
-			prepare.setInt(1, numCategorie);
-			prepare.setString(2,nomArticles);
-			
-			ResultSet resultat = prepare.executeQuery();
-			
-			
-			if(resultat.next()) {
+		  ArticleVendu articleRechercher = null;
+		  List<ArticleVendu> listeArticle = new ArrayList<ArticleVendu>();
+			try {
+								
+				PreparedStatement prepare = connexion.prepareStatement(SELECT_ARTICLE_BY_NUM_NOM);
 				
+				prepare.setInt(1, numCategorie);
+				prepare.setString(2, "%" + nomArticles.toLowerCase() + "%");
+				
+				ResultSet resultat = prepare.executeQuery();
+				
+				
+			while(resultat.next()) {
+					
 				String nomArticle = resultat.getString("nom_article");
 				String description = resultat.getString("description");
 				int prixInitial = resultat.getInt("prix_initial");
@@ -66,12 +65,13 @@ public class RechercheDAOImpl implements RechercheDAO{
 				Categorie categorie= new Categorie (no_Categorie, libelle);
 				
 				articleRechercher = new ArticleVendu(nomArticle,description,prixInitial,dateFinEncheres,utilisateur,imagePath,categorie);
+				listeArticle.add(articleRechercher);
 			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 			throw new DALException("Echec requête récuperer une catégorie");
 		}
-		return articleRechercher;
+		return listeArticle;
 	}
 }

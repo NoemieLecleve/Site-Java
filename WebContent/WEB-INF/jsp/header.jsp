@@ -1,10 +1,9 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
        <c:choose>
 		    <c:when test="${sessionScope.sessionIdUtilisateur != null}">
-		    <!--  Si l'utilisateur est connecté, on affiche le contenu -->
+		    <!--  Si l'utilisateur est connectï¿½, on affiche le contenu -->
 		     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	            <a class="navbar-brand" href="home">Accueil</a>
 	            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +14,7 @@
 	                <ul class="navbar-nav mr-auto">
 	                   
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="#">Enchères</a>
+	                        <a class="nav-link" href="#">EnchÃ¨res</a>
 	                    </li>
 	                    <li class="nav-item">
 	                        <a class="nav-link" href="VendreArticle">Vendre un article</a>
@@ -24,18 +23,17 @@
 	                        <a class="nav-link" href="RecupererUtilisateur">${sessionPseudoUtilisateur}</a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="DeconnexionServlet">Se Déconnecter</a>
+	                        <a class="nav-link" href="DeconnexionServlet">Se DÃ©connecter</a>
 	                    </li>
 	                   </ul>
-	                <form method="POST" action="IndexServlet" class="form-inline my-2 my-lg-0" >
+	                <form method="POST" action="home" class="form-inline my-2 my-lg-0" >
 	                <ul>
 		                 <li class="nav-item dropdown">
 						    <select class="mdb-select md-form mr-2 mt-3 font-weight-light"  name="noCategorie">
-								  <option  value="" disabled selected>Objets par catégorie</option>
-								  
+
 								  <c:forEach var="categorie" items="${listeCategories}">
 								  
-								  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+								  	<option value="${categorie.noCategorie}">${categorie.libelle}</option>
 								  
 								  </c:forEach>
 							</select>    
@@ -65,22 +63,21 @@
                         <a class="nav-link" href="ConnexionUtilisateur"><i class="fas fa-user"></i>Se Connecter</a>
                     </li>
                    </ul>
-             <form class="form-inline my-2 my-lg-0">
+             <form method="POST" action="home" class="form-inline my-2 my-lg-0">
          
                  <li class="nav-item dropdown">
 				 
-				    <select class="mdb-select md-form mr-2 font-weight-light" >
-						  <option   disabled selected>Objets par catégorie</option>
+				    <select class="mdb-select md-form mr-2 font-weight-light" name="noCategorie">
 						  
 						  <c:forEach var="categorie" items="${listeCategories}">
 						  
-						  <option value="categorie">${categorie.libelle}</option>
+						  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
 						  
 						  </c:forEach>
 					</select>
                         
                    </li>
-                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une vente" aria-label="Search" name="nomArticle">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Recherche</button>
                 </form>
             </div>

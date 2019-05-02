@@ -8,5 +8,6 @@ public interface ArticleDAO {
 
 	List<ArticleVendu> listerToutes() throws DALException;
 	boolean creerArticle(ArticleVendu article) throws DALException;
+	ArticleVendu recupererArticle(int articleId) throws DALException;
 
 }
