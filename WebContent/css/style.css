@@ -151,14 +151,16 @@ h6 {
 
 }
 .index form {
-	
 	padding: 30px;
-	height: 568px;
+	margin-top: 25px;
+	margin-left: 25px;
+	height: 545px;
 	background-color: #FCFCF9;
+	border-radius: 10px;
 }
 
 .btn-outline-info{
-	margin-top: 25px;
+	margin-top: 18px;
 }
 
 i.fas{

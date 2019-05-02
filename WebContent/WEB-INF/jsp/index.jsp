@@ -57,7 +57,7 @@
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Ventes términées
+					    <input type="radio" class="form-check-input" name="Ventes1">Ventes terminées
 					  </label>
 			        </div>
 			        <div class="form-check">
@@ -97,7 +97,7 @@
 			  </fieldset>
 			  <div class="form-group row">
 			    <div class="col-sm-10">
-			      <button type="submit" class="btn btn-outline-info btn-lg btn-block">Rechercher</button>
+			      <button type="submit" class="btn btn-outline-info btn-lg btn-block ml-3">Rechercher</button>
 			    </div>
 			  </div>
 			</form>
@@ -117,6 +117,7 @@
 		    <div class="col-sm-1"></div>
 		      <div class="col-sm-10 element2 ">
       		     <c:forEach items="${listeArticles}" var="article">     
+
 			         <div class="card  text-center mt-3" style="width: 18rem;">
 			            <img class="card-img-top" id ="img" src="${article.imagePath}" alt="image article">
 			               <div class="card-body">
@@ -128,6 +129,7 @@
 		             </div>
 		        </c:forEach>
     		</div>
+
     	<div class="col-sm-1"></div>
        </div>
        </div>
