@@ -15,6 +15,28 @@
 
 <title>ENI Enchèrisseur</title>
 
+<script>
+
+/***
+$(function() {
+	
+	 $('.selectVente').click(function(){
+	// Si on coche ventes
+   if ($(this).is(':checked')){
+	   $('.selectAchat').prop('disabled', true);
+	   
+   }
+   else if($('.selectAchat').is(':checked')){
+	   $('.selectVente').prop('disabled', true);
+  	 }
+	
+ }); 
+
+});
+**/
+
+
+</script>
 </head>
 <body>
      
@@ -52,44 +74,44 @@
 			      <div class="col-sm-12">
 			      
 			      <div class="form-check">
-			         <input type="radio" class="custom-control-input" id="Ventes" name="cocher" value="1">
+			         <input type="radio" class="custom-control-input selectVente" id="Ventes" name="cocher" value="1">
                      <label class="custom-control-label" for="Ventes">Ventes</label>
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Ventes terminées
+					    <input type="radio" class="form-check-input selectVente" name="Ventes1">Ventes terminées
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Ventes non débutées
+					    <input type="radio" class="form-check-input selectVente" name="Ventes1">Ventes non débutées
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Mes ventes en cours
+					    <input type="radio" class="form-check-input selectVente" name="Ventes1">Mes ventes en cours
 					  </label>
 			        </div>
 			       </div>
 			       <div class="col-sm-12">
 			      
 			      <div class="form-check">
-			         <input type="radio" class="custom-control-input" id="Achats" name="cocher" value="2">
+			         <input type="radio" class="custom-control-input selectAchat" id="Achats" name="cocher" value="2">
                      <label class="custom-control-label" for="Achats">Achats</label>
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Achats1">Enchères ouvertes
+					    <input type="radio" class="form-check-input selectAchat" name="Achats1">Enchères ouvertes
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Achats1">Mes enchères en cours
+					    <input type="radio" class="form-check-input selectAchat" name="Achats1">Mes enchères en cours
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Achats1">Mes enchères remportées
+					    <input type="radio" class="form-check-input selectAchat" name="Achats1">Mes enchères remportées
 					  </label>
 			        </div>
 			       </div>
@@ -134,5 +156,16 @@
        </div>
        </div>
 </main>
+<footer>
+	<nav>
+		<a href="home">Acceuil</a><a href="#">FAQ</a><a href="#">Contact</a><a href="ConnexionUtilisateur">Se connecter</a> 
+	</nav>
+	<div>
+	  <strong>Suivez nous sur les réseaux sociaux !</strong>
+		<p> Avec ENI-encheres, achetez aux enchères, en salle ou sur Internet. 281 commissaires-priseurs garantissent les objets.
+		 Ces derniers publient quotidiennement en ligne les informations relatives à leurs prochaines ventes aux enchères sur le site. 
+		 Ils permettent ainsi aux acheteurs du monde entier de consulter gratuitement la quasi-totalité des annonces de ventes aux enchères en France.</p>
+	</div>
+</footer>
 </body>
 </html>
