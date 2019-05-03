@@ -17,7 +17,7 @@
 
 <script>
 
-/***
+/** 
 $(function() {
 	
 	 $('.selectVente').click(function(){
@@ -33,8 +33,39 @@ $(function() {
  }); 
 
 });
-**/
+**/ 
+$(function() {
+	
+	 $('.selectVente').click(function(){
+	// Si on coche ventes
+  if ($(this).is(':checked')){
+	   $( ".selectAchat" ).prop({
+		   disabled: true
+		 });
+  }
+  else if($('.selectAchat').is(':checked')){
+	  $( ".selectVente" ).prop({
+		   disabled: true
+		 });
+ 	 }
+	
+    }); 
+	 $('.selectAchat').click(function(){
+			// Si on coche ventes
+		  if ($(this).is(':checked')){
+			   $( ".selectVente" ).prop({
+				   disabled: true
+				 });
+		  }
+		  else if($('.selectVente').is(':checked')){
+			  $( ".selectAchat" ).prop({
+				   disabled: true
+				 });
+		 	 }
+			
+		}); 
 
+});
 
 </script>
 </head>
@@ -49,24 +80,23 @@ $(function() {
 
 <main class="index"> 
 
-   
+    
       <div class="row">
 		<div class="col" id="nopadding">
 	      <c:if test="${sessionScope.sessionIdUtilisateur != null}">
 	      <!--  Si l'utilisateur est connecté, on affiche les select -->
-	       <form>
+	       <form method="POST" action="home">
 			  <div class="form-group row col-11" id="nopadding">
-			    <input type="text" class="form-control" id="texte" placeholder="Nom de l'article ?">
+			    <input type="search" class="form-control" id="texte" placeholder="Rechercher... " name="nomArticle">
 			  </div>
 			  <div class="form-group row">
 			     <select class="mdb-select md-form ml-3 mt-1 font-weight-light"  name="noCategorie">
-					  <option  value="" disabled selected>Objets par catégorie</option>
 					  
-					  <c:forEach var="categorie" items="${listeCategories}">
-					  
-					  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
-					  
-					  </c:forEach>
+					      <c:forEach var="categorie" items="${listeCategories}">
+						  
+						  <option value="${categorie.noCategorie}">${categorie.libelle}</option>
+						  
+						  </c:forEach>
 				</select>    
 			  </div>
 			  <fieldset class="form-group">
@@ -119,7 +149,7 @@ $(function() {
 			  </fieldset>
 			  <div class="form-group row">
 			    <div class="col-sm-10">
-			      <button type="submit" class="btn btn-outline-info btn-lg btn-block ml-3">Rechercher</button>
+			      <button type="submit" class="btn btn-outline-info btn-lg btn-block ml-3" >Rechercher</button>
 			    </div>
 			  </div>
 			</form>
