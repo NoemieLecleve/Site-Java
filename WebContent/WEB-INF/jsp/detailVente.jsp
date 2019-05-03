@@ -24,9 +24,11 @@
 <main class="connexion">	
 	<form method="GET" action="DetailVente">
 		<h2>Détail de la vente</h2>
-		  <div>	
-			 <img  src="${article.imagePath}" alt="image article" >		 
-			    <table class="table table-striped container col-5">
+		  <div class=" container">	
+		  <div>
+			 <img  src="${article.imagePath}" alt="image article" class="rounded float-left mr-5 border" id="detailimg">
+			</div> 		 
+			    <table class="table table-striped col-8 mt-4">
 				  <thead class="table-info">
 				    <tr>
 				      <th scope="col" colspan="2" id="information">${article.nomArticle}</th>
@@ -34,7 +36,7 @@
 				  </thead>
 				  <tbody>
 				    <tr>
-				      <th scope="row">Description:</th>
+				      <th scope="row">Description</th>
 				      <td>${article.description}</td>
 				    </tr>
 				    <tr >
@@ -49,7 +51,7 @@
 				    </tr>
 				      <tr>
 				      <th scope="row">Mise à prix</th>
-				      <td>${article.miseAPrix}</td>
+				      <td>${article.miseAPrix}&euro;</td>
 				    </tr>
 				      <tr>
 				      <th scope="row">Fin de l'enchère</th>
@@ -70,8 +72,19 @@
 				    </tbody>
 			  </table>
 			</div>
-			<a class="btn btn-primary mr-2" href="">Enchérir</a>	
+			<a class="btn btn-primary btn-lg " href="">Enchérir</a>	
 		</form>
 	</main>
+	<footer>
+	<nav>
+		<a href="home">Acceuil</a><a href="#">FAQ</a><a href="#">Contact</a><a href="ConnexionUtilisateur">Se connecter</a> 
+	</nav>
+	<div>
+	  <strong>Suivez nous sur les réseaux sociaux !</strong>
+		<p> Avec ENI-encheres, achetez aux enchères, en salle ou sur Internet. 281 commissaires-priseurs garantissent les objets.
+		 Ces derniers publient quotidiennement en ligne les informations relatives à leurs prochaines ventes aux enchères sur le site. 
+		 Ils permettent ainsi aux acheteurs du monde entier de consulter gratuitement la quasi-totalité des annonces de ventes aux enchères en France.</p>
+	</div>
+</footer>
 </body>
 </html>

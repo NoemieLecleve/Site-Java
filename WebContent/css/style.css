@@ -361,19 +361,28 @@ footer div{
 
 @media screen and (max-width: 767px)
 {
-	header {
+	div #imgheader {
+      display: none;
       
   }
+  #detailimg{
+	max-width: 67%;	
+}
+  
+ 
+  
  /****** detail Vente *****/
  
- #element7{
+#detailimg{
+	width: 100%;	
+}
  
- margin-left: 2000px;
+ .margintable{
  
+ margin-left: 20px;
  }
  
- 
- 
+
  
  
  
