@@ -47,7 +47,7 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">Meilleur offre</th>
-				      <td></td>
+				      <td>800&euro;</td>
 				    </tr>
 				      <tr>
 				      <th scope="row">Mise à prix</th>
