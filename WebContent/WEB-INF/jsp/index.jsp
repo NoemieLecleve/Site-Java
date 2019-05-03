@@ -15,6 +15,26 @@
 
 <title>ENI Enchèrisseur</title>
 
+<script>
+
+$(function() {
+	
+	 $('#Ventes').click(function(){
+	// Si on coche ventes
+   if ($(this).is(':checked')){
+	   $('#Achats').attr('disabled', true);
+   }
+   else if($('#Achats').is(':checked')){
+	   $('#Ventes').attr('disabled', true);
+  	 }
+   }
+ }
+ 
+ }); 
+
+});
+
+</script>
 </head>
 <body>
      
@@ -132,5 +152,16 @@
        </div>
        </div>
 </main>
+<footer>
+	<nav>
+		<a href="home">Acceuil</a><a href="#">FAQ</a><a href="#">Contact</a><a href="ConnexionUtilisateur">Se connecter</a> 
+	</nav>
+	<div>
+	  <strong>Suivez nous sur les réseaux sociaux !</strong>
+		<p> Avec ENI-encheres, achetez aux enchères, en salle ou sur Internet. 281 commissaires-priseurs garantissent les objets.
+		 Ces derniers publient quotidiennement en ligne les informations relatives à leurs prochaines ventes aux enchères sur le site. 
+		 Ils permettent ainsi aux acheteurs du monde entier de consulter gratuitement la quasi-totalité des annonces de ventes aux enchères en France.</p>
+	</div>
+</footer>
 </body>
 </html>
