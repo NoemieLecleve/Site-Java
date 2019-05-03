@@ -17,7 +17,7 @@
 
 <script>
 
-/*
+/***
 $(function() {
 	
 	 $('.selectVente').click(function(){
@@ -33,7 +33,7 @@ $(function() {
  }); 
 
 });
-*/
+**/
 
 
 </script>
