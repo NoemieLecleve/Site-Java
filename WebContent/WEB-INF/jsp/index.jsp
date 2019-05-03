@@ -17,22 +17,24 @@
 
 <script>
 
+/*
 $(function() {
 	
-	 $('#Ventes').click(function(){
+	 $('.selectVente').click(function(){
 	// Si on coche ventes
    if ($(this).is(':checked')){
-	   $('#Achats').attr('disabled', true);
+	   $('.selectAchat').prop('disabled', true);
+	   
    }
-   else if($('#Achats').is(':checked')){
-	   $('#Ventes').attr('disabled', true);
+   else if($('.selectAchat').is(':checked')){
+	   $('.selectVente').prop('disabled', true);
   	 }
-   }
- }
- 
+	
  }); 
 
 });
+*/
+
 
 </script>
 </head>
@@ -72,44 +74,44 @@ $(function() {
 			      <div class="col-sm-12">
 			      
 			      <div class="form-check">
-			         <input type="radio" class="custom-control-input" id="Ventes" name="cocher" value="1">
+			         <input type="radio" class="custom-control-input selectVente" id="Ventes" name="cocher" value="1">
                      <label class="custom-control-label" for="Ventes">Ventes</label>
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Ventes terminées
+					    <input type="radio" class="form-check-input selectVente" name="Ventes1">Ventes terminées
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Ventes non débutées
+					    <input type="radio" class="form-check-input selectVente" name="Ventes1">Ventes non débutées
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Ventes1">Mes ventes en cours
+					    <input type="radio" class="form-check-input selectVente" name="Ventes1">Mes ventes en cours
 					  </label>
 			        </div>
 			       </div>
 			       <div class="col-sm-12">
 			      
 			      <div class="form-check">
-			         <input type="radio" class="custom-control-input" id="Achats" name="cocher" value="2">
+			         <input type="radio" class="custom-control-input selectAchat" id="Achats" name="cocher" value="2">
                      <label class="custom-control-label" for="Achats">Achats</label>
 				    </div>
 			        <div class="form-check">
 			         <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Achats1">Enchères ouvertes
+					    <input type="radio" class="form-check-input selectAchat" name="Achats1">Enchères ouvertes
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Achats1">Mes enchères en cours
+					    <input type="radio" class="form-check-input selectAchat" name="Achats1">Mes enchères en cours
 					  </label>
 			        </div>
 			        <div class="form-check">
 			          <label class="form-check-label">
-					    <input type="radio" class="form-check-input" name="Achats1">Mes enchères remportées
+					    <input type="radio" class="form-check-input selectAchat" name="Achats1">Mes enchères remportées
 					  </label>
 			        </div>
 			       </div>

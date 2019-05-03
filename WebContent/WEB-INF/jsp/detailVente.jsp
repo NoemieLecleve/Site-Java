@@ -60,7 +60,7 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">Vendeur</th>
-				      <td>${utilisateur.pseudo}</td>
+				      <td>${article.utilisateur.pseudo}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">Ma proposition</th>
