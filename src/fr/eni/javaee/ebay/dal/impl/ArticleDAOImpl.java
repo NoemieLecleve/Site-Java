@@ -10,6 +10,7 @@ import java.util.List;
 
 import fr.eni.javaee.ebay.bo.ArticleVendu;
 import fr.eni.javaee.ebay.bo.Categorie;
+import fr.eni.javaee.ebay.bo.Retrait;
 import fr.eni.javaee.ebay.bo.Utilisateur;
 import fr.eni.javaee.ebay.dal.ArticleDAO;
 import fr.eni.javaee.ebay.dal.ConnectionProvider;
@@ -19,7 +20,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	private Connection connexion;
 
-	private static final String SELECT_ALL = "select nom_article, date_fin_encheres, a.imagePath as 'imagePath', u.no_utilisateur as no_utilisateur, "
+	private static final String SELECT_ALL = "select a.no_article, nom_article, date_fin_encheres, a.imagePath as 'imagePath', u.no_utilisateur as no_utilisateur, "
 			+ " prix_initial, pseudo from  ARTICLES_VENDUS a"
 			+ " inner join  UTILISATEURS u on a.no_utilisateur = u.no_utilisateur;";
 	private static final String INSERER_ARTICLE = "INSERT INTO ARTICLES_VENDUS "
@@ -27,10 +28,11 @@ public class ArticleDAOImpl implements ArticleDAO {
 			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
 	private static final String AJOUTER_LIEU_RETRAIT = "INSERT INTO RETRAITS (no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
 			
-	private static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM ARTICLES_VENDUS a "
-			+	"INNER JOIN CATEGORIES c ON a.NO_CATEGORIE = c.no_categorie "
-			+	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
-			+	"WHERE no_article=?; ";
+	private static final String SELECT_ARTICLE_BY_ID = 		"SELECT * FROM ARTICLES_VENDUS a " 
+														+	"INNER JOIN CATEGORIES c ON a.no_categorie = c.no_categorie "
+														+ 	"INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur "
+														+	"INNER JOIN RETRAITS r ON r.no_article = a.no_article "
+														+	"WHERE a.no_article=?;";
 	
 	public ArticleDAOImpl() throws DALException {
 		connexion = ConnectionProvider.getInstance();
@@ -49,6 +51,8 @@ public class ArticleDAOImpl implements ArticleDAO {
 			ResultSet resultat = prepare.executeQuery();
 
 			while (resultat.next()) {
+				
+				int numeroArticle = resultat.getInt("no_article");
 				String nomArticle = resultat.getString("nom_article");
 				Date dateFinEncheres = resultat.getDate("date_fin_encheres");
 				String imagePath = resultat.getString("imagePath");
@@ -58,7 +62,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 				Utilisateur utilisateur = new Utilisateur(pseudo, idPseudo);
 
-				ArticleVendu article = new ArticleVendu(nomArticle, dateFinEncheres, prixInitial, imagePath, utilisateur);
+				ArticleVendu article = new ArticleVendu(numeroArticle, nomArticle, dateFinEncheres, prixInitial, imagePath, utilisateur);
 
 				article.setUtilisateur(utilisateur);
 				articles.add(article);
@@ -141,11 +145,15 @@ public class ArticleDAOImpl implements ArticleDAO {
 				String pseudo = resultat.getString("pseudo");
 				int no_Categorie = resultat.getInt("no_categorie");
 				String libelle = resultat.getString("libelle");
+				String rue = resultat.getString("rue");
+				String ville = resultat.getString("ville");
+				String codePostale = resultat.getString("code_postal");
 				
+				Retrait retrait = new Retrait (rue,ville,codePostale );
 				Utilisateur utilisateur = new Utilisateur(pseudo, idUtilisateur);
 				Categorie categorie= new Categorie (no_Categorie, libelle);
 				
-				article  = new ArticleVendu(nomArticle,description,prixInitial,dateFinEncheres,utilisateur,imagePath,categorie);
+				article  = new ArticleVendu(nomArticle,description,prixInitial,dateFinEncheres,utilisateur,imagePath,categorie,retrait);
 			}
 		}
 		catch(SQLException e) {

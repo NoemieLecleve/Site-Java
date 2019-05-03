@@ -49,10 +49,8 @@ public class DetailVente extends HttpServlet {
 		
 		} catch (BLLException e) {
 			request.setAttribute("message", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
-			rd.forward(request, response);
-		}
-		
+
+		}		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
 		rd.forward(request, response);
 	}

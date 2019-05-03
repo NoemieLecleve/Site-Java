@@ -15,7 +15,7 @@ import fr.eni.javaee.ebay.dal.DALException;
 public class CategorieDAOImpl implements CategorieDAO {
 
 	private Connection connexion;
-	private static final String SELECT_CATEGORIES = "SELECT * FROM categories";
+	private static final String SELECT_CATEGORIES = "SELECT * FROM CATEGORIES ORDER BY libelle";
 	private static final String SELECT_CATEGORIE_BY_ID = "SELECT * FROM CATEGORIES WHERE no_categorie = ?;";
 
 	public CategorieDAOImpl() throws DALException {

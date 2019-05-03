@@ -41,8 +41,11 @@ public class ArticleVendu {
 		this.retrait = retrait;
 		this.imagePath = imagePath;
 	}
-	
-
+	//numeroArticle, nomArticle, dateFinEncheres, prixInitial, imagePath, utilisateur
+	public ArticleVendu(int numeroArticle, String nomArticle, Date dateFinEncheres, int prixInitial, String imagePath, Utilisateur utilisateur) {
+		this(nomArticle, dateFinEncheres, prixInitial, imagePath, utilisateur);
+		this.noArticle = numeroArticle;
+	}
 
 
 	public ArticleVendu(String nomArticle, String description, Date dateDebutEncheres,Date dateFinEncheres, 
@@ -73,8 +76,20 @@ public class ArticleVendu {
 						Utilisateur utilisateur, String imagePath, Categorie categorie) {
 		this(nomArticle, dateFinEncheres, miseAPrix, imagePath, utilisateur);
 		this.description = description;
+		this.categorieArticle = categorie;
+	
 		
 	}
+
+	
+	public ArticleVendu(String nomArticle, String description, int miseAPrix, Date dateFinEncheres,
+			Utilisateur utilisateur, String imagePath, Categorie categorie, Retrait retrait) {
+		this(nomArticle, dateFinEncheres, miseAPrix, imagePath, utilisateur);
+		this.description = description;
+		this.categorieArticle = categorie;
+		this.retrait = retrait;
+	}
+
 
 	public Retrait getRetrait() {
 		return retrait;
