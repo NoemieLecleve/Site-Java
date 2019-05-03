@@ -5,22 +5,22 @@
     *Loubna Tani*
     *Mickaël Leclerc*
     
-## Déscription du projet
+## Description du projet
 Réalisation d'un site web de vente aux enchères.
     
 ## Avancement du projet
-** Fonctionnalité implémenté et testé : **
+** Fonctionnalité implémentée et testée : **
 * Se connecter
 * S’inscrire
 * Page d’accueil
 * Se déconnecter
 * Afficher un profil
 * Modifier mon profil
-* Supprimer utilisateur
+* Supprimer un utilisateur
 * Vendre un article
 * Lister les enchères en mode déconnecté
 
-## Configuration de la base de donnée
+## Configuration de la base de données
 
 Dans le fichier WebContent/META-INF/context.xml
 Pensez à adapter le fichier en fonction de votre configuration, notamment pour les champs :
@@ -28,8 +28,8 @@ Pensez à adapter le fichier en fonction de votre configuration, notamment pour 
 * username
 * password
 
-## Création de la base de donnée
-* Créer une base nommé ebay
+## Création de la base de données
+* Créer une base nommée ebay
 * Générer le schéma de la base avec le fichier : assets/sql/copie_ebay_ddl_db.sql
 * Générer le jeu d'essai avec le fichier : assets/sql/copie_ebay_dml_db.sql
 
