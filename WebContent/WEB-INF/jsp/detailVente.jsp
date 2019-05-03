@@ -21,13 +21,12 @@
 
 	</header>
 	 
-	<main class="connexion">	
-		<form method="GET" action="DetailVente">
-			<h2>Détail de la vente</h2>
-			<div class="image float-md-left">	
-			<img src="${article.imagePath}" alt="image article">		
-			</div>
-			<table class="table table-striped container col-5">
+<main class="connexion">	
+	<form method="GET" action="DetailVente">
+		<h2>Détail de la vente</h2>
+		  <div>	
+			 <img  src="${article.imagePath}" alt="image article" id="element7">		 
+			    <table class="table table-striped container col-5">
 				  <thead class="table-info">
 				    <tr>
 				      <th scope="col" colspan="2" id="information">${article.nomArticle}</th>
@@ -35,7 +34,7 @@
 				  </thead>
 				  <tbody>
 				    <tr>
-				      <th scope="row">Description :</th>
+				      <th scope="row">Description:</th>
 				      <td>${article.description}</td>
 				    </tr>
 				    <tr >
@@ -50,28 +49,28 @@
 				    </tr>
 				      <tr>
 				      <th scope="row">Mise à prix</th>
-				      <td>${article.dateFinEncheres}</td>
+				      <td>${article.miseAPrix}</td>
 				    </tr>
 				      <tr>
 				      <th scope="row">Fin de l'enchère</th>
-				      <td>${article.retrait}</td>
+				      <td>${article.dateFinEncheres}</td>
 				    </tr>
 				      <tr>
-				      <th scope="row">Retrait</th>
-				      <td>${article.retrait.rueRetrait}</td>
+				      <th scope="row">Lieu de Retrait</th>
+				      <td>${article.retrait.rueRetrait}, ${article.retrait.villeRetrait}, ${article.retrait.codePostalRetrait}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">Vendeur</th>
-				      <td>${utilisateur.pseudo}</td>
+				      <td>${article.utilisateur.pseudo}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">Ma proposition</th>
 				      <td><input type="number" class="form-control" name="miseAPrix"></td>
 				     </tr>
 				    </tbody>
-			</table>
-			<a class="btn btn-primary mr-2" href="">Enchérir</a>
-			
+			  </table>
+			</div>
+			<a class="btn btn-primary mr-2" href="">Enchérir</a>	
 		</form>
 	</main>
 </body>
