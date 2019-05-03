@@ -25,7 +25,7 @@
 	<form method="GET" action="DetailVente">
 		<h2>Détail de la vente</h2>
 		  <div>	
-			 <img  src="${article.imagePath}" alt="image article" id="element7">		 
+			 <img  src="${article.imagePath}" alt="image article" >		 
 			    <table class="table table-striped container col-5">
 				  <thead class="table-info">
 				    <tr>
