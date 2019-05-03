@@ -1,6 +1,7 @@
 package fr.eni.javaee.ebay.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.javaee.ebay.bll.ArticleManager;
 import fr.eni.javaee.ebay.bll.BLLException;
+import fr.eni.javaee.ebay.bll.CategorieManager;
 import fr.eni.javaee.ebay.bll.ManagerFactory;
 import fr.eni.javaee.ebay.bll.UtilisateurManager;
+import fr.eni.javaee.ebay.bo.ArticleVendu;
+import fr.eni.javaee.ebay.bo.Categorie;
 import fr.eni.javaee.ebay.bo.Utilisateur;
 import fr.eni.javaee.ebay.dal.DALException;
 
@@ -29,7 +34,22 @@ public class ConnexionUtilisateur extends HttpServlet {
 			throws ServletException, IOException {
 
 		// Affichage de la page d'inscription:
+		 
+		CategorieManager categorieManager = null;
 
+		try {
+			 
+			categorieManager = ManagerFactory.getCategorieManager();
+
+			 
+			List<Categorie> listeCategories = categorieManager.listeCategories();
+
+			 
+			request.setAttribute("listeCategories", listeCategories);
+		} catch (BLLException e) {
+
+			request.setAttribute("message", e.getMessage());
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/connexion.jsp");
 		rd.forward(request, response);
 	}
